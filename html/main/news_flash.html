@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/newsflash.css">
+</head>
+
+<body>
+    <!-- 快讯 -->
+    <div id="showNews" style="background-color: #fff;display: block">
+        <p id="todayTime">
+
+        </p>
+        <ul id="newsList">
+            <!-- <li>
+            <p>
+                2019-07-17 17:43:55 <span><i></i> </span>
+            </p>
+            <b>
+                墨西哥加密货币交易所Bitso于今日发布公告称,已获得直布罗陀金
+            </b>
+            <div>
+                墨西哥加密货币交易所Bitso于今日发布公告称,已获得直布罗陀金融服务委员会(GFSC)的DLT许可证公司称在遵守直布罗陀加密货币监管制度的同时仍将继续与墨西哥当地金融监管机构进行。
+            </div>
+            <span>
+                <img src="../../image/share.png">
+            </span>
+        </li>
+        <li>
+            <p>
+                2019-07-17 17:43:55 <span><i></i> </span>
+            </p>
+            <b>
+                墨西哥加密货币交易所Bitso于今日发布公告称,已获得直布罗陀金
+            </b>
+            <div>
+                墨西哥加密货币交易所Bitso于今日发布公告称,已获得直布罗陀金融服务委员会(GFSC)的DLT许可证公司称在遵守直布罗陀加密货币监管制度的同时仍将继续与墨西哥当地金融监管机构进行。
+            </div>
+            <span>
+                <img src="../../image/share.png">
+            </span>
+        </li> -->
+        </ul>
+    </div>
+    <!-- 深度 -->
+    <div id="deepnews" style="background-color: #fff;padding-top: 0.5rem;">
+        <p><img src="../../image/hotnews.png" style="width:0.36rem;height:0.36rem;"> <b>热门</b></p>
+        <div class="hotNews">
+            <!-- <div>
+                <p>
+                    <img src="../../image/pro_orin.png">
+                </p>
+                <span>韩国将在8月6日进行确保虚拟少时诵诗书所所所所所所所少时诵诗书所所所</span>
+            </div> -->
+        </div>
+        <ul id="showDeepsList">
+            <!-- <li>
+                <div>
+                    <b>
+                        钓鱼台国宾馆今日下午将进行讨论Libra的活动
+                    </b>
+                    <p>
+                        <span>置顶</span>
+                        <span>人人矿场 · 6分钟前</span>
+                    </p>
+                </div>
+                <span>
+                    <img src="../../image/user_img_bigx.png" alt="">
+                </span>
+            </li> -->
+        </ul>
+        <div class="tobottom">加载中</div>
+    </div>
+    <div id="listState" style="text-align: center;margin: auto;color: #666666;margin-top: 0.2rem;"></div>
+    <!-- 动态(暂时屏蔽) -->
+    <!-- <div id="dynamicNews">
+        <ul>
+            <li class="dynamicNewsOne">
+                <div>
+                    <b>
+                        钓鱼台国宾馆今日下午将进行讨论Libra的活动
+                    </b>
+                    <p>
+                        <span>
+                            置顶
+                        </span>
+                        <span>
+                            人人矿场 · 6分钟前
+                        </span>
+                    </p>
+                </div>
+                <img src="../../image/user_img_bigx.png" alt="">
+            </li>
+            <li class="dynamicNewsTwo">
+                <b>
+                    PH项目方完成对TSC100平台PH持币用户的第十二期BTC挖矿收益空投
+                </b>
+                <p>
+                    <span>
+                        置顶
+                    </span>
+                    <span>
+                        人人矿场 · 6分钟前
+                    </span>
+                </p>
+            </li>
+            <li class="dynamicNewsThree">
+                <b>
+                    PH项目方完成对TSC100平台PH持币用户的第十二期BTC挖矿收益空投
+                </b>
+                <div>
+                    <img src="../../image/user_img_bigx.png" alt="">
+                    <img src="../../image/user_img_bigx.png" alt="">
+                    <img src="../../image/user_img_bigx.png" alt="">
+                </div>
+                <p>
+                    <span>
+                        置顶
+                    </span>
+                    <span>
+                        人人矿场 · 6分钟前
+                    </span>
+                </p>
+            </li>
+        </ul>
+    </div> -->
+
+    <!-- 快讯 -->
+    <script id="listNews" type="text/html">
+    {{~it:value:index}}
+    <li>
+        <p>
+            {{=value.create_time}} <span><i></i> </span>
+        </p>
+        <b>
+            {{=value.title}}
+        </b>
+        <div data-flag='true'>
+            {{=value.content}}
+        </div>
+        <!-- data-txt='{{=value.content}}' -->
+        <span data-txt='{{=value.content}}'  data-qrtxt="{{=value.qrtxt}}" data-title="{{=value.title}}" data-date="{{=value.create_time}}" data-weekday="{{=value.weekday}}">
+            <img src="../../image/hlshare.png">
+        </span>
+    </li>
+    {{~}}
+    </script>
+    <!--热门-->
+    <script id="hotMb" type="text/html">
+    {{~it:value:index}}
+    <div data-id="{{=value.id}}">
+        <p>
+            <img src={{=value.face_url}}>
+        </p>
+        <span>{{=value.title}}</span>
+    </div>
+    {{~}}
+    </script>
+    <!--深度-->
+    <script id="deepMb2" type="text/html">
+    {{~it:value:index}}
+    <li data-id="{{=value.id}}">
+        <div>
+            <b>{{=value.title}}</b>
+            <p>
+                {{?value.istopfive}}
+                <span class="isTop">置顶</span>
+                {{?}}
+                <span style="font-size:.24rem;margin-left:{{=value.istopfive?'0.12rem':0}}">人人矿场 · {{=value.product_at}}</span>
+            </p>
+        </div>
+        {{?value.face_url}}
+        <span>
+            <img src={{=value.face_url}} alt="">
+        </span>
+        {{?}}
+    </li>
+    {{~}}
+    </script>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../script/dotmin.js"></script>
+    <script src="../../js/news_flash.js"></script>
+</body>
+
+</html>

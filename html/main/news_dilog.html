@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>挖矿详情</title>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <style>
+        body {
+            width: 100%;
+            height: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            font-family: PingFangSC-Regular, sans-serif;
+            color: #333333;
+            font-size: 0.28rem;
+        }
+
+        #newsButton {
+            position: fixed;
+            bottom: 35%;
+            left: calc((100% - 2.8rem) / 2);
+            z-index: 50;
+        }
+
+        #newsText {
+            position: fixed;
+            bottom: 2.9rem;
+            left: calc((100% - 6.4rem) / 2);
+            z-index: 50;
+        }
+
+        #newsLine {
+            position: fixed;
+            bottom: 1.6rem;
+            right: 2.85rem;
+            z-index: 50;
+        }
+
+        #newsIcon {
+            position: fixed;
+            bottom: 0.8rem;
+            right: 2.5rem;
+            z-index: 50;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../../image/newsbutton.png" id="newsButton" style="width: 2.8rem;height: 1.28rem;">
+    <img src="../../image/newstext.png" id="newsText" style="width:6.4rem;height:1.07rem;">
+    <img src="../../image/newsline.png" id="newsLine" style="width: 0.56rem;height: 1.16rem;">
+    <img src="../../image/newsicon.png" id="newsIcon" style="width: 0.68rem;height:0.68rem;">
+</body>
+<script src="../../js/autosize.js"></script>
+<script src="../../script/api.js"></script>
+<script src="../../script/fastclick.js"></script>
+<script src="../../script/jquery_three_two_one.js"></script>
+<script src="../../res/web/script/template_web.js"></script>
+<script src="../../script/dotmin.js"></script>
+<script src="../../script/app.js"></script>
+<script>
+    apiready = function() {
+        var app = new APP();
+        $("#newsButton").on("click", function() {
+            app.setStorage("isfirst","false");
+            app.closeF();
+        })
+    }
+</script>
+
+</html>

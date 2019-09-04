@@ -1,0 +1,101 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no" />
+    <title>关于我们</title>
+    <link rel="stylesheet" type="text/css" href="../../res/web/css/aui.css" />
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .bgc {
+            background-color: #fabf38;
+        }
+
+        .share {
+            width: 100%;
+            bottom: 0px;
+        }
+
+        .title {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+        }
+
+        .title .line {
+            width: 100%;
+            height: 1px;
+            background-color: #eeeeee;
+            display: block;
+
+        }
+
+        .title .text {
+            display: block;
+            position: absolute;
+            width: 95px;
+            background-color: white;
+            top: 8px;
+            left: calc(50% - 40px);
+            padding: 0px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="position: relative;margin-bottom:20px">
+        <img src="../../res/web/images/logo.png" />
+        <div style="color: #636363;font-size: 14px;position: absolute;bottom: 0;width: 100%;text-align: center;">
+            <span style="display: inline-block;background-color: #A4D0FF;color: white;border: 1px solid #59ADE6;border-radius: 20px;padding: 1px 8px;text-align: center;vertical-align: middle;" id="version"></span>
+            <p style="font-size: 12px;color: #ddd;width: 100%;text-align: center;margin-top: 10px;">
+                修复信息：2019.08.23 18:00
+            </p>
+        </div>
+    </div>
+    <div class="aui-content" style="color: #636363;font-size: 14px;padding: 5px">
+        <p>
+            人人矿场（含全球站RRMINE.com及各地平台）是香港 SuperB Grace Limited 旗下的全球云算⼒合约交易技术服务平台。通过网站、App提供的优质技术与信息服务，让全球用户更便捷完成云算力合约交易，以云算力分时共享体验，更轻松拥有挖矿能力。
+            <br>
+            <br>
+            人人矿场（中国站 renrenmine.com）遵守中国法律规范，由「海南安麦云科技有限公司」提供平台技术信息服务和本地客户服务 。
+        </p>
+        <p style="display: flex;display:-webkit-flex;flex-direction: column;margin-top: 20px;">
+            <b>
+                全球平台化市场推广声明:
+            </b>
+            <span style="margin-top: 20px;">
+                人人矿场平台（含网站、app等服务平台），对超出我司网站、APP等官方平台发布的信息与报道以及未经授权或超出本平台授权范围发布的信息与报道，我司不负相关责任。
+                <br>
+                <br>
+                何社会个体和机构，有推广人人矿场平台服务的相对自由，本平台无直接管辖的权力。对未经授权或超出本平台授权可用的官方宣传形式的宣传内容和行为，我司不负相关责任。
+                <br>
+                <br>
+                用户如对推广者出现的不实言论和不当行为产生疑问，可直接向人人矿场平台咨询。
+            </span>
+        </p>
+    </div>
+</body>
+
+<script src="../../script/jquery_three_two_one.js"></script>
+<script src="../../script/fastclick.js"></script>
+<script src="../../script/app.js"></script>
+
+<script>
+    apiready = function() {
+        // 如果是ios系统，暂时先屏蔽检查更新，后面需要再开放
+        var app = new APP();
+        if (app.ST == "ios") {
+            $("#check").hide();
+        } else {
+            $("#check").hide();
+        }
+        // 设置当前版本
+        $("#version").text("v " + app.AV);
+    };
+</script>
+
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no" />
+  <title>首页</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/tab.css" />
+</head>
+
+<body></body>
+<script src="js/autosize.js"></script>
+<script src="script/fastclick.js"></script>
+<script src="script/api.js"></script>
+<script src="script/zeptomin.js"></script>
+<script src="script/jquery_three_two_one.js"></script>
+<script src="script/app.js"></script>
+<script>
+  apiready = function () {
+    var app = new APP();
+    var lineColor = "#ffcf07";
+    var errLineColor = "#ff3c07";
+    var showBack = false; //是否显示取消按钮
+    app.listen("showBackButton", function () {
+      showBack = true;
+    });
+
+    app.listen("hideBackButton", function () {
+      showBack = false;
+    });
+    app.createMain("index");
+    app.createBottomTab();
+    // 更新APP版本
+    var openUpdate = true; //开启更新 //如果上架appStore请关闭自动更新
+    if (openUpdate == true) {
+      app.listen("update", function (ret, err) {
+        app.log("监听到app强制更新！", ret.value);
+        if (app.ST == "android") {
+          // 关闭之前的弹窗，启动下载弹窗
+          app.closeF("dialog");
+          app.tout(100, function () {
+            // 弹窗提示有新版本app
+            var param = {
+              dtype: "dialog4",
+              data: {
+                text: "正在下载...",
+                extra: {}
+              }
+            };
+            app.openloadframe(param);
+          });
+
+          var value = ret.value;
+
+          // 启动下载
+          if (ret.value.url) {
+            // 延时启动下载（等待进度弹窗显示完毕）
+            app.tout(1000, function () {
+              app.download(ret.value.url, function (ret2, err2) {
+                app.log("--------下载进度--------", ret2);
+                app.trigger("update_progress", ret2);
+                if (ret2.state == 1) {
+                  // 定时关闭窗口
+                  app.tout(500, function () {
+                    app.closeF("dialog");
+                    app.closeWidget(app.ID);
+                  });
+                  // 开始安装
+                  var savePath = ret2.savePath;
+                  // 给路径加file前缀
+                  savePath = "file://" + savePath;
+                  app.install(savePath);
+                }
+
+                // 判断下载失败
+                if (ret2.state == 2) {
+                  // 定时关闭窗口
+                  app.tout(1000, function () {
+                    app.closeF("dialog");
+                    // 重新启动下载提示
+                    // 弹窗提示有新版本app
+                    var param = {
+                      dtype: "dialog1",
+                      data: {
+                        title: "提示",
+                        text: "下载新版本人人矿场 v" + value.version + "失败！",
+                        btns: [{
+                          name: "再试一次",
+                          event: "update",
+                          style: "color:#0095E5;"
+                        }],
+                        extra: value
+                      }
+                    };
+                    app.openloadframe(param);
+                  });
+                }
+              });
+            });
+          }
+        } else {
+          app.closeF("downloadApk");
+          app.openSysNavi(ret.value.url);
+        }
+      });
+      // 检测app版本（android才能用）
+      function reloadcheckver() {
+        app.checkAppVer(function (ret, err) {
+          app.log("--------fuck--------", "fuck11111");
+          if (ret && ret.code == 1 && ret.app_version) {
+            // 模拟检测到了版本
+            var newVerStr = ret.app_version.version_code; //新版本
+            var curVerStr = app.AV; //旧版本
+            var needUpdate = false; //是否需要更新;
+            var currentVersionArr = curVerStr.split(".");
+            var newVersionArr = newVerStr.split(".");
+
+            function getNeedUpdate() {
+              if (parseInt(newVersionArr[0]) > parseInt(currentVersionArr[0])) {
+                needUpdate = true;
+                return;
+              } else if (parseInt(newVersionArr[1]) > parseInt(currentVersionArr[1])) {
+                needUpdate = true;
+                return;
+              } else if (parseInt(newVersionArr[2]) > parseInt(currentVersionArr[2])) {
+                if (parseInt(newVersionArr[1]) < parseInt(currentVersionArr[1])) {
+                  needUpdate = false;
+                  return;
+                }
+                needUpdate = true;
+              }
+            }
+            getNeedUpdate();
+            // 判断版本
+            if (needUpdate == true) {
+              app.log("--------fuck--------", "fuck22222");
+              // 弹窗提示有新版本app
+              var btns = [];
+              if (ret.app_version.forced != "1") {
+                btns.push({
+                  name: "取消",
+                  event: "",
+                  style: "color:#0095E5;"
+                });
+              }
+              btns.push({
+                name: "立即更新",
+                event: "update",
+                style: "color:#0095E5;"
+              });
+              var param = {
+                dtype: "dialog111",
+                update: true,
+                data: {
+                  title: "提示",
+                  text: "发现新版本人人矿场 v" + newVerStr + "。",
+                  btns: btns,
+                  extra: {
+                    url: ret.app_version.download_url,
+                    version: newVerStr
+                  }
+                }
+              };
+              app.openloadframe(param);
+            }
+          }
+        });
+      }
+      reloadcheckver();
+    }
+
+    app.getAsyncStorage("openHandPassLine", function (ret) {
+      if (ret == "true") {
+        lineColor = "#ffcf07";
+        errLineColor = "#ff3c07";
+      } else {
+        lineColor = "rgba(255,255,255,0)";
+        errLineColor = "rgba(255,255,255,0)";
+      }
+    });
+    app.getAsyncStorage("openHandPassword", function (ret) {
+      if (ret == "true") {
+        api.openWin({
+          name: "checkhand",
+          url: app.hd + "extrapage/checkhand.html",
+          slidBackEnabled: false,
+          animation: {
+            type: "none"
+          },
+          pageParam: {
+            lineColor: lineColor,
+            errLineColor: errLineColor,
+          }
+        });
+      }
+    });
+    // app.listen("openTouchID", function (params) {
+    //   app.getAsyncStorage("opentouchID", function (ret) {
+    //     if (ret == "true") {
+    //       app.touchID.verify({
+    //         title: '验证指纹'
+    //       }, function (ret) {
+    //         app.log("-------------------gggggggggggggggggggg" + JSON.stringify(ret));
+    //         if (ret.status) {
+    //           app.toast("验证通过");
+    //         } else {
+    //           if (app.ST == "ios") {
+    //             if (ret.errorCode == -3) {
+    //               api.alert({
+    //                 msg: "用户选择手动输入"
+    //               });
+    //             } else if (ret.errorCode == -2) {
+    //               app.toast("用户取消验证");
+    //             } else if (ret.errorCode == -1) {
+    //               app.toast("验证三次失败");
+    //               // app.delAccount();
+    //               // app.trigger("quit_login");
+    //               // app.toMainWin();
+    //             } else if (ret.errorCode == 3) {
+    //               // app.toast("多次失败,退出登录");
+    //             } else {
+    //               app.toast("验证失败,未知错误")
+    //             }
+    //           } else {
+    //             if (ret.code == 0) {
+
+    //               api.alert({
+    //                 msg: "用户选择手动输入"
+    //               });
+    //             } else if (ret.code == 1) {
+    //               app.toast("用户取消验证");
+    //             } else if (ret.code == 2) {
+    //               app.toast("验证三次失败");
+    //               app.delAccount();
+    //               app.trigger("quit_login");
+    //               app.toMainWin();
+    //             } else if (ret.code == 3) {
+    //               // app.toast("多次失败,退出登录");
+    //             } else {
+    //               app.toast("验证失败,未知错误")
+    //             }
+    //           }
+    //         }
+    //       });
+    //     }
+    //   });
+    // })
+    app.listen("openhandLine", function (params) {
+      app.getAsyncStorage("openHandPassLine", function (ret) {
+        if (ret == "true") {
+          lineColor = "#ffcf07";
+          errLineColor = "#ff3c07";
+        } else {
+          lineColor = "rgba(255,255,255,0)";
+          errLineColor = "rgba(255,255,255,0)";
+        }
+      });
+      app.getAsyncStorage("openHandPassword", function (ret) {
+        if (ret == "true") {
+          api.openWin({
+            name: "checkhand",
+            url: app.hd + "extrapage/checkhand.html",
+            slidBackEnabled: false,
+            animation: {
+              type: "none"
+            },
+            pageParam: {
+              lineColor: lineColor,
+              errLineColor: errLineColor,
+              showBack: showBack
+            }
+          });
+        }
+      });
+    });
+  };
+</script>
+
+</html>

@@ -1,0 +1,207 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>更多消息</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <style>
+        body {
+            width: 100%;
+            background-color: #fff;
+            font-size: 0.26rem;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            font-family: Helvetica;
+            color: #333333;
+        }
+
+        .addBankCard {
+            width: 100%;
+            padding-left: 0.3rem;
+            box-sizing: border-box;
+        }
+
+        .addBankCard li {
+            width: 100%;
+            height: 1.43rem;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 0.4rem;
+            box-sizing: border-box;
+            border-bottom: 1px solid #e2e2e2;
+        }
+
+        .addBankCard li div {
+            flex: 1;
+        }
+
+        .addBankCard li div p {
+            margin-bottom: 0.2rem;
+            font-size: 0.28rem;
+        }
+
+        .addBankCard li div span {
+            color: #ababab;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="showbanK">
+        <ul class="addBankCard">
+        </ul>
+        <div id="listState" style="width: 100%;text-align: center;padding: 0.2rem 0;">
+        </div>
+    </div>
+</body>
+
+<script src="../../js/autosize.js"></script>
+<script src="../../script/fastclick.js"></script>
+<script src="../../script/jquery_three_two_one.js"></script>
+<script src="../../script/dotmin.js"></script>
+<script src="../../script/app.js"></script>
+<script>
+    apiready = function() {
+        var app = new APP();
+        var account = app.getAccount();
+        var curPage = 1;
+        var totalPage = 0;
+        var strRegex = '^((https|http|ftp|rtsp|mms)?://)' +
+            '?(([0-9a-z_!~*\'().&=+$%-]+: )?[0-9a-z_!~*\'().&=+$%-]+@)?' //ftp的user@ 
+            +
+            '(([0-9]{1,3}.){3}[0-9]{1,3}' // IP形式的URL- 199.194.52.184 
+            +
+            '|' // 允许IP和DOMAIN（域名） 
+            +
+            '([0-9a-z_!~*\'()-]+.)*' // 域名- www. 
+            +
+            '([0-9a-z][0-9a-z-]{0,61})?[0-9a-z].' // 二级域名 
+            +
+            '[a-z]{2,6})' // first level domain- .com or .museum 
+            +
+            '(:[0-9]{1,4})?' // 端口- :80 
+            +
+            '((/?)|' // a slash isn't required if there is no file name 
+            +
+            '(/[0-9a-z_!~*\'().;?:@&=+$,%#-]+)+/?)$';
+        var reTest = new RegExp(strRegex);
+        var lists = [];
+
+        function getMoreMessge(curPage, isdown) {
+            app.ajax({
+                param: {
+                    method: "post",
+                    url: app.config.url + "site/broadcastMessage",
+                    data: {
+                        values: {
+                            page: curPage
+                        }
+                    },
+                    callback: function(ret, err) {
+                        // app.log("消息列表", "消息列表返回：" + JSON.stringify(ret));
+                        app.stopRefresh();
+                        if (ret.code == 1) {
+                            totalPage = ret.total_page;
+                            ret.more_message.map(function(item) {
+                                if (item.title.length > 10) {
+                                    item.title = item.title.substring(0, 20) + "…";
+                                }
+                                if (!reTest.test(item.content)) {
+                                    item.content = JSON.stringify(item.content);
+                                }
+                            })
+                            // 渲染模板
+                            var temp = doT.template($("#bankList").text());
+                            if (isdown) {
+                                lists = ret.more_message;
+                            } else {
+                                for (var i = 0; i < ret.more_message.length; i++) {
+                                    lists.push(ret.more_message[i]);
+                                }
+                            }
+                            $(".addBankCard").html(temp(lists));
+                            $(".addBankCard").on("click", "li", function() {
+                                var thisindex = $(this).index();
+                                var getUrlCentant = lists[thisindex].content;
+                                var getTypetitle = lists[thisindex].type;
+                                var getTitle = lists[thisindex].title;
+                                var goCerfition = {};
+                                if (getTypetitle == 2) {
+                                    console.log("浏览器");
+                                    goCerfition = {
+                                        page: "common/headerwin",
+                                        name: "browser_headerwin",
+                                        param: {
+                                            subpage: "common/browser",
+                                            name: "browser",
+                                            title: getTitle,
+                                            url: getUrlCentant
+                                        }
+                                    }
+                                } else {
+                                    console.log("普通页面");
+                                    goCerfition = {
+                                        page: "common/headerwin",
+                                        name: "word_cont_one_headerwin",
+                                        param: {
+                                            subpage: "extrapage/word_cont_one",
+                                            name: "browser",
+                                            title: getTitle,
+                                            content: getUrlCentant
+                                        }
+                                    }
+                                }
+                                var recoinNumber = JSON.stringify(goCerfition);
+                                app.goPushPage(recoinNumber);
+                            })
+                            if (curPage == 1 && ret.more_message.length == 0) {
+                                $("#listState").text("暂时没有相关数据");
+                            }
+                        }
+                    }
+                },
+                extra: {
+                    isflower: true
+                }
+            });
+        }
+        getMoreMessge(curPage, true);
+        // 监听滚动到底部
+        app.toBottom(function() {
+            if (curPage < totalPage) {
+                curPage++;
+                getMoreMessge(curPage, false);
+            }
+        });
+        // 设置可以下拉加载
+        app.downRefresh(function() {
+            $(".addBankCard").empty();
+            curPage = 1;
+            totalPage = 0;
+            getMoreMessge(curPage, true);
+        });
+    }
+</script>
+<script type="text/html" id="bankList">
+{{~it:value:index}}
+<li>
+    <div>
+        <p>
+            {{=value.title}}
+        </p>
+        <span>
+            {{=value.create_time}}
+        </span>
+    </div>
+    <img src="../../image/rightjt.png" style="width: 0.1rem;height:0.18rem;">
+</li>
+{{~}}
+</script>
+
+</html>

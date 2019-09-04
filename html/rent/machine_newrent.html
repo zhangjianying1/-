@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+    <title>租用</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/machinerent.css">
+</head>
+
+<body>
+    <div>
+        <ul class="showDetail">
+            <li>
+                <p>
+                    <span>
+                        用户名
+                    </span>
+                    <span class="uesePhone"></span>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span>名称</span>
+                    <span class="machineName"></span>
+                </p>
+            </li>
+            <!-- <li class="limitText" style="font-size: 0.22rem">
+                注: 此矿机起租<span class="limitPower" style="font-size: 0.22rem"></span>
+                (<span class="limitNum"></span>份)
+            </li> -->
+            <!-- <li class="hideBorder"></li> -->
+            <li id="showButton" style="border-top: 0.2rem solid #f7f7f7;">
+                <p>
+                    <span>
+                        购买份额
+                    </span>
+                    <span class="rentNumber rightData flex">
+                        <span class="addbButton">－</span>
+                        <input type="text" name="" id="inputNumber" value="1">
+                        <span class="disButton">＋</span>
+                    </span>
+                </p>
+            </li>
+            <li class="showAllPower" style="margin-top: 0.2rem;">
+                <p>
+                    <span>
+                        到手总算力
+                    </span>
+                    <span class="getAllPower rightData flex">
+                        <span class="powerNum">
+                            <span></span>
+                        </span>
+                        <img src="../../image/rightjt.png" alt="" style="width:0.16rem;height:0.29rem;margin-left: 0.24rem;">
+                    </span>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <span>总计需付金额</span>
+                    <span class="getAllPower">
+                        <span class="payMoney">9000</span><span class="dw">USDT</span>
+                    </span>
+                </p>
+            </li>
+        </ul>
+        <div class="choseTitle">
+            <span>选择支付方式</span>
+            <span>1 <span class="chosePayMethod"></span><span class="exchange_rate"></span> CNY</span>
+        </div>
+        <div class="payWay_Box">
+            <label for="usdt" id="usdtPay">
+                <img src="../../image/usdt.png" alt="" class="payLogo">
+                <span class="payWayTxt">USDT支付</span>
+                <span class="this_leastM">(余额: <span></span>)</span>
+                <input type="radio" name="payWay" id="usdt" value="USDT" data-paymethod="RRM_USDT">
+                <span class="radioStyle"></span>
+            </label>
+            <!--<label for="weixin" id="wxPay">-->
+            <!--<img src="../../image/wixinradio.png" alt="" class="payLogo">-->
+            <!--<span class="payWayTxt">微信支付</span>-->
+            <!--<span class="this_leastM" style="color:#b1b1b1">(单笔限2万，单日限5万)</span>-->
+            <!--<input type="radio" name="payWay" value="CNY" id="weixin" data-paymethod="WX_APP">-->
+            <!--<span class="radioStyle"></span>-->
+            <!--</label>-->
+            <!--<label for="wallet" id="walletPay">-->
+            <!--<img src="../../image/walleticon.png" alt="" class="payLogo">-->
+            <!--<span class="payWayTxt">现金钱包</span>-->
+            <!--<span class="this_leastM">(可用: <span></span>)</span>-->
+            <!--<input type="radio" name="payWay" value="CNY" id="wallet" data-paymethod="RRM_CASH">-->
+            <!--<span class="radioStyle"></span>-->
+            <!--</label>-->
+            <!--<label for="yinlian" id="yinlianPay">-->
+            <!--<img src="../../image/yinlianIcon.png" alt="" class="payLogo">-->
+            <!--<span class="payWayTxt">银联支付</span>-->
+            <!--<span class="this_leastM" style="color:#b1b1b1">(单笔限2万，单日限5万)</span>-->
+            <!--<input type="radio" name="payWay" value="CNY" id="yinlian" data-paymethod="YSF_APP">-->
+            <!--<span class="radioStyle"></span>-->
+            <!--</label>-->
+            <label for="bcny" id="bcnyPay">
+                <img src="../../image/bcny_icnoux.png" alt="" class="payLogo">
+                <span class="payWayTxt">BCNY支付</span>
+                <span class="this_leastM">(余额: <span></span>)</span>
+                <input type="radio" name="payWay" value="BCNY" id="bcny" data-paymethod="RRM_BCNY">
+                <span class="radioStyle"></span>
+            </label>
+        </div>
+        <div id="hideBox" style="padding-bottom: 0.45rem;border-top: 0.25rem solid#f7f7f7;display: none;">
+            <p style="text-align: center">
+                <label class="rementLabel">
+                    <span style="position: relative;width: 0.3rem;height: 0.3rem;display: inline-block;vertical-align: middle;margin-right: 0.05rem">
+                        <input type="checkbox" id="agreementinput" name="agreement">
+                        <span class="ag_checkedstyle agreement_style"></span>
+                    </span>
+                    <span style="vertical-align: middle;font-size: 0.27rem;">我同意</span>
+                    <span class="rementLink">《云算力在线服务协议》</span>
+                </label>
+            </p>
+            <p style="text-align: center">
+                <a href="javascript:;" class="rentBtn notAgree" style="text-decoration:none;">立即支付</a>
+            </p>
+        </div>
+        <p id="checkButton" style="width: auto;height: auto;margin-left:calc((100% - 6.9rem) / 2);margin-top: 0.5rem;">
+
+        </p>
+
+
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/app.js"></script>
+    <script>
+        apiready = function() {
+            var validateTokenNew = "";
+            var app = new APP();
+            var account = app.getAccount();
+            $(".uesePhone").text(account.mobile);
+            $(".machineName").text(api.pageParam.machinename); //矿机名称
+            var pay_way = 'bcny'; //默认支付方式；限页面样式使用
+            var payMethod = 'RRM_BCNY'; //ajax传参使用的支付方式
+            var minRent = Number(api.pageParam.minRent); //最低租用数量；
+            var rent_num = minRent; //租用矿机数量；
+            var num_limit = (api.pageParam.onceNumlimit != 0 && api.pageParam.num_limit >= api.pageParam.onceNumlimit) ? api.pageParam.onceNumlimit : api.pageParam.num_limit; //最大租用数量
+            var agreementinput = true; //是否同意协议
+            var is_big_customer = api.pageParam.is_big_customer; //用户类型(大用户)
+            var typeMachine = api.pageParam.machineType; //矿机类型
+            var machineId = api.pageParam.machineid; //矿机id
+            var num_left = api.pageParam.num_left; //库存
+            var goods_deposit = api.pageParam.goods_deposit; //单个押金
+            var is_bhp_pos = api.pageParam.is_bhp_pos; //判断是不是双挖
+            var machineTypeNew = api.pageParam.machineTypeNew;
+            var machinePowerData = api.pageParam.machineData; //机器详情
+            var rmb_left = api.pageParam.rmb_left; //钱包余额
+            var bcny_left = api.pageParam.bcny_left; //bcny余额
+            var usdt_left = api.pageParam.usdt_left; //usdt余额
+            var exchange_rate = 0; //usdt兑换汇率
+            var usdt_unit_pay = 0; //矿机单份usdt支付金额
+            var publicExchange = 1; //公共调用单份支付金额！！！
+            var is_usdt_pay = 1; //是否支持usdt支付
+            var unit_payWay = 'CNY'; //支付方式单位
+            var rent_money = 0; //支付金额( usdt会经过换算 )
+            var allPower; //总算力
+            var md_ret = api.pageParam.ret; //machine detail 返回ret传过来
+            var machineText = {
+                title: '',
+                textTips: ""
+            } //协议相关
+            var arrivePower = []; //达标算力区间
+            var dataPower = {
+                basePower: "",
+                pePower: "",
+                futuresPower: "",
+                standPower: "",
+                floatPower: "",
+                calculatePower: ""
+            };
+            //公用弹出充值弹窗
+            var firstInAdd = false;
+            var limitRentUnit = "T";
+            if (typeMachine != "BTC") {
+                limitRentUnit = "M";
+            }
+            typeMachine = 'BTC';
+            var userIdName; //用户实名状态
+            var is_captcha = api.pageParam.is_captcha;
+            if (is_captcha == 1) {
+                _fmOpt = {
+                    display: 'popup', //popup方式渲染验证码
+                    container: '#checkButton', //验证码button渲染的目标DOM，自动展现方式下必需，详情见后文
+                    area: '.customForm', //对于custom模式，弹出窗口的加载容器，详情见后文
+                    partner: "renrenkj",
+                    appName: "renrenkj_h5",
+                    width: "6.9rem",
+                    height: "0.88rem",
+                    fmb: true,
+                    initialTime: new Date().getTime(),
+                    token: "renrenkj" + "-" + new Date().getTime() + "-" + Math.random().toString(16).substr(2),
+                    env: 0,
+                    getinfo: function() {
+                        return "e3Y6ICIyLjUuMCIsIG9zOiAid2ViIiwgczogMTk5LCBlOiAianMgbm90IGRvd25sb2FkIn0=";
+                    },
+                };
+                var fm = document.createElement('script');
+                fm.type = 'text/javascript';
+                fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.tongdun.net/captcha/main/tdc.js?ver=1.0&t=' + (new Date().getTime() / 600000).toFixed(0);
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(fm, s);
+                _fmOpt.onSuccess = function(validateToken) {
+                    if (validateToken) {
+                        validateTokenNew = validateToken;
+                        $("#hideBox").show();
+                        $("#checkButton").hide();
+                        $(".rentBtn").click();
+                    } else {
+                        _fmOpt.reset();
+                    }
+                };
+            } else {
+                $("#checkButton").hide();
+                $("#hideBox").show();
+            }
+            // $("#walletPay .this_leastM>span").text(rmb_left + 'CNY');
+            $("#bcnyPay .this_leastM>span").text(bcny_left);
+            $("#usdtPay .this_leastM>span").text(usdt_left);
+
+
+
+            $(".ag_checkedstyle").removeClass('agreement_style').addClass(
+                        'agreement_style_checked');
+            $(".rentBtn").removeClass('notAgree');
+
+
+            function pageBind() {
+                //选择支付方式
+                $("input[name=payWay]").unbind('change').bind('change', function() {
+                    unit_payWay = $(this).val();
+                    pay_way = $(this).attr('id');
+                    payMethod = $(this).data('paymethod');
+                    if (unit_payWay == 'USDT') {
+                        publicExchange = usdt_unit_pay;
+                    } else {
+                        publicExchange = 1;
+                    }
+                    exchange();
+                    getAllRentMoney();
+                    showAddWindow();
+                });
+                //输入数量变化
+                $("#inputNumber").unbind("input porpertychange change keyup").bind(
+                    "input porpertychange change keyup",
+                    function() {
+                        var thizval = $(this).val();
+                        if (thizval > num_limit) {
+                            thizval = num_limit;
+                        }
+                        rent_num = thizval;
+                        $(this).val(rent_num);
+                        getFloatPower(machinePowerData, rent_num, typeMachine, arrivePower);
+                        checkeckLabel(false);
+                        getAllRentMoney();
+                    });
+                $("#inputNumber").unbind('blur').bind('blur', function() {
+                    var thizval = $(this).val();
+                    if (thizval > num_limit) {
+                        thizval = num_limit;
+                    }
+                    if (thizval < minRent) {
+                        thizval = minRent;
+                    }
+                    rent_num = thizval;
+                    $(this).val(rent_num);
+                    getFloatPower(machinePowerData, rent_num, typeMachine, arrivePower);
+                    checkeckLabel(false);
+                    getAllRentMoney();
+                });
+                $(".addbButton").unbind('tap click').bind('tap click', function() {
+                    if (rent_num > minRent) {
+                        rent_num--;
+                    }
+                    $("#inputNumber").val(rent_num);
+                    getFloatPower(machinePowerData, rent_num, typeMachine, arrivePower);
+                    checkeckLabel();
+                    getAllRentMoney();
+                });
+                $(".disButton").unbind('tap click').bind('tap click', function() {
+                    if (rent_num < num_limit) {
+                        rent_num++;
+                    }
+                    $("#inputNumber").val(rent_num);
+                    getFloatPower(machinePowerData, rent_num, typeMachine, arrivePower);
+                    checkeckLabel();
+                    getAllRentMoney();
+                });
+            }
+
+            function loadPage() {
+                app.getProperties(function(ret, err) {
+                    if (ret.code == 1) {
+                        rmb_left = ret.wallet_detail.rmb;
+                        bcny_left = ret.wallet_detail.bcny.coin;
+                        usdt_left = ret.wallet_detail.usdt.coin;
+                        $("#walletPay .this_leastM>span").text(rmb_left + 'CNY');
+                        $("#bcnyPay .this_leastM>span").text(bcny_left);
+                        $("#usdtPay .this_leastM>span").text(usdt_left);
+                        checkeckLabel(true);
+                    }
+                    pageBind();
+                });
+            }
+
+            //计算汇率方法
+            function exchange() {
+                $(".chosePayMethod").text(unit_payWay);
+                app.log('unit_payWay', unit_payWay)
+                if (unit_payWay == 'USDT') {
+                    app.log('usdt汇率', exchange_rate);
+                    $('.exchange_rate').text(" ≈ " + exchange_rate);
+                } else {
+                    $(".exchange_rate").text(" = " + 1);
+                }
+            }
+
+            function checkeckLabel(needChecked) { //为true的话首次进入默认选择最后一个label的支付方式。。。为false的话是input输入框变化来选择label方式
+                if (exchange_rate == 0) {
+                    setTimeout(function() {
+                        checkeckLabel(true);
+                    }, 300);
+                    return;
+                }
+                if (is_usdt_pay == 0) {
+                    $("#usdtPay").remove();
+                }
+                if (needChecked) {
+                    var firstPayBcnyMoney = minRent * 3000; //首次进入的需支付的BCNY金额
+                    var firstPayUsdtMoney = app.toFixed(app.accMul(minRent, usdt_unit_pay), 4);
+                    var enoughBcny = Number(bcny_left) >= Number(firstPayBcnyMoney) ? true : false;
+                    var enougnUsdt = Number(usdt_left) >= Number(firstPayUsdtMoney) ? true : false;
+                    if (is_usdt_pay == 1) {
+                        if (enoughBcny && enougnUsdt) {
+                            setTimeout(function() {
+                                $("#bcnyPay input").click();
+                            }, 300);
+                        } else {
+                            if (!enoughBcny && !enougnUsdt) {
+                                setTimeout(function() {
+                                    $("#bcnyPay input").click();
+                                }, 300)
+                            }
+                            if (enougnUsdt) {
+                                setTimeout(function() {
+                                    $("#usdtPay input").click();
+                                }, 300)
+                            }
+                            if (enoughBcny) {
+                                setTimeout(function() {
+                                    $("#bcnyPay input").click();
+                                }, 300)
+                            }
+                        }
+                    } else {
+                        setTimeout(function() {
+                            $("#bcnyPay input").click();
+                        }, 300)
+                    }
+                }
+            }
+
+            function getFloatPower(machinePowerData, retNum, typeMachine, arrivePower) {
+                var baseData = app.accMul(Number(machinePowerData.base_power), retNum);
+                var getCaculterPower = 0;
+                if (typeMachine == "BTC" && Number(machinePowerData.goods_deposit) > 100 && machinePowerData.is_pe_power == 1) {
+                    for (var i = 0; i < arrivePower.length; i++) {
+                        var sectionForm = Number(arrivePower[i].section_form);
+                        var sectionTo = Number(arrivePower[i].section_to);
+                        if (Number(baseData) >= sectionForm && Number(baseData) < sectionTo) {
+                            getCaculterPower = arrivePower[i].float;
+                        }
+                        // if (Number(i) == 0 && Number(baseData) > sectionForm && Number(baseData) < sectionTo) {
+                        //     getCaculterPower = arrivePower[0].float;
+                        // }
+                        // if (Number(i) != 0 && Number(baseData) >= sectionForm && Number(baseData) < sectionTo) {
+                        //     getCaculterPower = arrivePower[i].float;
+                        // }
+                    }
+                };
+                dataPower = {
+                    basePower: baseData,
+                    pePower: app.accMul(getCaculterPower, baseData),
+                    futuresPower: app.accMul(Number(machinePowerData.futures_power), retNum),
+                    standPower: app.accMul(Number(machinePowerData.regular_power), retNum),
+                    floatPower: app.accMul(Number(machinePowerData.float_power), retNum),
+                    calculatePower: machinePowerData.td_power ? app.accMul(Number(machinePowerData.td_power), retNum) : 0
+                }
+                allPower = app.moreAccAdd(dataPower.basePower, dataPower.pePower, dataPower.futuresPower, dataPower.standPower, dataPower.floatPower, dataPower.calculatePower);
+                $(".powerNum>span").text(allPower + limitRentUnit);
+            }
+            getFloatPower(machinePowerData, rent_num, typeMachine, arrivePower);
+            $("#inputNumber").val(minRent);
+
+            function getAllRentMoney() {
+                if (unit_payWay == 'USDT') {
+                    rent_money = app.toFixed(app.accMul(rent_num, publicExchange), 4)
+                } else {
+                    rent_money = app.accMul(goods_deposit, rent_num)
+                }
+                app.log('rent_money++++++++++', rent_money);
+                $(".payMoney").text(rent_money);
+                $(".dw").text(unit_payWay)
+            }
+            getAllRentMoney();
+
+            // app.asynchronousAjax("machine/detail", {
+            //     machine_id: machineId,
+            //     uid: account.uid,
+            //     token: account.token,
+            //     machine_type: machineTypeNew
+            // }, function (ret) {
+            if (md_ret.code == 1) {
+                if (md_ret.usdt) {
+                    exchange_rate = md_ret.exchange_rate;
+                    usdt_unit_pay = md_ret.usdt;
+                }
+                is_usdt_pay = md_ret.machine.is_usdt_pay;
+                userIdName = md_ret.user_name;
+                arrivePower = md_ret.td_power;
+                machineText.title = md_ret.constract.name;
+                $(".rementLink").text("《" + md_ret.constract.name + "》");
+                machineText.textTips = md_ret.constract.content;
+                bcny_left = md_ret.user.bcny;
+                usdt_left = md_ret.user.usdt;
+                if (is_usdt_pay == 0) {
+                    $("#usdtPay").remove();
+                }
+                checkeckLabel(true);
+                pageBind();
+            }
+            //});
+
+            function showAddWindow() {
+                if (firstInAdd == false) {
+                    firstInAdd = true;
+                    return false;
+                }
+                var result = true;
+                if (pay_way == 'wallet') {
+                    if (rmb_left < rent_money) {
+                        result = false;
+                        var param = {
+                            dtype: "dialog1",
+                            data: {
+                                title: "提示",
+                                text: "现金钱包余额不足，请确认是否前去充值？",
+                                btns: [{
+                                        name: "取消",
+                                        event: ""
+                                    },
+                                    {
+                                        name: "确定",
+                                        event: "charge"
+                                    }
+                                ]
+                            }
+                        };
+                        app.dialog(param);
+                        app.listen("charge", function() {
+                            app.closeF("dialog");
+                            // 跳转到现金余额充值页面
+                            app.openWin({
+                                name: "littlemoneyrecharge_headerwin",
+                                url: app.hd + "common/headerwin.html",
+                                pageParam: {
+                                    subpage: "extrapage/littlemoneyrecharge",
+                                    name: "littlemoneyrecharge",
+                                    title: "充值"
+                                }
+                            });
+                        });
+                    }
+                }
+                if (pay_way == 'usdt') {
+                    app.log('rent_money', rent_money);
+                    app.log('usdt_left', usdt_left);
+                    if (Number(usdt_left) < rent_money) {
+                        result = false;
+                        var param = {
+                            dtype: "dialog1",
+                            data: {
+                                title: "提示",
+                                text: "USDT余额不足，请确认是否前去充值？",
+                                btns: [{
+                                        name: "取消",
+                                        event: ""
+                                    },
+                                    {
+                                        name: "确定",
+                                        event: "charge"
+                                    }
+                                ]
+                            }
+                        };
+                        app.dialog(param);
+                        app.listen("charge", function() {
+                            app.closeF("dialog");
+                            // 跳转到现金usdt充值页面
+                            app.checkStaus(function(ret) {
+                                if (ret.code == 1) {
+                                    if (ret.is_recharge_verify == 0) {
+                                        var param = {
+                                            dtype: "dialog29copy",
+                                            data: {
+                                                status: '',
+                                                tips: '',
+                                                event: "relNameRead"
+                                            }
+                                        };
+                                        app.dialog(param);
+                                    } else {
+                                        app.openWin({
+                                            name: "littlemoneyrecharge_headerwin",
+                                            url: app.hd + "common/headerwin.html",
+                                            pageParam: {
+                                                subpage: "extrapage/littlemoneyrecharge",
+                                                name: "littlemoneyrecharge",
+                                                title: "充值",
+                                                addType: 'usdt'
+                                            }
+                                        });
+                                    }
+
+                                } else {
+                                    app.toast(ret.desc)
+                                }
+                            })
+
+                        });
+                    }
+                }
+                if (pay_way == 'bcny') {
+                    app.log('bcny_left', bcny_left)
+                    app.log('rent_money', rent_money)
+                    if (Number(bcny_left) < Number(rent_money)) {
+                        result = false;
+                        var param = {
+                            dtype: "dialog1",
+                            data: {
+                                title: "提示",
+                                text: "BCNY余额不足，请确认是否充值？",
+                                btns: [{
+                                        name: "取消",
+                                        event: ""
+                                    },
+                                    {
+                                        name: "充值",
+                                        event: "AgentBuy"
+                                    }
+                                ]
+                            }
+                        };
+                        app.dialog(param);
+                        app.listen("AgentBuy", function() {
+                            app.closeF("dialog");
+                            // 跳转到现金余额充值页面
+                            var thisGoPage =
+                                '{"page":"common/headerwin","name":"buyandsellbcny_headerwin","param":{"subpage":"my/buyandsellbcny","name":"buyandsellbcny","title":"BCNY兑换","right":"记录","rightParam":{"page": "common/headerwin","name": "sellandbuybcnylist_headerwin","param": {"subpage": "my/sellandbuybcnylist","name": "sellandbuybcnylist","showBcny": "true"}}}}';
+                            app.goPushPage(thisGoPage);
+                            app.setStorage("pageRent", "true");
+                        });
+                    }
+
+                }
+                return result;
+            }
+
+            //租用ajax
+            function rentMachine() {
+                var payMethodShort = payMethod.split("_")[0];
+                app.ajax({
+                    param: {
+                        method: "post",
+                        url: app.config.url + "machine/rentDirect",
+                        data: {
+                            values: {
+                                uid: account.uid,
+                                token: account.token,
+                                machine_id: machineId,
+                                num: rent_num,
+                                pay_channel: payMethod,
+                                is_sfcz: 0, //是否购买司法凭证
+                                coupon_id: "",
+                                machine_type: machineTypeNew,
+                                blackBox: is_captcha == 1 ? _fmOpt.getinfo() : "",
+                                yzm_token: validateTokenNew
+                            }
+                        },
+                        callback: function(ret, err) {
+                            app.log("租用返回+++++++++++++++++++++++++++++++++++++++", ret);
+                            if (ret.code == 1) {
+                                if (payMethod == "RRM_CASH" || payMethod == "RRM_BHPC" || payMethod ==
+                                    "RRM_BCNY" || payMethod == 'RRM_USDT') {
+                                    app.toast("下单成功");
+                                    app.trigger("recharge_deposit_success");
+                                    app.trigger("rent_success");
+                                    app.tout(100, function() {
+                                        app.toMainWin();
+                                    });
+                                    return;
+                                }
+                                if (payMethod == "YSF_APP") {
+                                    var unPay = api.require("unionPay");
+                                    unPay.pay({
+                                        tn: ret.pay_params.ysfResponse.tn,
+                                        devMode: false
+                                    }, function(ret, err) {
+                                        if (ret.result == "success") {
+                                            app.toast("支付成功");
+                                            app.trigger("recharge_deposit_success");
+                                            app.trigger("rent_success");
+                                            app.tout(100, function() {
+                                                app.toMainWin();
+                                            });
+                                        }
+                                        if (ret.result == "fail") {
+                                            app.toast("支付失败");
+                                        }
+                                        if (ret.result == "cancel") {
+                                            app.toast("取消支付");
+                                        }
+                                    });
+                                }
+                                // 跳转到微信第三方支付
+                                if (payMethod == 'WX_APP') {
+                                    app.pay(payMethodShort, ret.pay_params, function(ret, err) {
+                                        if ((payMethodShort == "WX" && ret.status) || (
+                                                payMethodShort == "ALI" && ret.code == "9000"
+                                            )) {
+                                            app.trigger("recharge_deposit_success");
+                                            app.trigger("rent_success");
+                                            app.tout(100, function() {
+                                                app.toMainWin();
+                                            });
+                                        }
+                                    });
+                                }
+                            } else {
+                                app.toast(ret.desc);
+                                app.reload();
+                            }
+                        }
+                    },
+                    extra: {
+                        isflower: true
+                    }
+                });
+            }
+            //显示算力弹窗
+            $(".showAllPower").click(function() {
+                var param = {
+                    dtype: "dialog220",
+                    data: {
+                        newAllPower: allPower + limitRentUnit,
+                        powerList: [{
+                                name: "基础算力",
+                                Power: dataPower.basePower + limitRentUnit
+                            },
+                            {
+                                name: "浮动算力",
+                                Power: dataPower.floatPower + limitRentUnit
+                            },
+                            {
+                                name: "达标算力",
+                                Power: dataPower.pePower + limitRentUnit
+                            },
+                            {
+                                name: "期货算力",
+                                Power: dataPower.futuresPower + limitRentUnit
+                            },
+                            {
+                                name: "定期算力",
+                                Power: dataPower.standPower + limitRentUnit
+                            }
+                        ]
+                    }
+                };
+                app.dialog(param);
+            });
+            //点击租用
+            var acceptRent = true; //租用点击延时
+            $(".rentBtn").bind('tap click', function() {
+                if (agreementinput == true) {
+                    if (showAddWindow() == true) {
+                        if (!acceptRent) {
+                            app.toast('请勿重复提交');
+                            return;
+                        }
+                        acceptRent = false;
+                        setTimeout(function() {
+                            acceptRent = true;
+                        }, 1000);
+                        rentMachine();
+                    }
+                }
+            });
+
+            $(".rementLabel").click(function() {
+                if (agreementinput == false) {
+                    agreementinput = true;
+                    $(".ag_checkedstyle").removeClass('agreement_style').addClass(
+                        'agreement_style_checked');
+                    $(".rentBtn").removeClass('notAgree')
+                } else {
+                    agreementinput = false;
+                    $(".ag_checkedstyle").removeClass('agreement_style_checked').addClass(
+                        'agreement_style');
+                    $(".rentBtn").addClass('notAgree')
+                }
+            });
+            // 添加协议点击
+            $(".rementLink").click(function(e) {
+                var retNumall = $("#inputNumber").val();
+                var baseDataPower = app.accMul(Number(machinePowerData.base_power), retNumall);
+                // 弹窗
+                var param = {
+                    dtype: "dialog391",
+                    data: {
+                        title: machineText.title,
+                        orderText: machineText.textTips,
+                        btns: [{
+                            name: "我已阅读并同意",
+                            event: "okRentMachine"
+                        }],
+                        extra: {}
+                    }
+                };
+                app.dialog(param);
+                e.stopPropagation();
+                return false;
+            });
+            app.listen("okRentMachine", function() {
+                if (agreementinput == false) {
+                    $(".rementLabel").click();
+                }
+            });
+            var events = [
+                "bhpcCountChange",
+                "littlemoney_recharge_success",
+                "buycoin_success",
+                "buyBcnySucceed"
+            ];
+            app.listen(events, function() {
+                loadPage();
+            });
+        }
+    </script>
+</body>
+
+</html>

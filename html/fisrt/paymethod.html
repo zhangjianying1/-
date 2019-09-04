@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+    <title>承接支付</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/paymethod.css">
+</head>
+
+<body>
+    <div>
+        <ul class="showDetail">
+            <li style="height: 1rem;">
+                <p style="border-bottom: 1px solid #f7f7f7;">
+                    <span>合约名称</span>
+                    <span class="machineName">活期_3T起租（限租60T)</span>
+                </p>
+            </li>
+            <li id="openDialog" style="height: 0.74rem;margin-top: 0.2rem;">
+                <p>
+                    <span>
+                        承接总算力
+                    </span>
+                    <span class="getAllPower rightData flex">
+                        <span class="powerNum">
+                            <span>0T</span>
+                        </span>
+                        <img src="../../image/rightjt.png" alt="" style="width:0.16rem;height:0.29rem;margin-left: 0.24rem;">
+                    </span>
+                </p>
+            </li>
+            <li style="height: 0.74rem">
+                <p>
+                    <span>
+                        转让价格
+                    </span>
+                    <span class="getAllPower rightData flex overtakingPrice">
+                        0.00CNY
+                    </span>
+                </p>
+            </li>
+            <li style="height: 0.74rem;margin-bottom: 0.2rem;">
+                <p>
+                    <span>
+                        合约锁定期限
+                    </span>
+                    <span style="color: #8b8b8b;">
+                        <span>
+                            30
+                        </span>
+                        天
+                    </span>
+                </p>
+            </li>
+            <li style="height: 1.1rem;border-top: 0.2rem solid #f7f7f7;">
+                <p>
+                    <span>总计需付金额</span>
+                    <span class="getAllPower">
+                        <span class="payMoney">0000</span><span class="dw">BCNY</span>
+                    </span>
+                </p>
+            </li>
+            <!-- <li style="background-color: #f7f7f7;height: 0.74rem;font-size: 0.24rem;">
+                <p style="color: #696969;justify-content: flex-end;">
+                    <span style="color: #696969;">
+                        1 USDT = <span>1</span> CNY
+                    </span>
+                </p>
+            </li> -->
+        </ul>
+        <div class="payWay_Box">
+            <label for="usdt" id="usdtPay" style="display: none;">
+                <img src="../../image/usdt.png" alt="" class="payLogo">
+                <span class="payWayTxt">USDT支付</span>
+                <span class="this_leastM">(<span class="userUsdt">0.00</span>)</span>
+                <input type="radio" name="payWay" id="usdt" value="USDT" data-paymethod="RRM_USDT">
+                <span class="radioStyle"></span>
+            </label>
+            <label for="bcny" id="bcnyPay" style="display: none;">
+                <img src="../../image/bcny_icnoux.png" alt="" class="payLogo">
+                <span class="payWayTxt">BCNY支付</span>
+                <span class="this_leastM">(<span class="userBcny">0.00</span>)</span>
+                <input type="radio" name="payWay" value="BCNY" id="bcny" data-paymethod="RRM_BCNY">
+                <span class="radioStyle"></span>
+            </label>
+        </div>
+        <div id="hideBox" style="padding-bottom: 0.45rem;display: none;">
+            <p style="text-align: left;margin-bottom: 0.5rem;padding-left: 0.48rem;">
+                <label class="rementLabel">
+                    <span style="position: relative;width: 0.3rem;height: 0.3rem;display: inline-block;vertical-align: middle;margin-right: 0.05rem">
+                        <input type="checkbox" id="agreementinput" checked name="agreement">
+                        <span class="ag_checkedstyle agreement_style"></span>
+                    </span>
+                    <span style="vertical-align: middle;font-size: 0.27rem;">我同意</span>
+                    <span class="rementLink">《云算力在线转/受让撮合服务协议》</span>
+                </label>
+            </p>
+            <p style="text-align: center;">
+                <a href="javascript:;" class="rentBtn notAgree" style="text-decoration:none;">立即支付</a>
+            </p>
+        </div>
+        <p id="checkButton" style="width: auto;height: auto;margin-left:calc((100% - 6.9rem) / 2);margin-top: 0.5rem;">
+
+        </p>
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../js/paymethod.js"></script>
+</body>
+
+</html>

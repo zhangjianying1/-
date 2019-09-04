@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>合约包详情</title>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <style>
+        body {
+            width: 100%;
+            background-color: #f5f5f5;
+            font-size: 0.26rem;
+            padding-top: 0rem;
+            height: auto;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            font-family: Helvetica;
+            color: #333333;
+        }
+
+        .testFix {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .head {
+            width: 100%;
+            height: 0.88rem;
+            background-color: #ffffff;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            align-items: center;
+            -webkit-align-items: center;
+            box-sizing: border-box;
+            border-bottom: 1px solid #f5f5f5;
+            position: relative;
+        }
+
+        head {
+            position: relative;
+        }
+
+        .head img {
+            width: 0.21rem;
+            height: 0.36rem;
+            margin-left: 0.26rem;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            margin: 0;
+            padding: 0 0.26rem;
+            top: 50%;
+            margin-top: -0.18rem;
+        }
+
+        .head_title {
+            font-size: 0.35rem;
+            color: #333333;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .showimg {
+            width: 100%;
+            height: 4.22rem;
+        }
+
+        .showimg img {
+            width: 100%;
+            height: 4.22rem;
+        }
+
+        .machine-detail {
+            width: 6.9rem;
+            margin: auto;
+            background: #ffffff;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .machine-detail-up {
+            width: 100%;
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+        }
+
+        .up-left {
+            margin-top: 0.14rem;
+            height: auto;
+            flex: 1;
+        }
+
+        .machine-preice {
+            height: 0.76rem;
+            font-size: 0.26rem;
+            color: #ffd203;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+
+        .machine-preice span {
+            font-size: 0.52rem;
+        }
+
+        .machine-name {
+            height: 1rem;
+            font-size: 0.32rem;
+            color: #181818;
+            margin-top: 0.08rem;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+
+        .machine-type {
+            height: auto;
+            border: 1px solid #ffd203;
+            overflow: hidden;
+            border-radius: 0.07rem;
+        }
+
+        .machine-type>span {
+            padding: 0.02rem 0;
+        }
+
+        .up-right {
+            height: 1.34rem;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: flex-end;
+            -webkit-align-items: flex-end;
+        }
+
+        .machine-type span {
+            width: auto;
+            height: 0.32rem;
+            text-align: center;
+            font-size: 0.2rem;
+            background-color: #ffd203;
+            border-radius: 0 0 0.05rem 0.05rem;
+            display: block;
+            line-height: 0.35rem;
+            padding: 0 0.1rem;
+            box-sizing: border-box;
+        }
+
+        .machine-detail-down {
+            height: 1.2rem;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: flex-start;
+            -webkit-justify-content: flex-start;
+            align-items: center;
+            -webkit-align-items: center;
+            color: #616161;
+            font-size: 0.26rem;
+        }
+
+        .machine-detail-down p {
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+
+        .machine-detail-down>p:nth-of-type(2) {
+            margin-left: 20%;
+        }
+
+        .leftTabActive {
+            font-size: 0.24rem;
+            display: inline-block;
+            width: 1.53rem;
+            height: 0.58rem;
+            background-color: #fbd06b;
+            line-height: 0.58rem;
+            text-align: center;
+            color: white;
+            border: 1px solid #fbd06b;
+            border-radius: 0.1rem 0 0 0.1rem;
+        }
+
+        .rightTabActive {
+            font-size: 0.24rem;
+            display: inline-block;
+            width: 1.53rem;
+            height: 0.58rem;
+            background-color: #fbd06b;
+            line-height: 0.58rem;
+            text-align: center;
+            color: white;
+            border: 1px solid #fbd06b;
+            border-radius: 0 0.1rem 0.1rem 0;
+        }
+
+        .data-detail {
+            background-color: white;
+            padding: 0 0.24rem;
+            height: auto;
+            box-sizing: border-box;
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .data-detail ul {
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            box-sizing: border-box;
+            margin-top: 0.2rem;
+        }
+
+        .data-detail li {
+            color: #616161;
+            margin-top: 0.3rem;
+        }
+
+        .data-detail li>span:first-of-type {
+            display: inline-block;
+            width: 1.3rem;
+        }
+
+        .data-detail li:first-of-type {
+            margin-top: 0.2rem;
+        }
+
+        .data-detail li span {
+            font-size: 0.26rem;
+        }
+
+        .next {
+            margin: auto;
+            color: #181818;
+            height: 0.9rem;
+            background-color: #ffd203;
+            background-size: 100% 100%;
+            line-height: 0.9rem;
+            text-align: center;
+            width: 80%;
+            margin-top: 0.2rem;
+        }
+
+        .inputNull {
+            background-color: #ffd203;
+            line-height: 0.9rem;
+            border-radius: 0.05rem;
+            background-size: cover;
+        }
+
+        .inputNotNull {
+            background-color: #e5e5e5;
+            line-height: 0.9rem;
+            border-radius: 0.05rem;
+            background-size: cover;
+        }
+
+        .rentNum {
+            padding: 0 0.24rem;
+            height: 0.7rem;
+            font-size: 0.26rem;
+            box-sizing: border-box;
+            color: #999999;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+
+        .rent-detail-list {
+            margin-top: 0.9rem;
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            height: auto;
+            padding: 0 0.24rem;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        table td {
+            text-align: center;
+        }
+
+        table thead tr {
+            height: 1.06rem;
+            vertical-align: middle;
+        }
+
+        table thead tr td {
+            height: 1.06rem;
+            vertical-align: middle;
+            font-size: 0.28rem;
+        }
+
+        .test {
+            margin: auto;
+            text-align: center;
+            margin-top: 0.4rem;
+        }
+
+        #fixBtn {
+            border-top: 0.01rem solid #f5f5f5;
+            width: 100%;
+            height: 1.2rem;
+            background: #ffffff;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        .bottomForce {
+            background: #fff;
+            padding: 0 0 0 0.24rem;
+        }
+
+        .bottomForce p {
+            padding: 0.3rem 0;
+        }
+
+        .bottomForce p>span:nth-child(2) {
+            padding-left: 0.72rem;
+            color: #181818;
+        }
+
+        .bottomForce p:first-child {
+            border-bottom: 0.01rem solid#f5f5f5;
+        }
+
+        .showWindow {
+            position: relative;
+        }
+
+        .showWindow>img {
+            height: 0.36rem;
+            float: right;
+            position: absolute;
+            right: 0.2rem;
+            top: 50%;
+            margin-top: -0.18rem;
+        }
+
+        .cover {
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .textCenter {
+            text-align: center;
+        }
+
+        .window {
+            position: fixed;
+            z-index: 3;
+            top: 50%;
+            left: 50%;
+            width: 4.8rem;
+            background: #ffffff;
+            margin-left: -2.4rem;
+            margin-top: -2.77rem;
+            border-radius: 0.12rem;
+            font-size: 0.3rem;
+            overflow: hidden;
+        }
+
+        .reward {
+            padding: 0.4rem 0;
+            background: #ffd203;
+            font-size: 0.26rem;
+            padding-bottom: 0.32rem;
+        }
+
+        .rewardNum {
+            font-size: 0.45rem;
+        }
+
+        .flexStyle {
+            display: flex;
+            display: -webkit-flex;
+            display: -webkit-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+
+        .flexContentleft {
+            justify-content: flex-start;
+            -webkit-justify-content: flex-start;
+        }
+
+        .windowList {
+            padding: 0.45rem 0.75rem;
+        }
+
+        .windowList>p {
+            height: 0.75rem;
+            display: flex;
+            display: -webkit-flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+
+        .windowList>p>span:first-child {
+            color: #696969;
+        }
+
+        .closeWindow {
+            position: fixed;
+            z-index: 4;
+            top: 50%;
+            margin-top: 3.8rem;
+            left: 50%;
+            display: inline-block;
+            margin-left: -0.375rem;
+        }
+
+        .closeWindow>img {
+            width: 0.65rem;
+        }
+
+        .stopRent {
+            text-align: center;
+            padding-top: 0.2rem;
+            width: 100%;
+            margin-top: 0.1rem;
+        }
+
+        .stopRent>button {
+            width: 6.9rem;
+            border-radius: 0.08rem;
+            background: #ffd203;
+            color: #181818;
+            font-size: 0.35rem;
+            border: 0;
+            margin: 0 auto;
+            height: 1rem;
+            outline: none;
+        }
+
+        #stopRent {
+            text-align: center;
+            padding-top: 0.2rem;
+            width: 100%;
+            margin-top: 0.1rem;
+        }
+
+        #stopRent>button {
+            width: 6.9rem;
+            border-radius: 0.08rem;
+            background: #ffd203;
+            color: #181818;
+            font-size: 0.35rem;
+            border: 0;
+            margin: 0 auto;
+            height: 1rem;
+            outline: none;
+        }
+
+        #stopRent>.hasStop {
+            width: 6.9rem;
+            font-size: 0.35rem;
+            border: 0;
+            margin: 0 auto;
+            height: 1rem;
+            outline: none;
+            background: #e1e1e1;
+            border-radius: 0.1rem;
+            color: #181818;
+        }
+
+        .intrduction {
+            /* padding: 0 0.24rem; */
+            background-color: white;
+            margin-top: 0.2rem;
+            box-sizing: border-box;
+            width: 100%;
+            height: auto;
+            padding-bottom: 0.24rem;
+        }
+
+        .intrduction ul li {
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            padding: 0 0.25rem;
+        }
+
+        .intrduction ul li p {
+            height: 1.12rem;
+            color: #fabf38;
+            font-size: 0.3rem;
+            line-height: 1.12rem;
+            /* padding: 0 0.24rem; */
+        }
+
+        .intrduction ul li div {
+            margin: 0;
+            padding: 0;
+            height: auto;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            -webkit-align-items: center;
+            box-sizing: border-box;
+            padding: 0.1rem 0.38rem 0.1rem 0.4rem;
+            background-size: cover;
+            border: 1px solid #f5f5f5;
+            border-radius: 0.05rem;
+        }
+
+        .goprice span {
+            display: inline-block;
+            height: 0.9rem;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .contractText {
+            position: absolute;
+            right: 0;
+            width: 1.6rem;
+            height: 0.51rem;
+            background: rgba(250, 250, 250, 1);
+            border: 1px solid rgba(170, 170, 170, 1);
+            opacity: 0.63;
+            border-radius: 0.26rem;
+            font-size: 0.21rem;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: center;
+            color: #262626;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="switchbutton">
+        <div class="data-detail">
+            <div class="machine-detail">
+                <div class="machine-detail-up">
+                    <div class="machine-name">
+                        <span class="name-th">算力合约包 </span>
+                        <div class="machine-type">
+                            <span></span>
+                        </div>
+                    </div>
+                    <p><span class="daylimit" style="color: #F59948;font-size: 0.24rem;background-color: #fff6e4;padding: 0.08rem 0.1rem; border-radius: 0.08rem;">合约锁定期限<span>30天</span>
+                    </p>
+                    <div class="machine-preice" style="margin-top:0.2rem;">
+                        <span style="height: 0.76rem;">
+                            <span style="font-size: 0.26rem;padding-right: 0.15rem">合约金额</span>
+                            <span class="deposit"></span>
+                            <span class="unit" style="font-size: 0.26rem;padding-right: 0.15rem"></span>
+                        </span>
+                        <p style="display:flex;align-items: center;">
+                            <span id="showVoucher" style="display:inline-block;width:1.1rem;height:0.34rem;line-height: 0.34rem;background:#edfff2;color:#80d699;font-size:0.19rem;text-align: center;border-radius:0.05rem;display: none;">已司法存证</span>
+                            <span id="showtime" style="display:inline-block;padding: 0.03rem 0.1rem;height:0.34rem;line-height: 0.34rem;background:#ffe3e6;color:#ff6678;font-size:0.19rem;text-align: center;border-radius:0.05rem;display: none;">
+                                即将到期
+                            </span>
+                            <span id="machineWork" style="display:inline-block;width: 1.2rem;height:0.62rem;line-height:0.62rem;background-color:#ffe3e6;color:#ff6678;font-size:0.21rem;text-align: center;border-radius:0.1rem;margin-left: 0.3rem;">
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="machine-detail-down">
+                    <p>订单份额 <span class="disnum">0</span></p>
+                    <p class="numadd">到手单份总算力 <span>0</span></p>
+                    <p class="stopRentPower" style="display: none;">退单算力 <span>0</span></p>
+                    <p class="tranferPower" style="display: none;">转让中份额 <span>0</span></p>
+                </div>
+            </div>
+            <ul>
+                <li style="position: relative;height: 0.6rem;display: flex;display: -webkit-flex;align-items: center;margin-top:0.15rem;">
+                    <span>
+                        订单号
+                    </span>
+                    <span style="margin-left: 0.52rem;" class="orderNumber"></span>
+                    <button class="contractText">
+                        查看合同
+                    </button>
+                </li>
+                <li style="margin-top:0.15rem;display: flex;display:-webkit-flex;align-items: center;">
+                    <span>
+                        历史产出
+                    </span>
+                    <span style="margin-left: 0.52rem;display: flex;display: -webkit-flex;flex-direction: column;align-items: flex-start;">
+                        <span class="historyPro">
+                        </span>
+                        <span class="historyProBhp" style="display: none;">
+                        </span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        发币方式
+                    </span>
+                    <span style="margin-left: 0.52rem;" class="getStyle">日结，次日发放至账户</span>
+                </li>
+                <li>
+                    <span>
+                        开挖时间
+                    </span>
+                    <span style="margin-left: 0.52rem;" class="BeginrunningDate"></span>
+                </li>
+                <li id="showEndTime" style="display: none;">
+                    <span>
+                        到期时间
+                    </span>
+                    <span style="margin-left: 0.52rem;" class="endDate"></span>
+                </li>
+                <li id="stopRentTime" style="display: none;">
+                    <span>
+                        退单时间
+                    </span>
+                    <span style="margin-left: 0.52rem;" class="stopRentTime"></span>
+                </li>
+                <li id="tranferTime" style="display: none;">
+                    <span>
+                        转期时间
+                    </span>
+                    <span style="margin-left: 0.52rem;" class="tranferTime"></span>
+                </li>
+                <li>
+                    <span>
+                        算力来源
+                    </span>
+                    <span style="margin-left: 0.52rem;" class="calculateSource"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="goprice" style="display:flex;display:-webkit-flex;flex-direction: column;background-color: #fff;margin-bottom: 0.2rem;height: 1.8rem;box-sizing: border-box;padding: 0 0.24rem;display: none;">
+            <span style="display: flex;display: -webkit-flex;align-items: center;">
+                <span>
+                    司法存证提取号码 <span class="tagprice" style="margin-left: 0.72rem;"></span>
+                </span>
+                <button class="cliptext" style="width: 1.2rem;height: 0.6rem;font-size: 0.24rem;border-radius: 0.1rem;align-items: center;line-height: 0.6rem;background: #ffd203;outline: none;border: none;">复制</button>
+            </span>
+            <span class="gopricetag" style="border-top:1px solid #e5e5e5; ">
+                <span>
+                    司法凭证
+                    <span class="showtype" style="margin-left: 0.72rem;"> 1 CNY</span>
+                </span>
+                <img src="../../image/arrow.png" style="width:0.19rem;height: 0.32rem;" />
+            </span>
+        </div>
+        <div class="bottomForce">
+            <p><span>基础总算力</span> <span>1T</span></p>
+            <p class="showWindow">
+                <span>奖励总算力</span> <span>1T</span>
+                <img src="../../image/arrow.png" />
+            </p>
+        </div>
+    </div>
+    <div class="stopRent" id="reButton">
+        <button id="relet" class="go-page">续单</button>
+    </div>
+    <button id="sellandbuy" style="margin-bottom:0.2rem;background-color:#dbdbdb;color: #999999;border: none;outline: none;width: 6.9rem;height: 1rem;background-color: #ffd203;margin-top: 0.3rem;border-radius: .1rem;margin-left: calc((100% - 6.9rem) / 2);color:#333;font-size:0.35rem;">
+        转让
+    </button>
+    <div id="stopRent" style="padding-bottom: 0.2rem;padding-top: 0;">
+        <button id="stopRentNew" class="hasStop" style="background-color:#dbdbdb;color: #999999;">
+            退单
+        </button>
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/app.js"></script>
+    <script>
+        apiready = function() {
+            var app = new APP();
+            var account = app.getAccount();
+            var cointype = api.pageParam.cointype;
+            var machineId = api.pageParam.id;
+            var ischeckVoucher = api.pageParam.ischeckVoucher; //是否显示司法存证
+            var orderId = api.pageParam.orderId; //订单ID
+            var textColor = api.pageParam.textColor; //文字颜色
+            var machineState = api.pageParam.machineState; //机器状态
+            var reTwo = /([0-9]+\.[0-9]{0,2})[0-9]*/;
+            var thisMatchine; //机器信息
+            if (ischeckVoucher) {
+                $("#showVoucher").show();
+            } else {
+                $("#showVoucher").hide();
+            }
+            var order_id = "";
+            var uid = "";
+            var rentUnit = "CNY" //租用机器支付的方式
+            var refour = /([0-9]+\.[0-9]{4})[0-9]*/;
+            if (app.isiPhone10) {
+                $(".phoneToast").height("30px");
+                $(".switchbutton").css(
+                    "margin-top",
+                    Number($(".testFix").height()) + 5 + "px"
+                );
+            };
+
+            $("#goback").on("click", function() {
+                api.closeWin();
+            });
+            $(".closeWindow").click(function() {
+                $(".window").slideUp(60);
+                setTimeout(function() {
+                    $(".cover").fadeOut(50);
+                    $(".closeWindow").hide();
+                }, 60);
+            });
+            var sfczUrl = "";
+            app.ajax({
+                param: {
+                    method: "post",
+                    url: app.config.url + "machine/rentedDetail",
+                    data: {
+                        values: {
+                            uid: account.uid,
+                            token: account.token,
+                            currency_name: cointype,
+                            id: machineId
+                        }
+                    },
+                    callback: function(ret, err) {
+                        app.log("页面数据+++++++++++++++++++++", JSON.stringify(ret));
+                        if (ret.code == 1) {
+                            order_id = ret.data.order_id;
+                            uid = ret.data.uid;
+                            thisMatchine = ret.data;
+                            var goods_price = ret.data.goods_price;
+                            var limitRentUnit = "T";
+                            if (ret.data.currency_name != "BTC") {
+                                limitRentUnit = "M";
+                            }
+                            if (machineState == 1) {
+                                $("#machineWork").text("挖矿中").css({
+                                    color: textColor,
+                                    backgroundColor: "rgba(66,170,121,0.1)"
+                                })
+                            } else if (machineState == 0) {
+                                $("#machineWork").text("待挖").css({
+                                    color: textColor,
+                                    backgroundColor: "#ffe3e6"
+                                })
+                            } else {
+                                $("#machineWork").text("已退单").css({
+                                    color: textColor,
+                                    backgroundColor: "#f7f7f7"
+                                })
+                            }
+                            if (ret.data.return_time) {
+                                $("#stopRentTime").show();
+                                $(".stopRentTime").text(ret.data.return_time);
+                            }
+                            if (ret.data.renewal_time) {
+                                $(".tranferTime").text(ret.data.renewal_time);
+                                $("#tranferTime").show()
+                            }
+                            if (Number(ret.data.freeze_num) != 0) {
+                                $(".machine-detail-down>p:nth-of-type(2)").css({
+                                    marginLeft: 0
+                                })
+                                $(".machine-detail-down").css({
+                                    justifyContent: "space-between"
+                                })
+                                $(".tranferPower").show()
+                                var tranferPower = app.accMul(ret.data.freeze_num, ret.data.base_power);
+                                $(".tranferPower span").text(tranferPower + limitRentUnit);
+                            }
+                            if (ret.data.work_state == 0 && Number(app.numSub(ret.data.raw_num, ret.data.num)) != 0) {
+                                $(".machine-detail-down>p:nth-of-type(2)").css({
+                                    marginLeft: 0
+                                })
+                                $(".machine-detail-down").css({
+                                    justifyContent: "space-between"
+                                })
+                                $(".stopRentPower").show();
+                                var reducePower = app.accMul(app.numSub(ret.data.raw_num, ret.data.num), ret.data.base_power);
+                                $(".stopRentPower span").text(reducePower + limitRentUnit);
+                            }
+                            if (ret.data.work_state == 2) {
+                                $(".machine-detail-down>p:nth-of-type(2)").css({
+                                    marginLeft: 0
+                                })
+                                $(".machine-detail-down").css({
+                                    justifyContent: "space-between"
+                                })
+                                $(".stopRentPower").show();
+                                var reducePowerNew = app.accMul(ret.data.raw_num, ret.data.base_power);
+                                $(".stopRentPower span").text(reducePowerNew + limitRentUnit);
+                            }
+                            if (ret.data.work_state == 1) {
+                                $(".machine-detail-down>p:nth-of-type(2)").css({
+                                    marginLeft: 0
+                                })
+                                $(".machine-detail-down").css({
+                                    justifyContent: "space-between"
+                                })
+                                $(".stopRentPower").show();
+                                var reducePowerNew = app.accMul(ret.data.raw_num, ret.data.base_power);
+                                $(".stopRentPower span").text(reducePowerNew + limitRentUnit);
+                            }
+                            if (ret.data.regular_end_date) {
+                                $("#showEndTime").show();
+                                $(".endDate").text(ret.data.regular_end_date);
+                            }
+                            if (ret.data.is_sfcz == 1) {
+                                $("#showVoucher").show();
+                                $(".goprice").show();
+
+                                $(".tagprice").text(ret.data.query_code === null ? "提取中" : ret.data.query_code);
+                                sfczUrl = ret.voucher_certificate_url + ret.data.auth_aid;
+                                if (ret.data.query_code === null) {
+                                    $(".cliptext").attr("disabled", true);
+                                    $(".cliptext").css("backgroundColor", "#e5e5e5")
+                                }
+                                $(".goprice").show();
+                            }
+                            if (ret.data.is_bhp_pos == 1) {
+                                $(".machine-type").css({
+                                    width: "auto",
+                                    borderColor: "#dee3ff"
+                                });
+                                $(".machine-type span").css({
+                                    width: "auto",
+                                    borderColor: "#dee3ff"
+                                });
+                                // $(".machine-type span:first-of-type").css({
+                                // 	padding: "0 0.1rem"
+                                // });
+                                $(".machine-type span").css({
+                                    backgroundColor: "#dee3ff"
+                                });
+                            }
+                            if (ret.data.regular_end_date) {
+                                //指定时间的时间戳(s)
+                                var operTime = app.toSecond(ret.data.regular_end_date);
+                                //返回当前时间的时间戳(s)
+                                var nowThisTime = app.getCurStamp();
+                                // console.log("opentime" + operTime + "nowThisTime" + nowThisTime + "时间差" + (operTime - nowThisTime));
+                                var isShowEnd = operTime - nowThisTime;
+                                if (ret.data.is_regular != 0 && isShowEnd < 604800) {
+                                    $("#showtime").show();
+                                }
+                                if (nowThisTime > operTime) {
+                                    $("#showtime").hide();
+                                }
+                            }
+                            var cointypecontract = {
+                                page: "common/headerwin",
+                                name: "stoprent_headerwin",
+                                param: {
+                                    subpage: "rent/stoprent",
+                                    name: "stoprent",
+                                    title: "退单",
+                                    renewal: ret.renewal_info,
+                                    coinCurrentValue: ret.total_deposit_coin_current_value,
+                                    machineData: ret.data,
+                                    bhpcisshow: ret.data.pay_currency,
+                                    textTips: ret.loss
+                                }
+                            };
+                            var recoinNumber = JSON.stringify(cointypecontract);
+                            $("#stopRentNew").attr("data-param", recoinNumber);
+                            var bandData = {
+                                page: "common/headerwin",
+                                name: "relet_headerwin",
+                                param: {
+                                    subpage: "rent/relet",
+                                    name: "relet",
+                                    title: "转期",
+                                    renewal: ret.renewal_info,
+                                    coinCurrentValue: ret.total_deposit_coin_current_value,
+                                    machineData: ret.data,
+                                    bhpcisshow: ret.data.pay_currency,
+                                    coinType: cointype,
+                                    machineID: machineId
+                                }
+                            };
+                            var bandDataDay = JSON.stringify(bandData);
+                            var continueRent = {
+                                page: "common/headerwin",
+                                name: "renew_headerwin",
+                                param: {
+                                    subpage: "rent/renew",
+                                    name: "renew",
+                                    title: "续单",
+                                    renewal: ret.renewal_info,
+                                    coinCurrentValue: ret.total_deposit_coin_current_value,
+                                    machineData: ret.data,
+                                    bhpcisshow: ret.data.pay_currency,
+                                    coinType: cointype,
+                                    machineID: machineId
+                                }
+                            };
+                            var continueDataDay = JSON.stringify(continueRent);
+                            if (ret.data.work_state == 1 && ret.data.is_bhp_pos == 1) {
+                                $(".stopRent").hide();
+                            }
+                            if (ret.data.work_state == 2 && ret.data.is_bhp_pos != 1) {
+                                $(".stopRent").hide();
+                            }
+                            if (ret.data.work_state == 0) {
+                                $("#stopRent").show();
+                                if (
+                                    ret.data.is_bhp_pos != 1
+                                ) {
+                                    $("#reButton").show();
+                                    $("#relet").attr("data-param", continueDataDay);
+                                } else {
+                                    $("#reButton").hide();
+                                }
+                            }
+                            if (ret.data.work_state != 0) {
+                                $("#stopRent>.stop")
+                                    .addClass("hasStop")
+                                    .removeClass("stop");
+                                $("#stopRent").hide();
+                                $("#reButton").hide();
+                                $("#sellandbuy").hide();
+                            }
+                            if (ret.data.is_regular == 0) {
+                                $("#relet").text("转期");
+                                $("#relet").attr("data-param", bandDataDay);
+                                $("#stopRentNew").css({
+                                    backgroundColor: "#fff",
+                                    color: "#181818"
+                                });
+                                var machineEndTime = app.toSecond(ret.data.time_income) * 1000 + 30 * 86400000;
+                                var thistime = new Date().getTime();
+                                if (thistime < machineEndTime) {
+                                    $("#stopRentNew").on("click", function(params) {
+                                        var param = {
+                                            dtype: "dialog1",
+                                            data: {
+                                                text: "矿机合约锁定期限最低30天，未达期限的不能退单！",
+                                                btns: [{
+                                                    name: "确定",
+                                                    event: ""
+                                                }]
+                                            }
+                                        };
+                                        app.dialog(param);
+                                    });
+                                } else {
+                                    $("#stopRentNew").addClass("go-page");
+                                }
+
+                                $("#sellandbuy").unbind('click').on("click", function(params) {
+                                    var thisArrTime = ret.data.time_income;
+                                    var thisYear = new Date().getFullYear();
+                                    var thisMonth = new Date().getMonth() + 1;
+                                    var thisDate = new Date().getDate();
+                                    var thisTimeYYR = thisYear + '-' + thisMonth + '-' + thisDate + " 00:00:00";
+                                    var machineCanReturn = true;
+                                    app.log('time_income', ret.data.time_income)
+                                    app.log('thisTimeYYR', thisTimeYYR);
+                                    app.log('ret.data.is_switch', ret.data.is_switch);
+                                    if (ret.data.is_switch == 1) {
+                                        machineCanReturn = Number(app.toSecond(thisArrTime) + 86400 * 30) > app.toSecond(thisTimeYYR) ? false : true;
+                                        if (machineCanReturn == false) {
+                                            var param = {
+                                                dtype: "dialog1",
+                                                data: {
+                                                    text: "矿机合约锁定期限最低30天，未达期限的不能转让！",
+                                                    btns: [{
+                                                        name: "确定",
+                                                        event: ""
+                                                    }]
+                                                }
+                                            };
+                                            app.dialog(param);
+                                            return;
+                                        }
+                                    }
+                                    if (ret.data.is_switch == 0) {
+                                        machineCanReturn = Number(app.toSecond(thisArrTime)) + 86400 * 30 > app.toSecond(thisTimeYYR) ? false : true;
+                                        if (machineCanReturn == false) {
+                                            var param2 = {
+                                                dtype: "dialog1",
+                                                data: {
+                                                    text: "矿机合约锁定期限最低30天，未达期限的不能转让！",
+                                                    btns: [{
+                                                        name: "确定",
+                                                        event: ""
+                                                    }]
+                                                }
+                                            };
+                                            app.dialog(param2);
+                                            return;
+                                        }
+                                    }
+                                    if (machineCanReturn == true) {
+                                        $("#stopRentNew").addClass("go-page");
+                                        if (Number(goods_price) < 3000) {
+                                            api.toast({
+                                                msg: "活动/赠送矿机不能转让",
+                                                location: "middle",
+                                                duration: 4000,
+                                                global: true
+                                            });
+                                            return
+                                        }
+                                        var cointypecontract = {
+                                            page: "common/headerwin",
+                                            name: "send_power_headerwin",
+                                            param: {
+                                                subpage: "fisrt/send_power",
+                                                name: "send_power",
+                                                title: "转让",
+                                                Matchine: thisMatchine,
+                                                machineId: orderId,
+                                                usdtPrice: ret.price,
+                                                rightIcon: {
+                                                    icon: "../../image/zhuanranx.png"
+                                                },
+                                                eventTrigger: "transferDialog"
+                                            }
+                                        };
+                                        var recoinNumber = JSON.stringify(cointypecontract);
+                                        app.goPushPage(recoinNumber);
+                                    }
+                                });
+                            }
+                            if (ret.data.is_regular == 1) {
+                                $("#sellandbuy").hide();
+                            }
+                            if (cointype != "BTC") {
+                                $("#sellandbuy").hide();
+                            }
+                            if (ret.data.is_switch == 1) {
+                                $("#stopRent").hide();
+                            }
+                            if (ret.data.is_bhp_pos == 1) {
+                                var btcGetNum = (ret.data.returns == null ? 0 + "个" : ret.data.returns + "个") + "/" + cointype;
+                                var bhpGetNum = (ret.data.returns_bhp == null ? '0.0000个' : String(ret.data.returns_bhp).replace(/([0-9]+\.[0-9]{4})[0-9]*/, "$1") + "个") + "/" + "BHP";
+                                $(".historyProBhp").text(bhpGetNum);
+                                $(".historyProBhp").show();
+                                $(".historyPro").text(btcGetNum);
+                            } else {
+                                $(".historyPro").text((ret.data.returns == null ? 0 + "个" : ret.data.returns + "个") + "/" + cointype);
+                            }
+                            $(".daylimit>span").text(ret.data.is_regular == 0 ? "30天" : ret.data.regular_date_num + "天");
+                            $(".machine-type>span").eq(0).text(ret.data.is_bhp_pos == 1 ? cointype + "+" + "BHP" : cointype);
+                            if (ret.data.pay_currency == "BCNY") {
+                                $(".showtype").text("1 BCNY");
+                            } else {
+                                $(".showtype").text("1 CNY");
+                            }
+                            if (ret.data.is_switch == 1) {
+                                $(".deposit").text(
+                                    ret.data.pay_currency == "USDT" ? ret.data.continue_total_deposit_coin.replace(refour, "$1") : ret.data.continue_total_deposit_coin.replace(reTwo, "$1")
+                                );
+                            } else {
+                                $(".deposit").text(
+                                    ret.data.pay_currency == "USDT" ? ret.data.total_deposit_coin.replace(refour, "$1") : Number(ret.data.total_deposit)
+                                );
+                            }
+
+                            $(".orderNumber").text(ret.data.order_id);
+                            if (ret.data.pay_currency == "BCNY" || ret.data.pay_currency == "BHPC") {
+                                rentUnit = "BCNY";
+                            } else if (ret.data.pay_currency == "USDT") {
+                                rentUnit = "USDT";
+                            } else {
+                                rentUnit = "CNY";
+                            }
+                            $(".unit").text(rentUnit);
+                            // app.accAdd(Number(ret.data.computing_power), Number(ret.data.num)) + "T"
+                            $(".disnum").text(ret.data.num + "份");
+                            $(".name-th").text(ret.data.name);
+                            $(".BeginrunningDate").text(ret.data.time_income);
+                            $(".calculateSource").text(ret.node_name);
+                            $(".numadd>span")
+                                .eq(0)
+                                .text(Number(ret.data.computing_power) + limitRentUnit);
+                            var addRewardPower = app.moreAccAdd(
+                                ret.data.td_power,
+                                ret.data.futures_power,
+                                ret.data.regular_power,
+                                ret.data.coupon_power,
+                                ret.data.float_power,
+                                ret.data.pe_power
+                            )
+                            $(".showWindow>span")
+                                .eq(1)
+                                .text(addRewardPower + limitRentUnit);
+                            $(".showWindow").click(function() {
+                                var param = {
+                                    dtype: "dialog281",
+                                    data: {
+                                        floatpower: ret.data.float_power + limitRentUnit,
+                                        pepower: ret.data.pe_power + limitRentUnit,
+                                        hopepower: ret.data.futures_power + limitRentUnit,
+                                        setdatepower: ret.data.regular_power + limitRentUnit,
+                                        couponpower: ret.data.coupon_power + limitRentUnit,
+                                        totalpower: addRewardPower + limitRentUnit,
+                                        tdatepower: ret.data.td_power + limitRentUnit
+                                    }
+                                };
+                                app.dialog(param);
+                            });
+                            $(".bottomForce")
+                                .find("p")
+                                .eq(0)
+                                .find("span")
+                                .eq(1)
+                                .text(Number(ret.data.base_power) + limitRentUnit);
+                            $(".rewardNum").text(addRewardPower + limitRentUnit);
+                            $(".introduceUs").text(ret.data.des_computingpower);
+                            $(".descript").text(ret.data.des_contract);
+                            $(".danger").text(ret.data.des_rish);
+                        }
+                    }
+                },
+                extra: {
+                    container: "container",
+                    isflower: true,
+                    delay: 200
+                }
+            });
+            //---------------------------------------- 监听确认停租--------------------
+            app.handlePage();
+            $(".gopricetag").on("click", function(params) {
+                var param = {
+                    dtype: "dialog1",
+                    data: {
+                        text: "是否跳转到司法凭证",
+                        btns: [{
+                            name: "取消",
+                            event: "noGoTag"
+                        }, {
+                            name: "确定",
+                            event: "yesGoTag"
+                        }]
+                    }
+                };
+                app.dialog(param);
+            });
+            $(".cliptext").click(function() {
+                if (app.clipboard) {
+                    var text = $(".tagprice").text();
+                    app.clipboard.set({
+                        value: text
+                    }, function(ret, err) {
+                        app.log("copy", ret);
+                        if (ret.status) {
+                            app.toast("复制成功");
+                        } else {
+                            app.toast("复制失败！");
+                            return false;
+                        }
+                    });
+                }
+            });
+            $(".contractText").click(function() {
+                app.ajaxNew("machine/contract", {
+                        uid: account.uid,
+                        token: account.token,
+                        order_id: orderId
+                    }, true,
+                    function(ret) {
+                        if (ret.code == 1) {
+                            var param = {
+                                dtype: "dialog39",
+                                data: {
+                                    oriderID: orderId,
+                                    title: "《云算力在线服务协议》",
+                                    orderText: ret.content,
+                                    btns: [{
+                                        name: "关闭",
+                                        event: "colsethis"
+                                    }],
+                                    extra: {}
+                                }
+                            };
+                            app.dialog(param);
+                        } else {
+                            app.toast(ret.desc)
+                        }
+                    })
+            })
+
+            var event = ["renew_success", "relet_success", "stop_rent_success"];
+            app.listen(event, function() {
+                app.reload();
+            });
+            app.listen("yesGoTag", function() {
+                app.openWin({
+                    name: "browser_headerwin",
+                    url: app.hd + "common/headerwin.html",
+                    pageParam: {
+                        subpage: "common/browser",
+                        name: "browser",
+                        title: "",
+                        url: sfczUrl
+                    }
+                });
+            });
+            app.listen("transferSe", function() {
+                setTimeout(function() {
+                    api.closeWin();
+                }, 500);
+            })
+        };
+    </script>
+</body>
+
+</html>

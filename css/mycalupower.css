@@ -1,0 +1,308 @@
+body {
+    width: 100%;
+    background-color: #f7f7f7;
+    font-size: 0.28rem;
+    height: auto;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: PingFangSC-Regular, sans-serif;
+    color: #333333;
+}
+
+select {
+    border: none;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+}
+
+.showRentDetail {
+    background: url(../image/yellbgx.png) center no-repeat;
+    height: 4.5rem;
+    background-size: 100% 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: -webkit-flex;
+    position: relative;
+}
+
+.nowNumber {
+    width: 100%;
+    height: 1.2rem;
+    display: flex;
+    margin-left: calc((100% - 6.9rem) / 2);
+    display: -webkit-flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nowNumber>span:first-of-type {
+    flex: 1;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: center;
+}
+
+.showCoinDetail {
+    width: 6.9rem;
+    height: 3rem;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 0.1rem;
+    z-index: 1;
+    left: calc((100% - 6.9rem) / 2);
+    top: 1.2rem;
+    display: flex;
+    display: -webkit-flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0.05rem #f7f7f7;
+}
+
+.showCoinDetail ul {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.showCoinKind {
+    height: 0.76rem;
+    margin-bottom: 0.5rem;
+}
+
+.showCoinKind li {
+    width: 33%;
+    height: 0.72rem;
+    line-height: 0.72rem;
+    text-align: center;
+    border: 0.02rem solid #ffd203;
+}
+
+.showCoinKind li:first-of-type {
+    background-color: #ffd203;
+    border-radius: .05rem 0 0 .05rem;
+}
+
+.showCoinKind li:last-of-type {
+    border-radius: 0 .05rem .05rem 0;
+}
+
+.showCoinKind li:nth-of-type(2) {
+    border-left: 0;
+    border-right: 0;
+}
+
+.showtotalPower {
+    height: 0.8rem;
+}
+
+.showtotalPower li {
+    color: #949494;
+    width: 25%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.26rem;
+    border-right: 1px solid #dcdcdc;
+}
+
+.showtotalPower li:last-of-type {
+    border-right: none;
+}
+
+.showtotalPower li span:last-of-type {
+    color: #000420;
+    font-size: 0.24rem;
+}
+
+.machineListChoose {
+    margin-top: 0.2rem;
+    width: 100%;
+    height: 0.92rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+
+/* .machineListChoose select {
+    width: 45%;
+    height: 0.5rem;
+    text-align: center;
+    border-right: 1px solid #e2e2e2;
+    padding-left: 22.5%;
+}
+
+.machineListChoose select:last-of-type {
+    border-right: none;
+} */
+
+.showList {
+    width: 100%;
+    height: auto;
+}
+
+.showList ul {
+    width: 100%;
+    background: #f7f7f7;
+}
+
+.showList ul li {
+    width: 100%;
+    display: inline-block;
+    background-color: #fff;
+    height: auto;
+    /* padding-left: 0.28rem; */
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    margin-bottom: 0.2rem;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.showList ul li>p {
+    margin-top: 0.2rem;
+    height: auto;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 0.44rem;
+    box-sizing: border-box;
+    padding-left: 0.28rem;
+}
+
+.showList ul li>b {
+    width: 100%;
+    height: 0.84rem;
+    background: #f9f9f9;
+    opacity: 0.91;
+    padding: 0 0.28rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+.showList ul li>b span {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+.showList ul li>b button {
+    outline: none;
+    border:none;
+    width: 1.6rem;
+    height: 0.51rem;
+    background: rgba(250, 250, 250, 1);
+    border: 1px solid rgba(170, 170, 170, 1);
+    opacity: 0.63;
+    border-radius: 0.26rem;
+    font-size: 0.21rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    color: #262626;
+}
+
+
+.showTransferNum{
+    position: absolute;
+    top:-40%;
+    right: -1.1rem;
+    padding: 0.02rem 0.1rem;
+    background-color: #FD6B6B;
+    border-radius: 0.2rem 0.2rem 0.2rem 0;
+    color: #fff;
+    font-size: 0.18rem;
+}
+
+.rentItemDetail {
+    padding-right: 1rem;
+    font-size: 0.24rem;
+    height: 2.3rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0.28rem;
+    box-sizing: border-box;
+}
+
+.rentItemDetail div p {
+    color: #b8b8b6;
+}
+
+.rentItemDetail div {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.rentItemDetail div p {
+    margin: 0.1rem 0;
+}
+
+.rentItemDetail div p span span {
+    color: #616161;
+
+}
+
+.expireDay {
+    font-size: 0.2rem;
+    padding:0.02rem 0.12rem;
+    background-color: #ffe3e6;
+    color: #ff6678;
+    border-radius: 0.05rem;
+    margin-left: 0.1rem;
+}
+
+.fix {
+    width: 100%;
+    height: 0.92rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    margin-top: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.machineListChoose span::after {
+    border-top: 0.1rem solid #e2e2e2;
+    border-right: 0.1rem solid transparent;
+    border-left: 0.1rem solid transparent;
+    content: "";
+    position: absolute;
+    width: 0;
+    right: 8%;
+    top: 40%;
+}
+
+/* #showBank:after {
+    content: "";
+    width: 1px;
+    height: 10%;
+    background-color: red;
+    position: absolute;
+    left: 50%;
+    top: 5px;
+} */

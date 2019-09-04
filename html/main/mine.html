@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/mine.css">
+</head>
+
+<body>
+    <div class="selmoney">
+        <div id="sel_money">
+            <span style="font-size:0.28rem;">账户总资产折合(BTC)</span>
+            <div id="showEyes">
+                <img src="../../image/openax.png" srcset="" id="showImg">
+            </div>
+        </div>
+        <div class="showMoney">
+            <span>
+                <span id="changeBtc" style="font-size: 0.48rem;color: #181818;">
+                    --
+                </span>
+            </span>
+            <span id="mymoeny" data-flag="true">
+                <i class="hideYdy">≈ </i><span>--</span>
+            </span>
+        </div>
+        <div class="midlle-left">
+            <p style="font-size: 0.28rem;">
+                昨日收益(估算):
+            </p>
+            <span style="display: flex;display: -webkit-flex;align-items: center;">
+                --
+            </span>
+        </div>
+    </div>
+    <div class="head-about">
+        <div class="midlle-rigth" style="width: 100%;">
+            <p style="font-size:0.26rem;padding-top: 0.2rem;width: 100%;">
+                可用余额
+            </p>
+        </div>
+        <div class="showmyMoney" style="margin-bottom: 0.33rem">
+            <p>
+                <span class="myCnyNumber">
+                    --
+                </span>
+                <span class="showtypeMoney">CNY</span>
+            </p>
+            <p style="justify-content: flex-end;">
+                <span class="myBcnyNumber">
+                    --
+                </span>
+                <span class="showtypeMoney">BCNY</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="showGetCash">
+        <div class="headAboutLeft">
+            <span style="font-size:0.28rem;">
+                提现
+            </span>
+        </div>
+        <div class="headAboutRight">
+            <span style="font-size:0.28rem;">
+                充值
+            </span>
+        </div>
+    </div>
+    <div style="width: 100%;height: 0.2rem;background-color: #f5f5f5;">
+
+    </div>
+    <div class="aboutmenew">
+        <ul class="aboutmelistnew">
+            <li class="goPropertyPage" style="border-bottom:1px solid #e5e5e5;">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/zichantjxn.png" alt="" style="width:0.42rem;height:0.34rem;">
+                    </span>
+                    <b style="padding-top:0.1rem;">我的资产</b>
+                </span>
+            </li>
+            <!-- <li class="go-page"
+                data-param='{"page":"common/headerwin","name":"newentrust_headerwin","param":{"subpage":"my/newentrust","name":"newentrust","isShowNew":"true"}}'
+                style="border-bottom:1px solid #e5e5e5;"> -->
+            <li id="goAgrentSellBuy" style="border-bottom:1px solid #e5e5e5;">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/weituojyxn.png" alt="" style="width: 0.39rem;height: 0.46rem;">
+                    </span>
+                    <b id="agrentSellText">委托代售</b>
+                </span>
+            </li>
+            <li id="reandchare" style="border-bottom:1px solid #e5e5e5;">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/zichanzdxn.png" alt="" style="width: 0.42rem;height: 0.38rem;">
+                    </span>
+                    <b style="padding-top:0.05rem;">资产账单</b>
+                </span>
+            </li>
+            <li class="goToBcnyPage" style="border-bottom:1px solid #e5e5e5;">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/bcnydhxa.png" alt="" style="width: 0.47rem;height: 0.38rem;margin-top: 0.1rem;">
+                    </span>
+                    <b>BCNY兑换</b>
+                </span>
+            </li>
+            <li class="go-page" data-param='{"page":"common/headerwin","name":"mycalupower_headerwin","param":{"subpage":"mine/mycalupower","name":"mycalupower","title":"我的算力"}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/heyuebaowdxn.png" alt="" style="width: 0.50rem;height: 0.45rem;">
+                    </span>
+                    <span>
+                        <span id="showEndState" style="display:inline-block; width: 0.15rem;height: 0.15rem;background-color: red;border-radius: 100%;margin-right: 0.05rem;display: none;"></span>
+                        <b>我的算力</b>
+                    </span>
+                </span>
+            </li>
+            <li class="go-page" data-param='{"page": "common/headerwin","name": "myincome_headerwin","param": {"subpage": "my/myincome","name": "myincome","title": "算力产出", "rightIcon": {"icon": "../../image/income_datebt.png"}, "rightParam": {"page": "common/headerwin","name": "moneyhostry_headerwin","param":{"subpage": "my/moneyhostry","name": "moneyhostry","title": "每日产出"}}}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/wodesyxn.png" alt="" style="width: 0.53rem;height: 0.36rem;margin-top: 0.1rem;">
+                    </span>
+                    <b>算力产出</b>
+                </span>
+            </li>
+            <li class="go-page" data-param='{"page":"common/headerwin","name":"bhpbonus_headerwin","showBhpRecordTab":"true",
+            "param":{"subpage":"my/bhpbonus","name":"bhpbonus","title":"BHP分红","right":"记录",
+                "rightParam":{
+                        "page":"common/headerwin",
+                        "name":"bhpShare",
+                        "param":{"subpage":"my/bhpsharehistory",
+                        "name":"bhpsharehistory",
+                        "showBhpRecordTab":"true",
+                        "title":"分红记录明细"}
+                        }}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/fenhongx.png" alt="" style="width: 0.46rem;height: 0.45rem;">
+                    </span>
+                    <b>BHP分红</b>
+                </span>
+            </li>
+            <li class="go-page" data-param='{"page":"common/headerwin","name":"over_underpower_headerwin","param":{"subpage":"transactionpower/over_underpower","name":"over_underpower","title":"算力转让","powerHeader":"true"}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/zhuanrang_icnx.png" alt="" style="width: 0.44rem;height: 0.44rem;">
+                    </span>
+                    <b>算力转让</b>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div style="width: 100%;height: 0.2rem;background-color: #f5f5f5;">
+
+    </div>
+    <div class="about-me">
+        <ul class="about-me-list">
+            <!-- 
+            <li class="go-page" id="checkSlb" style="display: none;"
+                data-param='{"page":"common/headerwin","name":"calculate_headerwin","param":{"subpage":"my/calculate","name":"calculate","title":"算力宝"}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/suanlibaox.png" alt="" style="width: 0.44rem;height: 0.41rem;">
+                    </span>
+                    <b>算力宝</b>
+                </span>
+            </li> -->
+            <li class="goPageBankList">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/caricnx.png" alt="" style="width: 0.43rem;height: 0.34rem;">
+                    </span>
+                    <b>提现账号管理</b>
+                </span>
+                <span>
+                    <img src="../../image/right_jintouax.png" alt="">
+                </span>
+            </li>
+            <li id="goService">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/kefuxl.png" alt="" style="width: 0.46rem;height: 0.4rem">
+                    </span>
+                    <b>专属客服</b>
+                </span>
+                <span style="flex:1;display: flex;display: -webkit-flex;justify-content: flex-end;align-items: center;">
+                    <span id="showService" style="font-size: 0.22rem;padding-right: 0.1rem;display:flex;align-items: center;display: none;">
+                        <span style="display:inline-block; width: 0.10rem;height: 0.10rem;background-color: red;border-radius: 50%;margin-right: 0.1rem;"></span> 你有新的消息未读取
+                    </span>
+                    <img src="../../image/right_jintoux.png" alt="" style="margin-left: 0.1rem;">
+                </span>
+            </li>
+            <li id="joinNode" style="display: none;" class="go-page" data-param='{"page":"common/headerwin","name":"join_node_headerwin","param":{"subpage":"mine/join_node","name":"join_node","title":"加入节点"}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/jeidianx.png" alt="" style="width: 0.38rem;height: 0.38rem;">
+                    </span>
+                    <b>加入节点</b>
+                </span>
+                <span>
+                    <img src="../../image/right_jintoux.png" alt="">
+                </span>
+            </li>
+            <li class="goBhpSWpage">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/swconx.png" alt="" style="width: 0.44rem;height: 0.38rem;">
+                    </span>
+                    <b>双挖BHP管理</b>
+                </span>
+                <span>
+                    <span class="bhpManage" style="font-size:0.24rem;">
+
+                    </span>
+                    <img src="../../image/right_jintoux.png" alt="">
+                </span>
+            </li>
+            <li class="go-page" style="margin-bottom: 0;" data-param='{"page":"common/headerwin","name":"equitysecurity_headerwin","param":{"subpage":"my/equitysecurity","name":"equitysecurity","title":"算龄进阶指南","rightIcon":{
+                "icon": "../../image/quanyix.png"},"rightParam":{
+                "page":"common/headerwin",
+                "name":"browser_headerwin",
+                "param":{"subpage":"https://mp.weixin.qq.com/s/23bzTSaIwGyDg1WaAKYb5Q",
+                "name":"browser",
+                "type": "remote",
+                "isremote": "true",
+                "title":"权益说明"
+                }}}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/suanlingx.png" alt="" style="width: 0.43rem;height: 0.41rem;">
+                    </span>
+                    <b>算龄进阶指南</b>
+                </span>
+                <span>
+                    <img src="../../image/right_jintouax.png" alt="">
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="about-me" style="margin-top: 0;border-top:0.2rem solid #f7f7f7;">
+        <ul class="about-me-list">
+            <!-- <li class="go-page" data-param='{"page":"common/headerwin","name":"tickets_headerwin","param":{"subpage":"extrapage/tickets","name":"tickets","title":"我的卡券"}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/wodekjxn.png" alt="" style="width: 0.43rem;height: 0.34rem;">
+                    </span>
+                <b>我的卡券</b>
+                </span>
+                <span>
+                    <img src="../../image/right_jintoux.png" alt="">
+                </span>
+            </li> -->
+            <li class="go-page" data-param='{"page":"common/headerwin","name":"invitingfriends_headerwin","param":{"subpage":"extrapage/invitingfriends","name":"invitingfriends","title":"邀请好友赚奖励"}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/yaoqinghyx.png" alt="" style="width: 0.49rem;height: 0.39rem;">
+                    </span>
+                    <b>邀请好友</b>
+                </span>
+                <span>
+                    <img src="../../image/right_jintouax.png" alt="">
+                </span>
+            </li>
+            <li id="gosafered">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/hongbaox.png" alt="" style="width: 0.37rem;height: 0.41rem;">
+                    </span>
+                    <b>我的红包</b>
+                </span>
+                <span>
+                    <img src="../../image/right_jintouax.png" alt="">
+                </span>
+            </li>
+            <li id="gosafetPage">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/anquanszx.png" alt="" style="width: 0.37rem;height: 0.46rem;">
+                    </span>
+                    <b>安全设置</b>
+                </span>
+                <span>
+                    <img src="../../image/right_jintouax.png" alt="">
+                </span>
+            </li>
+            <li class="go-page" data-param='{"page":"common/headerwin","name":"help_headerwin","param":{"subpage":"main/help","name":"help","title":"帮助中心"}}'>
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/bangzhuxn.png" alt="" style="width: 0.37rem;height: 0.41rem">
+                    </span>
+                    <b>帮助中心</b>
+                </span>
+                <span>
+                    <img src="../../image/right_jintoux.png" alt="" style="margin-left: 0.1rem;">
+                </span>
+            </li>
+            <li class="go-page" data-param='{"page":"common/headerwin","name":"about_headerwin","param":{"subpage":"mine/about","name":"about","title":"关于我们"}}' style="border-bottom:none">
+                <span>
+                    <span class="listIcon">
+                        <img src="../../image/aboutusx.png" alt="" style="width: 0.46rem;height: 0.46rem;">
+                    </span>
+                    <b>关于我们</b>
+                </span>
+                <span>
+                    <img src="../../image/right_jintouax.png" alt="">
+                </span>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../../js/autosize.js"></script>
+<script src="../../script/jquery_three_two_one.js"></script>
+<script src="../../res/web/script/api.js"></script>
+<script src="../../script/fastclick.js"></script>
+<script src="../../script/app.js"></script>
+<script src="../../js/mine.js"></script>
+
+</html>

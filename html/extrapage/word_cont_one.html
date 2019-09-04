@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>文字</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="../../res/web/css/aui.css">
+    <link rel="stylesheet" type="text/css" href="../../res/web/css/app.css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css" />
+    <style type="text/css">
+        html,
+        body {
+            background-color: white;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="aui-info aui-margin-t-10 aui-padded-l-10 aui-padded-r-10" style="background-color:white;margin-top: 0! important">
+        <div class="aui-info-item">
+            <span class="aui-margin-l-5 cont" style="color: #212121;font-weight: 300;width: 100%;display: flex;display: -webkit-flex;flex-wrap: wrap;"></span>
+        </div>
+    </div>
+</body>
+
+<script src="../../script/jquery_three_two_one.js"></script>
+<script src="../../script/dotmin.js"></script>
+<script src="../../script/fastclick.js"></script>
+<script src="../../script/app.js"></script>
+
+<script>
+    apiready = function() {
+        var app = new APP();
+        app.log("rent", "文字显示页面");
+        var isJson = api.pageParam.isJson;
+        if (isJson) {
+            var content = api.pageParam.content;
+        } else {
+            var content = JSON.parse(api.pageParam.content);
+        }
+        $(".cont").html(content);
+    }
+</script>
+
+</html>

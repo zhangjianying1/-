@@ -1,0 +1,557 @@
+body {
+    width: 100%;
+    background-color: #f7f7f7;
+    font-size: 0.28rem;
+    height: auto;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: PingFangSC-Regular, sans-serif;
+    color: #333333;
+}
+
+.showRentDetail {
+    background: url(../image/yellbgx.png) center no-repeat;
+    height: 4.2rem;
+    background-size: 100% 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: -webkit-flex;
+    position: relative;
+}
+
+.nowNumber {
+    width: 100%;
+    height: 0.9rem;
+    display: flex;
+    margin-left: calc((100% - 6.9rem) / 2);
+    display: -webkit-flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.showCoinDetail {
+    width: 6.9rem;
+    height: 3rem;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 0.1rem;
+    padding: 0 0.3rem;
+    z-index: 1;
+    left: calc((100% - 6.9rem) / 2);
+    top: 0.9rem;
+    display: flex;
+    display: -webkit-flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0.05rem #f7f7f7;
+}
+
+.showCoinDetail ul {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.showCoinKind {
+    height: 0.76rem;
+    margin-bottom: 0.5rem;
+}
+
+.showCoinKind li {
+    width: 33%;
+    height: 0.72rem;
+    line-height: 0.72rem;
+    text-align: center;
+    border: 0.02rem solid #ffd203;
+}
+
+.showCoinKind li:first-of-type {
+    background-color: #ffd203;
+    border-radius: .05rem 0 0 .05rem;
+}
+
+.showCoinKind li:last-of-type {
+    border-radius: 0 .05rem .05rem 0;
+}
+
+.showCoinKind li:nth-of-type(2) {
+    border-left: 0;
+    border-right: 0;
+}
+
+.showtotalPower {
+    height: 0.8rem;
+}
+
+.showtotalPower li {
+    color: #949494;
+    width: 33%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.26rem;
+    border-right: 1px solid #dcdcdc;
+}
+
+.showtotalPower li:last-of-type {
+    border-right: none;
+}
+
+.showtotalPower li span:last-of-type {
+    color: #000420;
+    font-size: 0.26rem;
+}
+
+.machineListChoose {
+    margin-top: 0.2rem;
+    width: 100%;
+    height: 0.92rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+
+.showList {
+    width: 100%;
+    height: auto;
+}
+
+.showList ul {
+    width: 100%;
+    background: #f7f7f7;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.showList ul li {
+    width: 6.72rem;
+    display: inline-block;
+    background-color: #fff;
+    height: 3.2rem;
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+    border-radius: 0.1rem;
+    overflow: hidden;
+}
+
+.showList ul li>p {
+    width: 100%;
+    height: 0.95rem;
+    padding-left: 0.27rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e2e2e2;
+    padding-right: 0.27rem;
+    box-sizing: border-box;
+}
+
+.showList ul li>b {
+    width: 100%;
+    height: 0.9rem;
+    padding: 0 0.27rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-size: 0.22rem;
+    background-color: #f1f1f1;
+    font-weight: 500;
+    color: #b8b8b6;
+}
+
+.rentCoinType {
+    flex: 1;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.rentCoinType>span:first-of-type {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    font-size: 0.26rem;
+    border-radius: 0.03rem;
+    margin-right: 0.1rem;
+}
+
+.rentCoinType>span:nth-of-type(2) {
+    font-size: 0.23rem;
+    text-align: center;
+}
+
+.rentItemDetail {
+    flex: 1;
+    padding-right: 0.27rem;
+    box-sizing: border-box;
+    font-size: 0.24rem;
+    height: 1.3rem;
+    padding-left: 0.27rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rentItemDetail div p {
+    color: #b8b8b6;
+}
+
+.rentItemDetail div {
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.rentItemDetail div p {
+    margin: 0.1rem 0;
+}
+
+.rentItemDetail div p span span {
+    color: #616161;
+    margin-left: 0.2rem;
+}
+
+.expireDay {
+    font-size: 0.2rem;
+    padding: 0.05rem 0.1rem;
+    background-color: #ffd203;
+    color: #fff;
+    border-radius: 0.05rem;
+    margin-left: 0.2rem;
+}
+
+.fix {
+    width: 100%;
+    height: 0.92rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    margin-top: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.machineListChoose span::after {
+    border-top: 0.15rem solid #e2e2e2;
+    border-right: 0.15rem solid transparent;
+    border-left: 0.15rem solid transparent;
+    content: "";
+    position: absolute;
+    width: 0;
+    right: 20%;
+    top: 40%;
+}
+
+/* 我转让的 */
+.showRentDetail {
+    background: url(../image/yellbgx.png) center no-repeat;
+    height: 4.2rem;
+    background-size: 100% 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: -webkit-flex;
+    position: relative;
+}
+
+.nowNumber {
+    width: 100%;
+    height: 0.9rem;
+    display: flex;
+    margin-left: calc((100% - 6.9rem) / 2);
+    display: -webkit-flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.showCoinDetail {
+    width: 6.9rem;
+    height: 3rem;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 0.1rem;
+    padding: 0 0.3rem;
+    z-index: 1;
+    left: calc((100% - 6.9rem) / 2);
+    top: 0.9rem;
+    display: flex;
+    display: -webkit-flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 0.05rem #f7f7f7;
+}
+
+.showCoinDetail ul {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.showCoinKind {
+    height: 0.76rem;
+    margin-bottom: 0.5rem;
+}
+
+.showCoinKind li {
+    width: 33%;
+    height: 0.72rem;
+    line-height: 0.72rem;
+    text-align: center;
+    border: 0.02rem solid #ffd203;
+}
+
+.showCoinKind li:first-of-type {
+    background-color: #ffd203;
+    border-radius: .05rem 0 0 .05rem;
+}
+
+.showCoinKind li:last-of-type {
+    border-radius: 0 .05rem .05rem 0;
+}
+
+.showCoinKind li:nth-of-type(2) {
+    border-left: 0;
+    border-right: 0;
+}
+
+.showtotalPower {
+    height: 0.8rem;
+}
+
+.showtotalPower li {
+    color: #949494;
+    width: 33%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.26rem;
+    border-right: 1px solid #dcdcdc;
+}
+
+.showtotalPower li:last-of-type {
+    border-right: none;
+}
+
+.showtotalPower li span:last-of-type {
+    color: #000420;
+    font-size: 0.26rem;
+}
+
+.machineListChoose {
+    margin-top: 0.2rem;
+    width: 100%;
+    height: 0.92rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+
+.showOverTaking {
+    width: 100%;
+    height: auto;
+}
+
+.showOverTaking ul {
+    width: 100%;
+    background: #f7f7f7;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.showOverTaking ul li {
+    width: 6.72rem;
+    display: inline-block;
+    background-color: #fff;
+    height: 3.7rem;
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+    border-radius: 0.1rem;
+    overflow: hidden;
+}
+
+.showOverTaking ul li>p {
+    width: 100%;
+    height: 0.95rem;
+    padding-left: 0.27rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e2e2e2;
+    padding-right: 0.27rem;
+    box-sizing: border-box;
+}
+
+.overTakingType {
+    flex: 1;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.overTakingType>span:first-of-type {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    font-size: 0.26rem;
+    border-radius: 0.03rem;
+    margin-right: 0.1rem;
+}
+
+.overTakingType>span:nth-of-type(2) {
+    font-size: 0.23rem;
+    text-align: center;
+}
+
+.overItemDetail {
+    padding: 0 0.27rem;
+    box-sizing: border-box;
+    font-size: 0.24rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.overItemDetail div p {
+    color: #b8b8b6;
+}
+
+.overItemDetail div {
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.overItemDetail div p {
+    margin: 0.1rem 0;
+}
+
+.overItemDetail div p span span {
+    color: #181818;
+    margin-left: 0.2rem;
+}
+
+.orderTime {
+    padding: 0 0.27rem;
+    font-size: 0.2rem;
+    font-weight: normal;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E2E2E2;
+    padding-bottom: 0.25rem;
+}
+
+.orderTime b {
+    font-weight: normal;
+    background-color: #fff;
+    background: rgba(238, 238, 238, 1);
+    opacity: 0.53;
+    border-radius: 0.06rem;
+    padding: 0.05rem 0.05rem;
+}
+
+.showOrderNum {
+    padding: 0.1rem 0.27rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.showOrderNum b {
+    font-weight: normal;
+    background-color: #fff;
+    font-size: 0.24rem;
+}
+
+.showOrderNum>b:last-of-type {
+    width: 1.17rem;
+    height: 0.52rem;
+    background-color: #ffd203;
+    color: #181818;
+    border-radius: 0.1rem;
+    font-weight: normal;
+    line-height: 0.52rem;
+    text-align: center;
+}
+.expireOverDay {
+    font-size: 0.2rem;
+    padding: 0 0.1rem;
+    background-color: #ffd203;
+    color: #131313;
+    border-radius: 0.05rem;
+    margin-left: 0.2rem;
+}
+
+.fix {
+    width: 100%;
+    height: 0.92rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e2e2e2;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    margin-top: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.machineListChoose span::after {
+    border-top: 0.15rem solid #e2e2e2;
+    border-right: 0.15rem solid transparent;
+    border-left: 0.15rem solid transparent;
+    content: "";
+    position: absolute;
+    width: 0;
+    right: 20%;
+    top: 40%;
+}

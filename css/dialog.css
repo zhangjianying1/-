@@ -1,0 +1,2290 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-size: 0.28rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+button {
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 0.28rem;
+}
+
+.dialog1 {
+    background-color: white;
+    border-radius: 0.08rem;
+    padding: 0.3rem;
+    padding-bottom: 0;
+    width: 70%;
+    height: auto;
+    min-height: 1.2rem;
+    box-sizing: border-box;
+}
+
+.dialog1>.text {
+    width: 100%;
+    text-align: center;
+    color: black;
+    margin: 0.3rem 0;
+}
+
+.dialog1>.btns {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    -webkit-justify-conten: space-around;
+}
+
+.dialog1>.btns button {
+    width: 40%;
+    color: #fabf38;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.28rem;
+    text-align: center;
+}
+
+.dialog2 {
+    background-color: white;
+    border-radius: 0.08rem;
+    width: 75%;
+    height: auto;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0.5rem 0;
+}
+
+.dialog2>.title {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+.dialog2>.text {
+    width: 80%;
+    text-align: center;
+    color: black;
+    margin-bottom: 0.3rem;
+}
+
+
+.dialog2>.btns {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+}
+
+.dialog2>.btns button {
+    color: #fabf38;
+    font-size: 0.28rem;
+    text-align: center;
+}
+
+.dialog3 {
+    top: 30%;
+    background-color: white;
+    border-radius: 0.08rem;
+    padding: 0.3rem 0.1rem;
+    width: 55%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.dialog3>.title {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.1rem;
+}
+
+.dialog3>.text {
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+
+.dialog3>.btns {
+    width: 100%;
+    color: #fabf38;
+    margin-top: 0.2rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+}
+
+.dialog3>.btns button {
+    padding: 0 0.1rem;
+    color: #fabf38;
+}
+
+.dialog4 {
+    background-color: white;
+    border-radius: 0.08rem;
+    padding: .3rem .1rem;
+    width: 54%;
+}
+
+.dialog4>.text {
+    width: 100%;
+    text-align: center;
+    color: gray;
+}
+
+.progress-w {
+    width: 100%;
+    margin-bottom: .1rem;
+}
+
+.progress-w #progressBack {
+    width: 100%;
+    height: 0.08rem;
+    background-color: #eee;
+    border-radius: 0.04rem;
+}
+
+.progress-w #progress {
+    width: 0%;
+    height: 0.08rem;
+    background-color: #5474ff;
+    border-radius: 0.08rem;
+}
+
+.dialog5 {
+    background-color: white;
+    border-radius: 0.08rem;
+    padding: 0.3rem 0.1rem;
+    width: 70%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.dialog5>.title {
+    margin-bottom: 0.1rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+
+.dialog5>.title img {
+    width: 0.4rem;
+    height: 0.4rem
+}
+
+.dialog5>.text {
+    text-align: center;
+    color: black;
+}
+
+.dialog5>.btns {
+    width: 100%;
+    color: white;
+    margin-top: 0.2rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+}
+
+.dialog5>.btns button {
+    background: #ffd203;
+    padding: 0.05rem 0.2rem;
+    color: white;
+    border-radius: 0.2rem;
+}
+
+.dialog8 {
+    background-color: white;
+    border-radius: 0.08rem;
+    width: 70%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.dialog8>.title {
+    width: 100%;
+    margin-bottom: 0.2rem;
+}
+
+.dialog8>.title img {
+    width: 100%;
+
+}
+
+.dialog8>.text {
+    width: 100%;
+    text-align: center;
+    color: #77a9fd;
+    padding: 0.06rem 0;
+}
+
+.dialog8>p:nth-of-type(3) {
+    width: 100%;
+    color: #666;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.dialog8>p:nth-of-type(4) {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    color: #666;
+    padding-bottom: 0.2rem;
+}
+
+.dialog8>.btns {
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin-top: 0.2rem;
+}
+
+.dialog8>.btns i {
+    background: #67b5f3;
+    padding: 0.05rem 0.2rem;
+    color: white;
+    border-radius: 0.2rem;
+}
+
+.dialog9 {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    width: 100%;
+    height: auto;
+}
+
+.dialog9>.showDialog9 {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-top: 0.1rem;
+}
+
+.dialog9 ul {
+    flex: 1;
+    display: flex;
+    display: -webkit-flex;
+    border-bottom: 1px solid #ededed;
+    background-color: #fff;
+    list-style: none;
+    padding: 0.3rem 0;
+}
+
+.dialog9 ul li {
+    width: 50%;
+    height: 1rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog9 i {
+    padding-bottom: 0.05rem;
+}
+
+.dialog9 i img {
+    margin: 0 auto;
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.dialog9 p {
+    width: auto;
+    text-align: center;
+    color: #666;
+}
+
+.dialog9 .cancal_tou {
+    text-align: center;
+    width: 100%;
+    background-color: white;
+    padding: 0.2rem 0;
+    color: #666;
+}
+
+
+.dialog10 {
+    background-color: white;
+    border-radius: 0.08rem;
+    width: 70%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.dialog10>.title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.2rem;
+}
+
+.dialog10>.text {
+    width: 100%;
+    text-align: center;
+    color: #77a9fd;
+    padding: 0.06rem 0;
+}
+
+.dialog10>.btns {
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin-top: 0.4rem;
+    position: absolute;
+    bottom: -1rem;
+}
+
+.dialog10>.btns button {
+    background: #67b5f3;
+    outline: none;
+    border: none;
+    padding: 0.05rem 0.2rem;
+    color: white;
+    border-radius: 0.2rem;
+    margin: 0 0.2rem;
+}
+
+.dialog11 {
+    top: 30%;
+    background-color: white;
+    border-radius: 0.08rem;
+    padding: 0.3rem 0.1rem;
+    width: 70%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.dialog11>.title {
+    margin-bottom: 0.1rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+
+.dialog11>.text {
+    width: 100%;
+    text-align: center;
+    color: black;
+    margin: 0 0.1rem;
+}
+
+.dialog11>.btns {
+    width: 100%;
+    color: white;
+    margin-top: 0.2rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+}
+
+.dialog11>.btns button {
+    background: #67b5f3;
+    padding: 0.05rem 0.2rem;
+    color: white;
+    border-radius: 0.2rem;
+    margin: 0 0.2rem;
+}
+
+.dialog12 {
+    background-color: white;
+    border-radius: 0.08rem;
+    padding: 0.3rem 0.1rem;
+    width: 60%;
+    position: relative;
+}
+
+.dialog12 .d-del {
+    position: absolute;
+    right: 0;
+    border-radius: 50%;
+    border: 1px solid #bbb;
+    width: 0.44rem;
+    height: 0.44rem;
+    top: -.45rem;
+    right: -.32rem;
+    background-color: white;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog12 .d-del div {
+    color: #bbb;
+}
+
+.dialog12 p:nth-of-type(3) {
+    color: #aaa;
+    margin-top: -.1rem;
+}
+
+.dialog13 {
+    width: 75%;
+    background-color: white;
+    border-radius: .1rem;
+    padding: 0.2rem;
+    height: 80%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dialog13 .d-title label {
+    font-size: 0.36rem;
+    font-weight: 700;
+}
+
+.dialog13 .html {
+    width: 100%;
+}
+
+.dialog13 p {
+    width: 100%;
+    margin: .2rem .1rem;
+    font-size: .28rem;
+    margin-bottom: .3rem;
+    word-break: break-all;
+}
+
+.dialog13>.btns {
+    width: 100%;
+    text-align: center;
+    color: #fabf38;
+    margin-top: .2rem;
+}
+
+.dialog13>.btns button {
+    padding: 0 .1rem;
+    color: #fabf38;
+    font-size: 0.36rem;
+}
+
+.dialog16 {
+    background-color: white;
+    border-top-left-radius: .05rem;
+    border-top-right-radius: .05rem;
+    padding-top: .2rem;
+    /*top: 35%;*/
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: .8rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+}
+
+.dialog16>.select {
+    width: calc(100% - .3rem);
+    padding: 0 .15rem;
+}
+
+.dialog16>.select>.select-item {
+    width: 100%;
+    padding-bottom: .15rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-top: .15rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dialog16>.select>.select-item:first-child {
+    border-top: none;
+}
+
+.dialog16>.select>.select-item>label {
+    margin-right: .7rem;
+    vertical-align: middle;
+    color: #666;
+}
+
+.dialog16>.select>.select-item>input {
+    background: transparent;
+    border: 0 !important;
+    outline: none !important;
+    background-image: url(../image/unchecked.png);
+    background-size: 100% 100%;
+    width: .4rem;
+    height: .4rem;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0rem !important;
+}
+
+.dialog16>.select>.select-item>input:checked {
+    background: transparent;
+    background-image: url(../image/checked.png);
+    width: .4rem;
+    height: .4rem;
+    background-size: 100% 100%;
+}
+
+.dialog16 .btns2 button {
+    padding: .15rem 0;
+    position: fixed;
+    bottom: 0;
+    background-color: #fabf38;
+}
+
+.dialog17 {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.dialog17 .d-wrapper {
+    background-color: transparent;
+    width: calc(80% - 0.3rem);
+    border-radius: 0.08rem;
+    padding: 0.15rem;
+    background-image: url('../image/bg.png');
+    background-size: 100% 100%;
+}
+
+.dialog17 .d-wrapper img {
+    position: absolute;
+    z-index: 6;
+    top: -0.3rem;
+    right: 1.1rem;
+    width: 0.4rem;
+}
+
+.dialog17 .d-title {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog17 .d-title p:first-of-type {
+    font-size: 0.36rem;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+.dialog18 {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+}
+
+.dialog18 ul {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ededed;
+    list-style: none;
+    background-color: white;
+    padding: 0.1ewm 0;
+    padding-top: 0;
+}
+
+#shareBottom18 {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+#shareBottom18>p {
+    color: #666;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    padding: 0.2rem 0;
+}
+
+.dialog18 i {
+    display: block;
+    margin: 0 auto;
+    width: 0.9rem;
+    height: 0.9rem;
+    padding-bottom: 0.05rem;
+}
+
+.dialog18 i img {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.dialog18 p {
+    text-align: center;
+    color: #666;
+}
+
+.dialog18 p.cancal_tou {
+    text-align: center;
+    width: 100%;
+    background-color: white;
+    padding: .24rem;
+    font-size: 0.28rem;
+    color: #666;
+}
+
+.dialog19 ul {
+    display: flex;
+    border-bottom: 1px solid #ededed;
+    list-style: none;
+    background-color: white;
+    padding: 10px 0;
+    padding-top: 0px;
+}
+
+.dialog19 ul li {
+    flex: 1;
+}
+
+.dialog19 i {
+    display: block;
+    margin: 0 auto;
+    width: 45px;
+    height: 45px;
+    padding-bottom: 5px;
+}
+
+.dialog19 i img {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.dialog19 p {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.dialog19 p.cancal_tou {
+    text-align: center;
+    width: 100%;
+    background-color: white;
+    padding: 12px 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.dialog19>p>button {
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0px 10px;
+    color: #fabf38;
+    font-size: 14px;
+}
+
+/* #shareTotal {
+    width: 5.2rem;
+    height: auto;
+    box-sizing: border-box;
+    padding-bottom: 0.2rem;
+    background-color: #fff;
+    position: absolute;
+    top: 0.1rem;
+    left: calc(( 100% - 5.2rem ) / 2);
+} */
+
+.dialog20 {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog20 .helplist {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: .1rem;
+    margin: auto;
+    background: #fff;
+    margin-bottom: 0.4rem;
+    overflow-y: hide;
+}
+
+.dialog20 .listTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1.4rem;
+    background-color: #f1c40f;
+    border-radius: .1rem .1rem 0 0;
+}
+
+.dialog20 .numPower {
+    color: #181818;
+    font-size: 0.24rem;
+    font-weight: 500;
+}
+
+.dialog20 .showText {
+    font-size: 0.24rem;
+    width: 85%;
+    margin: auto;
+    height: auto;
+    padding: 0.24rem 0 .36rem 0;
+    border-top: 1px solid #e2e2e2;
+}
+
+.dialog20 .calaTips {
+    height: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.22rem;
+}
+
+.dialog201 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog201 .helplist {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.1rem;
+    margin: auto;
+    background: #fff;
+    margin-bottom: 0.4rem;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding-bottom: 0.6rem;
+}
+
+.dialog201 .listTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1.56rem;
+    background-color: #f1c40f;
+    border-radius: .1rem .1rem 0 0;
+}
+
+.dialog201 .numPower {
+    color: #181818;
+    font-size: 0.30rem;
+    font-weight: 500;
+}
+
+.dialog201 .showText {
+    height: auto;
+    font-size: 0.26rem;
+    width: 100%;
+    margin: 0.2rem auto;
+    padding: 0 0.24rem;
+    box-sizing: border-box;
+}
+
+.dialog201 .showImg {
+    font-size: .28rem;
+    line-height: .26rem;
+    padding: 0 .26rem;
+    letter-spacing: 0.02rem;
+
+}
+
+.dialog201 .calaTips {
+    height: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.22rem;
+}
+
+.dialog21 {
+    width: 5.52rem;
+    height: auto;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 0.1rem;
+}
+
+.dialog21 p {
+    display: inline;
+}
+
+#chenckRechcge {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0 0 0.05rem 0.05rem, ;
+}
+
+.dialog22 {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog22 .helplist {
+    width: 4.56rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.1rem;
+    margin: auto;
+    background: #fff;
+    margin-bottom: 0.4rem;
+}
+
+.dialog22 .listTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1.52rem;
+    background-color: #f1c40f;
+    border-radius: .1rem .1rem 0 0;
+}
+
+.dialog22 .showText ul {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: center;
+    -webkit-justify-content: center;
+    list-style: none;
+    align-items: center;
+    -webkit-align-items: center;
+    padding-bottom: 0.32rem;
+}
+
+.dialog22 .showText li {
+    display: inline-block;
+    width: 60%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    margin: 0.2rem 0 0 0;
+    font-size: 0.28rem;
+}
+
+.dialog220 {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog220 .helplist {
+    width: 4.56rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.1rem;
+    margin: auto;
+    background: #fff;
+    margin-bottom: 0.4rem;
+}
+
+.dialog220 .listTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1.2rem;
+    background-color: #f1c40f;
+    border-radius: .1rem .1rem 0 0;
+}
+
+.dialog220 .showText ul {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: center;
+    -webkit-justify-content: center;
+    list-style: none;
+    align-items: center;
+    -webkit-align-items: center;
+    padding-bottom: 0.32rem;
+}
+
+.dialog220 .showText li {
+    display: inline-block;
+    width: 60%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    margin: 0.2rem 0 0 0;
+    font-size: 0.28rem;
+}
+
+.dialog23 {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialog23 .helplist {
+    width: 6rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.1rem;
+    margin: auto;
+    background: #fff;
+    margin-bottom: 0.6rem;
+}
+
+.dialog23 .listTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1.52rem;
+    background-color: #f1c40f;
+    border-radius: .1rem .1rem 0 0;
+}
+
+.dialog23 .showImg {
+    width: 100%;
+    height: 1.9rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    font-size: 0.24rem;
+    justify-content: space-around;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.dialog23 .showImg>p {
+    width: 70%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.dialog23 .showImg>p span:first-of-type {
+    color: #878787
+}
+
+.dialog23 .showImg>p span:last-of-type {
+    font-size: 0.28rem;
+    font-weight: 500;
+}
+
+.dialog23 .showText {
+    font-size: 0.24rem;
+    width: 100%;
+    height: auto;
+    padding: 0.48rem 0.2rem 0.6rem 0.2rem;
+    border-top: 1px solid #e2e2e2;
+    text-align: center;
+    line-height: 0.6rem;
+    box-sizing: border-box;
+}
+
+.dialog23>div:last-of-type {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dialog24 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dialog24 .enntueList {
+    background-color: #fff;
+    width: 5rem;
+    height: auto;
+    border-radius: 0.1rem;
+    font-size: 0.24rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.dialog24 .entrudetail {
+    height: 1.7rem;
+    font-size: 0.28rem;
+    line-height: 1.7rem;
+}
+
+.dialog24 .button {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+
+.dialog24 .button p {
+    width: 50%;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    text-align: center;
+}
+
+.dialog24 .button p:last-of-type {
+    background-color: #ffd203;
+    border-radius: 0 0 0.1rem 0;
+}
+
+.dialog25 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dialog25 .enntueList {
+    background-color: #fff;
+    width: 5rem;
+    height: auto;
+    border-radius: 0.1rem;
+    font-size: 0.24rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.dialog25 .entrudetail {
+    height: 1.7rem;
+    font-size: 0.28rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog25 .button {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+
+.dialog25 .button p {
+    width: 50%;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    text-align: center;
+}
+
+.dialog25 .button p:last-of-type {
+    background-color: #ffd203;
+    border-radius: 0 0 0.1rem 0;
+}
+
+.dialog26 .enntueList {
+    background-color: #fff;
+    width: 5.6rem;
+    height: auto;
+    border-radius: 0.1rem;
+    font-size: 0.24rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.dialog26 .entrudetail {
+    height: 3rem;
+    font-size: 0.24rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog26 .entrudetail>span .todayPrice,
+.entNum {
+    margin-left: 0.05rem;
+}
+
+.dialog26 .button {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+
+.dialog26 .button p {
+    width: 50%;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    text-align: center;
+}
+
+.dialog26 .button p:last-of-type {
+    background-color: #ffd203;
+    border-radius: 0 0 0.1rem 0;
+}
+
+.dialog261 .enntueList {
+    background-color: #fff;
+    width: 5.6rem;
+    height: auto;
+    border-radius: 0.1rem;
+    font-size: 0.24rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.dialog261 .entrudetail {
+    height: 3rem;
+    font-size: 0.24rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog261 .entrudetail>span .todayPrice,
+.entNum {
+    margin-left: 0.05rem;
+}
+
+.dialog261 .button {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+
+.dialog261 .button p {
+    width: 50%;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    text-align: center;
+}
+
+.dialog261 .button p:last-of-type {
+    background-color: #ffd203;
+    border-radius: 0 0 0.1rem 0;
+}
+
+
+
+
+.dialog27 {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.dialog27 .enntueList {
+    background-color: #fff;
+    width: 88%;
+    height: 80%;
+    border-radius: 0.1rem;
+    font-size: 0.24rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+}
+
+.dialog27 .enntueList::-webkit-scrollbar {
+    display: none;
+}
+
+.dialog27 .agreeTitle {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 200%;
+    text-align: center;
+    padding: 0.2rem 0.4rem;
+}
+
+#checkAgree {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: 0.9rem;
+    border-top: 2px solid #e5e5e5;
+}
+
+#checkAgree span {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 0.9rem;
+}
+
+#checkAgree span:last-of-type {
+    background-color: #ffd203;
+    border-radius: 0 0 0.1rem 0;
+}
+
+
+.dialog28 .helplist {
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.1rem;
+    margin: auto;
+    background: #fff;
+    box-sizing: border-box;
+    padding-bottom: 0.2rem;
+}
+
+.dialog28 .listTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1.56rem;
+    background-color: #f1c40f;
+    border-radius: 0.1rem 0.1rem 0 0;
+}
+
+.dialog28 .numPower {
+    color: #181818;
+    font-size: 0.36rem;
+    font-weight: 500;
+}
+
+.dialog28 .tispSifa {
+    font-size: 0.24rem;
+    margin: 0.22rem 0;
+    padding: 0 0.28rem;
+    color: #ff6678;
+}
+
+.dialog28 .showText {
+    font-size: 0.24rem;
+    width: 100%;
+    margin-bottom: 0.2rem;
+    height: auto;
+    padding: 0 0.24rem;
+    box-sizing: border-box;
+}
+
+.dialog28 ul {
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+}
+
+.dialog28 .adressText {
+    font-size: 0.22rem;
+    text-align: center;
+    color: #999999;
+    width: 100%;
+    padding: 0 0.2rem;
+    box-sizing: border-box;
+}
+
+.dialog281 {
+    width: 60%;
+    height: 40%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.dialog281 .cover {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.1rem;
+}
+
+.dialog281 .cover .reward {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffd203;
+    border-radius: 0.1rem 0.1rem 0 0;
+    padding: 0.2rem 0;
+}
+
+.dialog281 .windowList {
+    width: 60%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.dialog281 .windowList>p {
+    height: 0.7rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.dialog29 {
+    width: 80%;
+}
+
+.dialog29 .cover {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.1rem;
+    padding: 0.1rem 0;
+}
+
+.dialog29 .cover>div:first-of-type {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 0.6rem;
+    box-sizing: border-box;
+}
+
+.dialog29 .cover>div:first-of-type img {
+    width: 2rem;
+    height: 2.22rem;
+    margin-top: 0.2rem;
+}
+
+.dialog29 .cover>div:first-of-type p:first-of-type {
+    font-size: 0.4rem;
+    font-weight: 600;
+    margin: 0.18rem 0;
+}
+
+.dialog29 .cover>.goCertifiton {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 0.3rem;
+}
+
+.dialog29 .cover>.goCertifiton button {
+    width: 50%;
+    height: 0..8rem;
+    line-height: 0.8rem;
+    background-color: #ffd203;
+    border-radius: 0.1rem;
+    font-size: 0.28rem;
+}
+
+.dialog29 .cover>.goCertifiton button:last-of-type {
+    background-color: #fff;
+}
+
+.dialog30 .helplist {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.1rem;
+    margin: auto;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.dialog30 .listTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1.36rem;
+    background-color: #f1c40f;
+    border-radius: 0.1rem 0.1rem 0 0;
+}
+
+.dialog30 .numPower {
+    color: #181818;
+    font-size: 0.28rem;
+    font-weight: 500;
+}
+
+.dialog30 .showText {
+    font-size: 0.24rem;
+    width: 100%;
+    margin: auto;
+    height: auto;
+    padding: 0.2rem 0.24rem 0.4rem 0.24rem;
+    border-top: 1px solid #e2e2e2;
+    box-sizing: border-box;
+}
+
+.dialog31 .helplist {
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.1rem;
+    margin: auto;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.dialog31 .listTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 1.36rem;
+    background-color: #f1c40f;
+    border-radius: 0.1rem 0.1rem 0 0;
+}
+
+.dialog31 .numPower {
+    color: #181818;
+    font-size: 0.36rem;
+    font-weight: 500;
+}
+
+.dialog31 .showText {
+    font-size: 0.24rem;
+    width: 100%;
+    margin: auto;
+    height: auto;
+    padding: 0.2rem 0.24rem 0.4rem 0.24rem;
+    border-top: 1px solid #e2e2e2;
+    box-sizing: border-box;
+}
+
+
+.dialog32 .helplist {
+    width: 6.9rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0.1rem;
+    margin: auto;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.dialog32 .listTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0.1rem 0.1rem 0 0;
+    margin: 0.38rem 0;
+}
+
+.dialog32 .numPower {
+    color: #181818;
+    font-size: 0.36rem;
+    font-weight: 500;
+}
+
+.dialog32 .showText {
+    font-size: 0.34rem;
+    width: 100%;
+    margin: auto;
+    height: auto;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: 500;
+    color: #333333;
+}
+
+.dialog191 {
+    height: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#testUmg {
+    overflow-y: scroll;
+    -webkit-overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    position: fixed;
+    top: 9%;
+    left: calc((100% - 6.52rem) / 2);
+    box-sizing: border-box;
+    border-radius: 0.1rem;
+}
+
+#testUmg::-webkit-scrollbar {
+    width: 0px;
+}
+
+.dialog191 .showAbout {
+    width: 6.52rem;
+    height: auto;
+    background-color: #fff;
+    border-radius: 0.1rem;
+    position: relative;
+    padding-bottom: 0.3rem;
+}
+
+.dialog191 .showMain {
+    width: 100%;
+    padding: 0 0.2rem;
+    box-sizing: border-box;
+}
+
+.dialog191 .showTime {
+    height: 0.72rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    color: #c6c6c6;
+    font-size: 0.22rem;
+}
+
+.dialog191 .showTime .showWeek {
+    width: 1rem;
+    height: 0.3rem;
+    font-size: 0.2rem;
+    text-align: center;
+    background: linear-gradient(to right, #ffd309, #eba10a);
+    background: -webkit-linear-gradient(to right, #ffd309, #eba10a);
+    border-radius: 0.3rem;
+    margin-right: 0.16rem;
+    color: #fff;
+}
+
+.dialog191 .showMain .showText {
+    margin-top: 0.2rem;
+    font-size: 0.26rem;
+    padding-bottom: 0.4rem;
+    min-height: 4rem;
+}
+.dialog191 .showMain .showText img{
+    max-width: 100% !important;
+}
+.dialog191 .showIcon {
+    width: 100%;
+    height: 1.3rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.22rem;
+    box-sizing: border-box;
+}
+
+.dialog191 .showIcon p {
+    display: flex;
+    display: -webkit-flex;
+    font-size: 0.22rem;
+    width: 4.12rem;
+    height: 1.18rem;
+    border: 1px solid #eca40a;
+    border-radius: 0.1rem;
+}
+
+.dialog191 .showIcon p>span {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    margin-left: 0.12rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog191 .showIcon p>span>span:last-of-type {
+    color: #f3ba89;
+    font-size: 0.25rem;
+    margin-top: 0.1rem;
+}
+
+.dialog191 .showIcon p img {
+    width: 0.62rem;
+    height: 0.62rem;
+}
+
+
+.dialog191 .dialogBottom {
+    width: 100%;
+    height: 2.88rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background-color: #fff;
+    box-shadow: 0 -0.05rem 0 #f5f5f5;
+}
+
+.dialog191 .dialogBottom ul img {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.dialog191 .dialogBottom>p {
+    height: 0.88rem;
+    line-height: 0.88rem;
+    color: #949494;
+}
+
+.dialog191 .dialogBottom ul {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-around;
+}
+
+.dialog191 .dialogBottom .btns {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #e2e2e2;
+}
+
+.dialog33 {
+    width: 6.8rem;
+    background-color: white;
+    border-radius: .1rem;
+    padding: 0.2rem;
+    height: 80%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dialog33 .d-title {
+    width: 100%;
+    font-size: 0.36rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.dialog33>.btns {
+    width: 100%;
+    text-align: center;
+    color: #fabf38;
+    margin-top: .2rem;
+}
+
+.dialog33>.btns button {
+    padding: 0.1rem;
+    color: #fabf38;
+    font-size: 0.36rem;
+}
+
+.dialag34 {
+    width: 80%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    padding: 0.2rem 0 0 0;
+    box-shadow: 0 0 0.1rem #b5b5b5;
+    border-radius: 0.1rem;
+    overflow: hidden;
+    font-size: 0.26rem;
+    background-color: #fff;
+}
+
+.dialag34 p {
+    height: 0.6rem;
+    margin-bottom: 0.2rem;
+    line-height: 0.6rem;
+}
+
+.dialag34 b {
+    width: 100%;
+    height: auto;
+    display: flex;
+    display: -webkit-flex;
+    margin-top: 0.2rem;
+    font-weight: normal;
+}
+
+.dialag34 b span {
+    width: 50%;
+    height: 0.88rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialag34 b span:last-of-type {
+    background-color: #ffd203;
+    color: #b5b5b5;
+}
+
+.dialag34 .details {
+    width: 100%;
+    height: 0.6rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+    display: none;
+}
+
+
+.dialag341 {
+    width: 80%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    padding: 0.2rem 0 0 0;
+    box-shadow: 0 0 0.1rem #b5b5b5;
+    border-radius: 0.1rem;
+    overflow: hidden;
+    font-size: 0.26rem;
+    background-color: #fff;
+}
+
+.dialag341 p {
+    height: 0.6rem;
+    margin-bottom: 0.2rem;
+    line-height: 0.6rem;
+}
+
+.dialag341 b {
+    width: 100%;
+    height: auto;
+    display: flex;
+    display: -webkit-flex;
+    margin-top: 0.2rem;
+    font-weight: normal;
+}
+
+.dialag341 b span {
+    width: 50%;
+    height: 0.88rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialag341 b span:last-of-type {
+    background-color: #ffd203;
+    color: #b5b5b5;
+}
+
+.dialag341 .details {
+    width: 100%;
+    height: 0.6rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.3rem;
+    box-sizing: border-box;
+    display: none;
+}
+
+.dialag35 {
+    width: 6.51rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.dialag35 .dialagTitle {
+    width: 6.51rem;
+    height: 1.51rem;
+    background: url(../image/yell_bgx.png) no-repeat center;
+    background-size: 100% 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.1rem;
+}
+
+.dialag35 .showtable {
+    width: 100%;
+    height: auto;
+    padding: 0 0.24rem;
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialag35 .showtable table {
+    width: 100%;
+    border: 1px solid #b5b5b5;
+    margin-bottom: 1.2rem;
+}
+
+.dialag35 .showtable table tr {
+    width: 100%;
+    height: 0.6rem;
+    border: 1px solid #b5b5b5;
+}
+
+.dialag35 .showtable table td {
+    width: 25%;
+    height: 0.6rem;
+    border: 1px solid #b5b5b5;
+    line-height: 0.6rem;
+    text-align: center;
+}
+
+.dialag35 .showtable p {
+    width: 100%;
+    height: auto;
+    margin: 0.3rem 0;
+    font-size: 0.23rem;
+}
+
+.dialag35 .showtable b {
+    width: 100%;
+    color: #ff6678;
+    text-align: center;
+}
+
+.dialag36 {
+    width: 6.51rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+}
+
+.dialag36 .dialagTitle {
+    width: 6.51rem;
+    height: 1.51rem;
+    background: url(../image/yell_bgx.png) no-repeat center;
+    background-size: 100% 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.1rem;
+}
+
+.dialag36 .showtable {
+    width: 100%;
+    height: auto;
+    padding: 0 0.24rem;
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialag36 ul {
+    width: 100%;
+    height: auto;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.3rem;
+}
+
+.dialag36 ul li {
+    width: 100%;
+    height: 0.6rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center
+}
+
+.dialag36 ul li span {
+    width: 50%;
+    height: auto;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialag36 ul li:not(:first-of-type) span {
+    color: #6f6f6f;
+    font-size: 0.28rem;
+}
+
+.dialag36 .showtable p {
+    width: 100%;
+    height: auto;
+    margin: 0.3rem 0;
+    font-size: 0.26rem;
+}
+
+.dialag36 .showtable b {
+    width: 100%;
+    color: #ff6678;
+    text-align: center;
+}
+
+.dialag37 {
+    width: 6.51rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+}
+
+.dialag37 .dialagTitle {
+    width: 6.51rem;
+    height: 1.51rem;
+    background: url(../image/yell_bgx.png) no-repeat center;
+    background-size: 100% 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.1rem;
+}
+
+.dialag37 .showtable {
+    width: 100%;
+    height: auto;
+    padding: 0 0.24rem;
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialag37 .underTexttips p {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 0.4rem;
+}
+
+.dialag37 .underTexttips p span:first-of-type {
+    width: 100%;
+    font-size: 0.28rem;
+    color: #2b2b2b;
+    font-weight: 550;
+    margin-bottom: 0.1rem;
+}
+
+.dialag37 .underTexttips p span:last-of-type {
+    font-size: 0.27rem;
+    padding-left: 0.3rem;
+    box-sizing: border-box;
+    color: #6f6f6f;
+}
+
+.dialag37 .showtable p {
+    width: 100%;
+    height: auto;
+    margin: 0.3rem 0;
+    font-size: 0.26rem;
+}
+
+.dialag37 .showtable b {
+    width: 100%;
+    color: #ff6678;
+    text-align: center;
+}
+
+.dialag38 {
+    width: 6.51rem;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+}
+
+.dialag38 .dialagTitle {
+    width: 6.51rem;
+    height: 1.51rem;
+    background: url(../image/yell_bgx.png) no-repeat center;
+    background-size: 100% 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.1rem;
+}
+
+.dialag38 .showtable {
+    width: 100%;
+    height: auto;
+    padding: 0 0.24rem;
+    box-sizing: border-box;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialag38 .underTexttips p {
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 0.4rem;
+}
+
+.dialag38 .underTexttips p span:first-of-type {
+    width: 100%;
+    font-size: 0.28rem;
+    color: #2b2b2b;
+    font-weight: 550;
+    margin-bottom: 0.1rem;
+}
+
+.dialag38 .underTexttips p span:last-of-type {
+    font-size: 0.24rem;
+    padding-left: 0.3rem;
+    box-sizing: border-box;
+    color: #6f6f6f;
+}
+
+.dialag38 .showtable p {
+    width: 100%;
+    height: auto;
+    margin: 0.3rem 0;
+    font-size: 0.26rem;
+}
+
+.dialag38 .showtable b {
+    width: 100%;
+    color: #ff6678;
+    text-align: center;
+}
+
+.dialog39 {
+    width: 6.8rem;
+    background-color: white;
+    border-radius: .1rem;
+    padding: 0.2rem;
+    height: 80%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dialog39 .d-title {
+    width: 100%;
+    font-size: 0.36rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.dialog39>.btns {
+    width: 100%;
+    text-align: center;
+    color: #fabf38;
+    margin-top: .2rem;
+}
+
+.dialog39>.btns button {
+    padding: 0.1rem;
+    color: #fabf38;
+    font-size: 0.36rem;
+}
+
+.dialog391 {
+    width: 6.8rem;
+    background-color: white;
+    border-radius: .1rem;
+    padding: 0.2rem;
+    height: 80%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dialog391 .d-title {
+    width: 100%;
+    font-size: 0.36rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.dialog391>.btns {
+    width: 100%;
+    text-align: center;
+    color: #fabf38;
+    margin-top: .2rem;
+}
+
+.dialog391>.btns button {
+    padding: 0.1rem;
+    color: #fabf38;
+    font-size: 0.36rem;
+}

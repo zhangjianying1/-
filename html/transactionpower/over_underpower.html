@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/overunderpower.css">
+    <title>我承接的和转让列表页</title>
+</head>
+
+<body>
+    <div class="showList">
+        <ul id="outcoinlist" style="padding-top: 0.2rem;">
+            <!-- <li>
+                <p>
+                    <span class="rentCoinType">
+                        <span>
+                            <span>
+                                转让人:
+                            </span>
+                        </span>
+                        <span>
+                            张XX
+                        </span>
+                        活期。定期 #ffd203 双挖 #c6cefa
+                        <span class="expireDay">
+                            定期
+                        </span>
+                    </span>
+                    待挖：#f3933a  退租：#434343 开挖：#80d699
+                    <span class="showWorkStu" style="color:#f3933a;font-size: 0.25rem;">
+                        待挖 >
+                    </span>
+                </p>
+                <div class="rentItemDetail">
+                    <div>
+                        <p>
+                            <span>
+                                承接金额
+                                <span>
+                                    3000BCNY
+                                </span>
+                            </span>
+                        </p>
+                        <p>
+                            <span>
+                                合约算力
+                                <span>
+                                    1T
+                                </span>
+                            </span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <span>
+                                合约锁定期限
+                                <span>
+                                    30天
+                                </span>
+                            </span>
+                        </p>
+                        <p>
+                            <span>
+                                承接时间
+                                <span>
+                                    2018-01-07
+                                </span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <b>
+                    <span>
+                        矿机:
+                        <span>
+                            算力合约包限租10T(10T)
+                        </span>
+                    </span>
+                    <span>
+                        订单号:
+                        <span>
+                            HD2311313
+                        </span>
+                    </span>
+                </b>
+            </li>
+            <li>
+                <p>
+                    <span class="rentCoinType">
+                        <span>
+                            <span>
+                                转让人:
+                            </span>
+                        </span>
+                        <span>
+                            张XX
+                        </span>
+                        活期。定期 #ffd203 双挖 #c6cefa
+                        <span class="expireDay">
+                            定期
+                        </span>
+                    </span>
+                    待挖：#f3933a  退租：#434343 开挖：#80d699
+                    <span class="showWorkStu" style="color:#f3933a;font-size: 0.25rem;">
+                        待挖 >
+                    </span>
+                </p>
+                <div class="rentItemDetail">
+                    <div>
+                        <p>
+                            <span>
+                                承接金额
+                                <span>
+                                    3000BCNY
+                                </span>
+                            </span>
+                        </p>
+                        <p>
+                            <span>
+                                合约算力
+                                <span>
+                                    1T
+                                </span>
+                            </span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <span>
+                                合约锁定期限
+                                <span>
+                                    30天
+                                </span>
+                            </span>
+                        </p>
+                        <p>
+                            <span>
+                                承接时间
+                                <span>
+                                    2018-01-07
+                                </span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <b>
+                    <span>
+                        矿机:
+                        <span>
+                            算力合约包限租10T(10T)
+                        </span>
+                    </span>
+                    <span>
+                        订单号:
+                        <span>
+                            HD2311313
+                        </span>
+                    </span>
+                </b>
+            </li> -->
+        </ul>
+    </div>
+    <div class="showOverTaking" style="display: none;">
+        <ul id="overTakinglist" style="padding-top: 0.2rem;">
+        </ul>
+    </div>
+    <div id="listState" style="padding: 0.2rem 0;width:100%;text-align: center;">
+        加载中……
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/dotmin.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../script/overandunder.js"></script>
+    <script type="text/html" id="ul_list">
+    {{~it:item:index}}
+    <li data-orderID="{{=item.order_id}}" data-machineID={{=item.id}} data-dragStatus="{{=item.dragStatus}}">
+        <p>
+            <span class="rentCoinType">
+                <span>
+                    <span>
+                        转让人:
+                    </span>
+                </span>
+                <span>
+                    {{=item.from_username}}
+                </span>
+                <!-- 活期。定期 #ffd203 双挖 #c6cefa -->
+                <span class="expireDay" style="background-color:{{=item.is_bhp_pos==0?'#ffd203':'#c6cefa'}}">
+                    {{=item.is_bhp_pos==0?"BTC":"BTC+BHP"}}
+                </span>
+            </span>
+            <!-- 待挖：#f3933a 退租：#434343 开挖：#80d699 -->
+            {{?item.dragStatus==0}}
+            <span class="showOverStu" style="display:inline-block;width:2rem;color:#ff6678;font-size: 0.25rem;display:flex;display:-webkit-flex;align-items:center;justify-content:flex-end;">
+                <span>{{=item.workText}}</span><img src="../../image/red_right_icnx.png" style="width:0.12rem;height:0.22rem;margin-left:0.1rem;">
+            </span>
+            {{??item.dragStatus==1}}
+            <span class="showOverStu" style="display:inline-block;width:2rem;color:#80d699;font-size: 0.25rem;display:flex;display:-webkit-flex;align-items:center;justify-content:flex-end;">
+                <span>{{=item.workText}}</span><img src="../../image/lv_right_icnx.png" style="width:0.12rem;height:0.22rem;margin-left:0.1rem;">
+            </span>
+            {{??}}
+            <span class="showOverStu" style="display:inline-block;width:2rem;color:#434343;font-size: 0.25rem;display:flex;display:-webkit-flex;align-items:center;justify-content:flex-end;">
+                <span>{{=item.workText}}</span><img src="../../image/right_jintoux.png" style="width:0.12rem;height:0.22rem;margin-left:0.1rem;">
+            </span>
+            {{?}}
+        </p>
+        <div class="rentItemDetail">
+            <div>
+                <p>
+                    <span>
+                        承接金额
+                        <span>
+                            {{=item.continue_total_deposit+" "+item.pay_currency}}
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        合约算力
+                        <span>
+                            {{=item.totalPower}}T
+                        </span>
+                    </span>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <span>
+                        合约锁定期限
+                        <span>
+                            {{=item.regular_date_num==0?"30天":(item.regular_date_num+"天")}}
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        <span>
+                            承接时间
+                        </span>
+                        <span>
+                            {{=item.time_creat.split(" ")[0]}}
+                        </span>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <b>
+            <span>
+                矿机:
+                <span>
+                    {{=item.name}}
+                </span>
+            </span>
+            <span>
+                订单号:
+                <span>
+                    {{=item.order_id}}
+                </span>
+            </span>
+        </b>
+    </li>
+    {{~}}
+    </script>
+    <!-- 我转让的 -->
+    <script type="text/html" id="miTransferList">
+    {{~it:item:index}}
+    <li>
+        <p>
+            <span class="overTakingType">
+                <span>
+                    <span>
+                        {{=item.name}}
+                    </span>
+                </span>
+                <span class="expireOverDay" style="background-color:{{=item.is_bhp_pos==1?'#c6cefa':'#ffd203'}};font-size:0.2rem;">
+                    {{=item.is_bhp_pos==1?"BTC+BHP":"BTC"}}
+                </span>
+            </span>
+            {{?item.state==0}}
+            <span class="showOverStu" style="display:inline-block;width:1.5rem;text-align:right;color:#ff6678;font-size: 0.25rem;">
+                {{=item.state_format}}
+            </span>
+            {{??item.state==1}}
+            <span class="showOverStu" style="display:inline-block;width:1.5rem;text-align:right;color:#ffbf18;font-size: 0.25rem;">
+                {{=item.state_format}}
+            </span>
+            {{??item.state==2}}
+            <span class="showOverStu" style="display:inline-block;width:1.5rem;text-align:right;color:#ffd203;font-size: 0.25rem;">
+                {{=item.state_format}}
+            </span>
+            {{?}}
+        </p>
+        <div class="overItemDetail">
+            <div style="flex:1;">
+                <p>
+                    <span>
+                        转让单价
+                        <span>
+                            {{=item.goods_deposit}}{{=item.pay_currency}}
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        转让总额
+                        <span>
+                            {{=item.total_deposit}}{{=item.pay_currency}}
+                        </span>
+                    </span>
+                </p>
+            </div>
+            <div style="padding-left: 0.4rem;width:35%;">
+                <p>
+                    <span>
+                        转让算力
+                        <span>
+                            {{=item.total_power}}T
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span style="visibility: hidden;">
+                        转让算力
+                        <span>
+                            1
+                        </span>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="orderTime">
+            <b>
+                发起时间&nbsp;&nbsp;{{=item.time_creat}}
+            </b>
+            <b style="display:{{=item.state==2?'flex':'none'}};">
+                撤销时间&nbsp;&nbsp;{{=item.update_time}}
+            </b>
+            <b style="display:{{=item.state==1?'flex':'none'}};">
+                转让时间&nbsp;&nbsp;{{=item.update_time}}
+            </b>
+        </div>
+        <div class="showOrderNum">
+            <b style="color:rgb(139,139,139);">
+                订单号: <span>
+                    {{=item.id}}
+                </span>
+            </b>
+            <b class="canaleButton" data-time="{{=item.time_creat}}" data-state="{{=item.state}}" data-canleId="{{=item.id}}" data-isundo="{{=item.is_undo}}" style="background-color:{{=Number(item.state)==0? '#ffd203':'#e5e5e5;'}};display:flex;display:-webkit-flex;align-items:center;justify-content: center;">
+                撤销
+            </b>
+        </div>
+    </li>
+    {{~}}
+    </script>
+</body>
+
+</html>

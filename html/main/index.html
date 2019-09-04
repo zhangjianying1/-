@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <title>首页</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/firstnew.css">
+    <style>
+        .lbBanner img,
+        .lbBanner div {
+            height: 100% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="broadcast tetsshow" style="margin-top:4.16rem">
+        <div class="wrapper">
+            <div class="test">
+                <img id="alarm" src="../../image/iconnews/ios/pro/noticeas.png" style="display: inline-block;position: relative;">
+                <div class="v-slider" style="border: 0.01rem;">
+                    <div class="slider-w"> </div>
+                </div>
+                <span id="getMessageList" style="padding: 0.26rem;color:#898989;font-size: 0.24rem;display: none;">
+                    更多
+                </span>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;height:auto;background:#fff;padding-top:0.1rem;">
+        <div class="everyDay">
+            <img src="../../image/iconbtb.png" style="width: 0.32rem;height: 0.32rem;position: absolute;left: 0.18rem;top: 0.2rem;">
+            <p>
+                昨日每&nbsp;T&nbsp;分币量&nbsp;&nbsp;<span style="display: inline-block;font-size: 0.4rem;font-weight: normal;">|</span> &nbsp;&nbsp;1T&nbsp;分&nbsp;
+                <span class="getBtcNum">
+                    0.0000 BTC
+                </span>
+            </p>
+        </div>
+    </div>
+    <div class="tetsshow" style="width: 100%;height: auto;background-color: #fff;padding:0.5rem 0;">
+        <div id="showOrin" class="showOrin" data-id="{{=item.machine_id}}" data-url="fisrt/itemdetial" style="padding-left: 0.28rem;display: flex;display: -webkit-flex;justify-content: center;-webkit-justify-content: center;flex-direction: column;-webkit-flex-direction:column;border-radius: 0.1rem;box-shadow: 0 0 0.1rem rgba(187, 187, 187, 0.28);">
+            <p class="machineTitle" style="font-size: 0.26rem;color: #181818;font-weight: 500;">
+
+            </p>
+            <div style="font-size: 0.24rem;margin:0.11rem 0 0.31rem 0;color: rgba(24, 24, 24, 0.65);">
+                <span>
+                    单份金额
+                    <span class="rentMoney">0000</span> <span class="currentName">CNY</span>
+                </span>
+                <span style="margin-left: 0.41rem;">
+                    剩余算力
+                    <span class="balance-num">0000</span>
+                </span>
+            </div>
+            <div class="rentButton" style="width: 1.8rem;height:0.5rem;color: #181818;font-size: 0.24rem;border-radius: 0.5rem;display: flex;display: -webkit-flex;justify-content: center;-webkit-justify-content: center;align-items: center;-webkit-align-items: center;border: 1px solid #e5e5e5;">
+                <span class="showRent">
+                    立即下单
+                </span>
+                <span class="openDate" style="margin-left: 0.1rem;display: none;">倒计时</span>
+                <span class="next intervalHour" style="display: none;margin-left: 0.1rem;font-size: 0.22rem;text-align: right;">
+                    <span class="leastHour setBg"></span>:
+                    <span class="leastMin setBg"></span>:
+                    <span class="leastSes setBg"></span>
+                </span>
+            </div>
+        </div>
+        <div id="hideMachine" style="width: 94%;margin-left:3%;height: auto; padding: 0.1rem;box-sizing: border-box;border-radius: 0.1rem;box-shadow: 0 0 0.1rem rgba(187, 187, 187, 0.28);display: none;">
+            <div class="hideMachine">
+
+            </div>
+        </div>
+    </div>
+    <div class="textList tetsshow">
+        <span data-type="coinPrice">
+            币种行情
+        </span>
+        <span data-type="stockPrice">
+            股票行情
+        </span>
+    </div>
+    <div class="bigBox tetsshow">
+        <div class="outBox">
+            <div class="showCoinPrice">
+                <div class="typeCoin">
+                    <ul>
+                        <li class="disableCss" style="font-size:0.21rem;width: 1.2rem;color: #959595;">交易所/币种</li>
+                        <li>BTC</li>
+                        <li>ETH</li>
+                        <li>LTC</li>
+                        <li>BHP</li>
+                    </ul>
+                </div>
+                <div class="tableBox">
+                    <table>
+                        <tbody id="website" class="website">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="showStockPrice showHead">
+                <p>
+                    <span>
+                        股票名称
+                    </span>
+                    <span>
+                        最新价
+                    </span>
+                    <span>
+                        涨跌幅
+                    </span>
+                </p>
+                <div class="tableBox">
+                    <table>
+                        <tbody class="showlist">
+                            <tr style="padding-right:0;">
+                                <td>
+                                    <span>EChem</span>
+                                </td>
+                                <td>
+                                    <span style="display: flex;display: -webkit-flex;flex-direction: column;align-items: center;">
+                                        <span class="stockPrice" style="display:inline-block;height: 0.3rem;">
+                                        </span>
+                                        <span class="getStockPrice" style="color:#ababab;display:inline-block;height: 0.3rem;">
+                                        </span>
+                                    </span>
+                                </td>
+                                <td class="upRange" style="color:#f98181">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/api.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../res/web/script/browser.js"></script>
+    <script src="../../script/dotmin.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../js/firstnew.js"></script>
+    <script type="text/html" id="lunboTpl">
+    {{~it:value:index}}
+    <div style="height:100%;">
+        <img style="width: 100%;height:2000px;background-color: red;margin-top: 3.8rem" src="http://static.wiminer.com//uploads/banner/201801/1029291025102925820638.png" data-url="{{=value.url}}" />
+    </div>
+    {{~}}
+    </script>
+    <script type="text/html" id="lunboContent">
+    {{~it:item:index}}
+    {{?item.type==2}}
+    <div class="slider-item" id="{{=index}}" data-id={{=index}} data-type='{{=item.type}}' data-param='{"page":"common/headerwin","name":"browser_headerwin","param":{"subpage":"common/browser","name":"browser","title":"{{=item.title}}","url":"{{=item.content}}"}}'>
+        <p style="text-align: left;">{{=item.title}}</p>
+    </div>
+    {{??}}
+    <div class="slider-item" id="{{=index}}" data-id={{=index}} data-type='{{=item.type}}' data-param='{"page":"common/headerwin","name":"word_cont_one_headerwin","param":{"subpage":"extrapage/word_cont_one","name":"word_cont1","title":"{{=item.title}}"}}'>
+        <p style="text-align: left;">{{=item.title}}</p>
+    </div>
+    {{?}}
+    {{~}}
+    </script>
+    <!-- 币种行情 -->
+    <script type="text/html" id="coinTpl">
+    {{~it:value:index}}
+    <tr calss="showurl" style="padding-right:0;">
+        <td>
+            <img src={{=value.icon}}>
+            <span> {{=value.name}}</span>
+        </td>
+        <td class="textcenter">＄{{=value.price==0 ? "—" : value.price}}</td>
+        <td>￥{{=value.cny==0?"—":value.cny}}</td>
+    </tr>
+    {{~}}
+    </script>
+    <!-- 股票行情 -->
+    <!-- <script type="text/html" id="stockPriceList">
+        {{~it:value:index}}
+        <tr style="padding-right:0;">
+                <td>
+                    <span> {{=value.name}}</span>
+                </td>
+                <td class="stockPrice">
+                        €{{=value.price==0 ? "—" : value.price}}
+                    <br> 
+                    <span style="color:#f5f5f5">
+                        ￥{{=value.price==0 ? "—" : value.price}}
+                    </span>
+                </td>
+                <td style>￥{{=value.cny==0?"—":value.cny}}</td>
+            </tr>
+        {{~}}
+    </script> -->
+
+</body>
+
+</html>

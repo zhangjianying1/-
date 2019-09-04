@@ -1,0 +1,1610 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>标题头部</title>
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../res/web/css/rentdetail.css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css">
+    <style type="text/css">
+        body {
+            font-family: PingFangSC-Regular, sans-serif;
+        }
+
+        #bhpRecordTab>span {
+            display: inline-block;
+            height: 45px;
+            text-align: center;
+            position: relative;
+            font-size: 15px;
+            color: #a8a8a8;
+            line-height: 45px;
+            width: 33.333333%;
+        }
+
+        #bhpRecordTab {
+            overflow: hidden;
+            background: #f7f7f7;
+        }
+
+        #bhpRecordTab>span:before {
+            content: '';
+            display: block;
+            width: 1px;
+            background: #ebeaef;
+            height: 20px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -10px;
+        }
+
+        #bhpRecordTab>span:last-child:before {
+            display: none;
+        }
+
+        #bhpRecordTab>.selected {
+            color: #181818;
+        }
+
+        #bhpRecordTab>.selected:after {
+            content: '';
+            display: block;
+            width: 35px;
+            height: 2px;
+            background: #ffd203;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -17.5px;
+        }
+
+        .right-img {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+
+        .right-img>img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #F9B631;
+        }
+
+        .b-wrap {
+            position: absolute;
+            bottom: 3px;
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+            right: -2px;
+        }
+
+        .b-wrap>img {
+            width: 15px;
+            height: 15px;
+        }
+
+        .b-wrap>span {
+            font-size: 6px;
+            -webkit-text-size-adjust: none;
+            color: white;
+            position: absolute;
+            right: 0px;
+            bottom: -17px;
+        }
+
+        .profits {
+            border-top: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .profitslist {
+            border-top: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        #showlist {
+            color: rgba(18, 18, 18, 0.68);
+            height: 60px;
+            background-color: #fff;
+            box-sizing: border-box;
+            overflow: scroll;
+        }
+
+        #showlist li {
+            width: 113px;
+            display: block;
+            height: 100%;
+            line-height: 60px;
+            font-size: 14px;
+            /* width: auto; */
+            text-align: center;
+            position: relative;
+            border-bottom: 5px solid #f7f7f7;
+            float: left;
+
+        }
+
+        #showlist li:not(:last-of-type)::after {
+            content: "";
+            width: 1px;
+            height: 30%;
+            background-color: #b5b5b5;
+            position: absolute;
+            right: 0;
+            top: 38%;
+        }
+
+        #showlist li:last-of-type {
+            border-right: none;
+        }
+
+        #showlist li:first-of-type {
+            color: #333333;
+            border-bottom: 3px solid #ffd203;
+        }
+
+        #outcointitletext {
+            color: #575757;
+            height: 60px;
+            background-color: #fff;
+        }
+
+
+        #outcointitletext li {
+            display: inline-block;
+            height: 100%;
+            line-height: 60px;
+            font-size: 14px;
+            width: auto;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #f7f7f7;
+        }
+
+        #outcointitletext li:not(:last-of-type)::after {
+            content: "";
+            width: 1px;
+            height: 30%;
+            background-color: #b5b5b5;
+            position: absolute;
+            right: -70%;
+            top: 40%;
+        }
+
+        #outcointitletext li:last-of-type {
+            border-right: none;
+        }
+
+        #outcointitletext li:first-of-type {
+            border-bottom: 3px solid #ffd203;
+        }
+
+        #showproptys {
+            color: #575757;
+            height: 60px;
+            background-color: #fff;
+        }
+
+
+        #showproptys li {
+            display: inline-block;
+            width: 24%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 14px;
+            border-right: 1px solid #ebeaef;
+        }
+
+        #showproptys li:last-of-type {
+            border-right: none;
+        }
+
+        #showproptys li:first-of-type {
+            color: #ffd203;
+        }
+
+        #ulli li {
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            -webkit-algin-item: center;
+            border-bottom: 3px solid white;
+            border-top: 3px solid white;
+        }
+
+        #calculateli li {
+            display: inline-block;
+            width: 33.3%;
+            border-right: 1px solid #e5e5e5;
+            text-align: center;
+            height: 15px;
+            line-height: 15px;
+        }
+
+        #outcointitletext {
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #outcointitletext span {
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            border: 1px solid #ffd203;
+            line-height: 40px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        #outcointitletext span:first-of-type {
+            border-radius: 5px 0 0 5px;
+            background-color: #ffd203;
+        }
+
+        #outcointitletext span:last-of-type {
+            border-radius: 0 5px 5px 0;
+        }
+
+        #buyandselltext {
+            display: flex;
+            display: -webkit-flex;
+            /* justify-content: space-between; */
+            align-items: center;
+        }
+
+        #buyandselltext span {
+            display: inline-block;
+            width: 100px;
+            height: 34px;
+            border: 1px solid #ffd203;
+            line-height: 35px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        #buyandselltext span:first-of-type {
+            border-radius: 5px 0 0 5px;
+            background-color: #ffd203;
+        }
+
+        #buyandselltext span:last-of-type {
+            border-radius: 0 5px 5px 0;
+        }
+
+        .typeCoin {
+            width: 100%;
+            height: auto;
+        }
+
+        .typeCoin ul {
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            align-items: center;
+            -webkit-align-items: center;
+            height: 40px;
+            width: 100%;
+            background: #fff;
+            font-size: 13px;
+            box-sizing: border-box;
+            padding-right: 10px;
+        }
+
+        .typeCoin ul li {
+            height: 37px;
+            line-height: 37px;
+            text-align: center;
+            color: #808080;
+            border-bottom: 3px solid #fff;
+            padding: 0 5px;
+        }
+
+        .typeCoin ul li:nth-of-type(2) {
+            color: #333333;
+            border-bottom: 3px solid #ffd203;
+        }
+
+        .typeCoin ul li:first-of-type {
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        #buyandselltext span:last-of-type {
+            color: #808080;
+        }
+
+        #addchoose {
+            width: 0;
+            height: 0;
+            border-top: 5px solid #676767;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            position: absolute;
+            top: 47%;
+            right: 40%;
+        }
+
+        .triangleTop {
+            width: 0;
+            height: 0;
+            border-bottom: 5px solid #e8d7a9;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            position: absolute;
+            top: 40%;
+            right: 15%;
+        }
+
+        .triangleButtom {
+            width: 0;
+            height: 0;
+            border-top: 5px solid #e0e0e0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            position: absolute;
+            top: 54%;
+            right: 15%;
+        }
+
+        .triangleTopTime {
+            width: 0;
+            height: 0;
+            border-bottom: 5px solid #e8d7a9;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            position: absolute;
+            top: 40%;
+            right: 15%;
+        }
+
+        .triangleButtomTime {
+            width: 0;
+            height: 0;
+            border-top: 5px solid #e0e0e0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            position: absolute;
+            top: 54%;
+            right: 15%;
+        }
+
+        .shooseBuyorSell {
+            width: 100%;
+            box-sizing: border-box;
+            height: 40px;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: space-around;
+            background: #fff;
+        }
+
+        .shooseBuyorSell span {
+            display: inline-block;
+            font-size: 12px;
+            height: 100%;
+            text-align: center;
+            line-height: 40px;
+            color: #181818;
+            width: 35%;
+            border-bottom: 3px solid #fff;
+        }
+
+        .shooseBuyorSell span:first-of-type {
+            border-bottom-color: #ffd206;
+        }
+
+        .powerBuyOrSell {
+            width: 100%;
+            box-sizing: border-box;
+            height: 40px;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: space-around;
+            background: #fff;
+        }
+
+        .powerBuyOrSell span {
+            display: inline-block;
+            font-size: 12px;
+            height: 100%;
+            text-align: center;
+            line-height: 40px;
+            color: #181818;
+            width: 26%;
+            border-bottom: 3px solid #fff;
+        }
+
+        .powerBuyOrSell span:first-of-type {
+            border-bottom-color: #ffd206;
+        }
+
+        #showRedtext {
+            display: flex;
+            display: -webkit-flex;
+            /* justify-content: space-between; */
+            align-items: center;
+        }
+
+        #showRedtext span {
+            display: inline-block;
+            width: 100px;
+            height: 34px;
+            border: 1px solid #ffd203;
+            line-height: 35px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        #showRedtext span:first-of-type {
+            border-radius: 5px;
+            background-color: #ffd203;
+        }
+
+        /* #showRedtext span:last-of-type {
+            border-radius: 0 5px 5px 0;
+        } */
+
+        #newEntrustpage li {
+            text-align: center;
+            color: #808080;
+            border-bottom: 3px solid #fff;
+            padding: 0 5px;
+        }
+
+        #newEntrustpage li:first-of-type {
+            color: #7ed321;
+            border-bottom-color: #7ed321;
+        }
+
+        .showheadChoose::after {
+            border-top: 5px solid #e2e2e2;
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+            content: "";
+            position: absolute;
+            width: 0;
+            right: 20%;
+            top: 45%;
+        }
+
+        .aui-bar {
+            display: block;
+        }
+
+        #hidescroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hideCoin {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100%;position: fixed;top: 0px;left: 0px;z-index: 1;" id="otherHeader">
+        <!-- 状态栏占位-->
+        <div class="status-bar" style="background:#ffffff"></div>
+        <!-- 顶部导航栏 -->
+        <header id="showNewErst" class="aui-bar aui-bar-nav bg-color-blue" style="background-color: #fff;overflow: hidden;display: none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;">
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 10px 0 12px;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div class="showheadChoose" style="background-color: transparent;color:#333333;font-size: 15px;font-weight: 400;position: relative;">
+                    <select id="chooseEntrustCoin" style="background-color: #f7f7f7;width: 90px;padding-left: 12px;">
+                        <option selected value="BTC">BTC</option>
+                        <option value="ETH">ETH</option>
+                        <option value="LTC">LTC</option>
+                        <option value="BHP">BHP</option>
+                    </select>
+                </div>
+                <!-- 纯文字按钮 -->
+                <a class="aui-pull-right aui-btn right-btn" style="font-size: 13px;font-weight: 400; color:#333333;padding: 0;border-bottom: 3px solid #fff;margin-right: 10px;"></a>
+            </div>
+            <div>
+                <ul id="newEntrustpage" style="border-bottom:1px solid #e5e4e4;font-size: 14px;display: flex;display: -webkit-flex;justify-content: space-around;">
+                    <!-- <li data-coin="buyIn">买入</li> -->
+                    <li data-coin="sellOut">卖出</li>
+                    <li data-coin="nowEntrust">当前委托</li>
+                    <li data-coin="historyEntrust">历史委托</li>
+                </ul>
+            </div>
+        </header>
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="showheader" style="background-color: #fff;position: relative;border-bottom: 1px solid #eeeeee;overflow: hidden;">
+            <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;left: 0;top:0;padding:0 0.8rem;padding-right: 1.2rem;">
+                <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+            </span>
+            <div class="aui-title font-16" id="title" style="white-space: normal!important;width: 220px!important;background-color: transparent;position: absolute;left: calc(50% - 110px);color:#333333;">
+                未知</div>
+            <!-- 纯文字按钮 -->
+            <a class="aui-pull-right aui-btn right-btn" id="rightBtn" style="font-size: 14px;color: #181818;display: none;"></a>
+            <!-- 纯图标 -->
+            <a class="aui-pull-right aui-btn right-icon" id="imgIcon" style="display:none;margin-right: 5px;">
+                <img src="" style="width: 31px;">
+            </a>
+        </header>
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="showtype" style="background-color: #fff;height: auto;border-bottom: 1px solid #eeeeee;display: none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;padding: 0 3rem 0 0.5rem;border-bottom: 1px solid #e5e5e5;">
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 1rem 0 0.24rem;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div id="titletext" style="background-color: transparent;color:#333333;font-size: 15px;font-weight: 400;">资产账单</div>
+                <!-- 纯文字按钮 -->
+                <a class="aui-pull-right aui-btn right-btn" id="righttext" style="font-size: 15px;font-weight: 400; color:#333333;padding: 0;border-bottom: 3px solid #fff;"></a>
+            </div>
+            <div class="choosetext" id='hidescroll' style="width:100%;overflow-x: scroll; -webkit-overflow-scrolling: touch;background:#f7f7f7;">
+                <ul id="showlist" style="background-color: #f7f7f7;overflow: hidden;">
+                    <li data-type="rechage">
+                        充值
+                    </li>
+                    <li data-type="outmoney">
+                        提现
+                    </li>
+                    <li data-type="rechagecoin">
+                        充币
+                    </li>
+                    <li data-type="outcoin">
+                        提币
+                    </li>
+                    <li data-type="exchangesweet">
+                        糖果
+                    </li>
+                    <li data-type="redBagrecord">
+                        红包记录
+                    </li>
+                    <li data-type="ctocTransferCoin">
+                        个人转账
+                    </li>
+                    <li data-type="serviceTransferCoin">
+                        系统转币
+                    </li>
+                    <li data-type="serviceTransferMoney">
+                        系统转余额
+                    </li>
+                </ul>
+                <!-- <div id="showAboutMe" style="width: 100%;display: flex;display: -webkit-flex;border-bottom: 1px solid #e5e5e5;height: 41px;align-items: center;font-size: 13px;">
+                    <span data-choose="myReceiveRed" style="width: 50%;display: inline-block;border-right: 1px solid #e5e5e5;color: #ffd203;height: 20px;line-height: 20px;text-align: center;">
+                        已收到
+                    </span>
+                    <span data-choose="mySendRed" style="width: 50%;color: #333333;display: inline-block;height: 20px;line-height: 20px;text-align: center;">
+                        已发出
+                    </span>
+                </div> -->
+            </div>
+        </header>
+        <header class="aui-bar aui-bar-nav bg-color-blue" style="background-color: #fff;overflow: hidden;display: none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;padding: 0 3rem 0 0.5rem">
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 1rem 0 0.24rem;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div id="titletext" style="background-color: transparent;color:#333333;border-bottom: 3px solid #ffd203;font-size: 15px;font-weight: 400;">
+                    资产账单</div>
+                <!-- 纯文字按钮 -->
+                <a class="aui-pull-right aui-btn right-btn" id="righttext" style="font-size: 15px;font-weight: 400; color:#333333;padding: 0;border-bottom: 3px solid #fff;">资产账单</a>
+            </div>
+            <div class="choosetext">
+                <div class="profits">
+                    <ul id="showlistshowlist" style="display: -webkit-flex;justify-content:space-around;-webkit-justify-content:space-around;align-items: center;-webkit-align-items: center;">
+                        <li data-type="rechage">充值</li>
+                        <li data-type="outmoney">提现</li>
+                        <li data-type="buycoin">代购</li>
+                    </ul>
+                </div>
+                <div class="profitslist" style="display: none;">
+                    <ul id="showproptys" style="display: -webkit-flex;justify-content:space-around;-webkit-justify-content:space-around;align-items: center;-webkit-align-items: center;">
+                        <li data-type="rechagecoin">
+                            充币
+                        </li>
+                        <li data-type="outcoin">
+                            提币
+                        </li>
+                        <li data-type="enstru">
+                            委托回购
+                        </li>
+                        <li data-type="exchangesweet">
+                            糖果兑换
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="showheaderforce" style="background-color: #fff;border-bottom: 1px solid #eeeeee;overflow: hidden;display: flex;display: -webkit-flex;flex-direction: column;height: auto;display: none;">
+            <div>
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;left: 0;top:0;padding:0 0.8rem;padding-right: 1.2rem;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div class="aui-title font-16" id="rightnewBtn" style="white-space: normal!important;width: 220px!important;background-color: transparent;position: absolute;left: calc(50% - 110px);color:#333333;">
+                    未知</div>
+                <!-- 纯文字按钮 -->
+                <a class="aui-pull-right aui-btn right-btn" style="font-size: 14px;color: #181818;display: none;"></a>
+                <!-- 纯图标 -->
+                <a class="aui-pull-right aui-btn right-icon" style="display: none;">
+                    <img src="" style="width: 25px;">
+                </a>
+            </div>
+            <div style="height: 44px;width: 100%;display: flex;display: -webkit-flex;justify-content: space-between;align-items: center;background-color: #fff;box-sizing: border-box;">
+                <span data-type="win" style="color:#333333;padding:0 0.8rem;padding-right: 1.2rem;font-size: 13px;">
+                    有效算龄
+                </span>
+                <div id="titlenew" style="white-space: normal!important;width: 220px!important;background-color: transparent;position: absolute;left: calc(50% - 110px);color:#333333;font-size: 14px;">
+                </div>
+
+                <!-- 纯图标 -->
+                <a id="helpdetail" class="aui-pull-right aui-btn right-icon">
+                    <img src="../../image/mynumber.png" style="width: 22px;">
+                </a>
+            </div>
+        </header>
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="showheaderbox" style="background-color: #fff;overflow: hidden;display:flex;display: -webkit-flex;box-sizing: border-box;flex-direction: column;display: none;">
+            <div style="background-color: #fff;position: relative;border-bottom: 1px solid #eeeeee;overflow: hidden;display:flex;display: -webkit-flex;box-sizing: border-box;padding-right: 25px;">
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;left: 0;top:0;padding:0 0.8rem;padding-right: 1.2rem;">
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div id="titlebox" style="color:#333333;flex: 1;">
+                    <ul id="ulli" style="display: flex;display:-webkit-flex;height: 49px; justify-content: space-around;-webkit-justify-content: space-around;font-size: 14px;">
+                        <li style="border-bottom-color:#ffd203">BTC</li>
+                        <li>ETH</li>
+                        <li>LTC</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="height:50px;display:flex;display:-webkit-flex;align-items: center;position: relative;">
+                <select name="show" id="chooseWorkType" style="width:50%;height:30px;text-align: center;text-align-last: center;color:#616161;border-right: 1px solid #e5e5e5;">
+                    <option value="ALL" selected>全部类型</option>
+                    <option value="PT">单币</option>
+                    <option value="SW">双挖</option>
+                </select>
+                <select name="showtthisType" id="chooseWorkstate" style="width:50%;height:30px;text-align: center;text-align-last: center;color:#616161;">
+                    <option value="ALL" selected>全部状态</option>
+                    <option value="KW">在挖</option>
+                    <option value="DW">待挖</option>
+                    <option value="TZ">退租</option>
+                </select>
+                <img src="../../image/xialax.png" class="chooseWorkType" style="width: 12px;height: 7px;position: absolute;left:35%;top:45%;">
+                <img src="../../image/xialax.png" class="chooseWorkstate" style="width: 12px;height: 7px;position: absolute;right: 11%;top:45%;">
+            </div>
+        </header>
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="calculatebox" style="background-color: #fff;position: relative;overflow: hidden;display:flex;display: -webkit-flex;box-sizing: border-box;flex-direction: column;display: none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;padding: 0 12px;">
+
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 1rem 0 0.24rem;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div id="titletext" style="background-color: transparent;color:#333333;font-size: 15px;font-weight: 400;">算力宝明细</div>
+                <span style="display:inline-block;width:1px;height:15px;">
+
+                </span>
+            </div>
+            <div id="titlebox" style="color:#333333;border-top: 1px solid #e5e5e5;border-bottom: 1px solid #e5e5e5;">
+                <ul id="calculateli" style="display: flex;display:-webkit-flex;height: 49px; justify-content: space-around;-webkit-justify-content: space-around;font-size: 14px;align-items: center;">
+                    <li style="color:#ffd203" data-choose="income">收益</li>
+                    <li data-choose="entercome">转入</li>
+                    <li data-choose="outcome" style="border-right: none;">转出</li>
+                </ul>
+            </div>
+        </header>
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="outcoinbox" style="background-color: #fff;position: relative;overflow: hidden;display:flex;display: -webkit-flex;box-sizing: border-box;flex-direction: column;border-bottom:1px solid #e5e5e5;display: none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;padding: 0 12px;">
+
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 1rem 0 0.24rem;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div style="width:100px;background-color: transparent;color:#333333;font-size: 15px;font-weight: 400;">
+                    账单记录
+                </div>
+                <span style="display:inline-block;width:1px;height:15px;">
+                </span>
+            </div>
+            <div id="choosetext">
+                <ul id="outcointitletext" style="display: -webkit-flex;justify-content:space-around;-webkit-justify-content:space-around;align-items: center;-webkit-align-items: center;background-color: #f7f7f7">
+                    <li data-type="rechagecoin">
+                        充币记录
+                    </li>
+                    <li data-type="outcoin">
+                        提币记录
+                    </li>
+                    <li data-type="exchangesweet">
+                        糖果兑换记录
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="sellAndBuy" style="background-color: #fff;overflow: hidden;display:none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;">
+
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 10px 0 12px;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div id="buyandselltext" style="background-color: transparent;color:#333333;font-size: 15px;font-weight: 400;">
+                    <span id="showAgentBuy" data-type="agentBuy">
+                        委托代购
+                    </span>
+                    <span id="showAgentSell" data-type="agentSell">
+                        委托代售
+                    </span>
+                </div>
+                <!-- 纯文字按钮 -->
+                <a class="aui-pull-right aui-btn right-btn" id="goBuyaAndSellList" style="font-size: 13px;font-weight: 400; color:#333333;padding: 0;border-bottom: 3px solid #fff;margin-right: 10px;">记录</a>
+            </div>
+            <div class="typeCoin" style="border-bottom: 10px solid #f7f7f7;">
+                <ul id="agentCoinChoose" style="border-bottom:1px solid #e5e4e4">
+                    <li class="disableCss" style="color: #b7b09d">币种</li>
+                    <li class="hideCoin" data-coin="btc">BTC</li>
+                    <li class="hideCoin" data-coin="eth">ETH</li>
+                    <li class="hideCoin" data-coin="ltc">LTC</li>
+                    <li id="bhpChoosetype" data-coin="bhp">BHP</li>
+                    <!-- <li class="hideCoin" data-coin="pax" style="display: none;">PAX</li> -->
+                    <!-- <li class="hideCoin" data-coin="usdt" style="display: none;">USDT</li> -->
+                </ul>
+            </div>
+        </header>
+        <!-- 交易记录 -->
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="sellAndBuyList" style="background-color: #fff;overflow: hidden;display: none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;">
+
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 50px 0 12px;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div style="flex:1;justify-content:center;color:#333333;">
+                    交易记录
+                </div>
+                <!-- 纯文字按钮 -->
+                <a class="aui-pull-right aui-btn right-btn" id="goBuyaAndSellList" style="display:inline-block;font-size: 13px;font-weight: 400; color:#333333;padding: 0;border-bottom: 3px solid #fff;margin-right: 10px;width: 72px;text-align: right"></a>
+            </div>
+            <div id="chooseMore" style="width: 100%;height: auto;display: flex;color: #333333;justify-content: space-between;box-sizing: border-box;padding:0 0 0 14px;font-size: 13px;background-color: #f7f7f7;">
+                <div id="chooseTime" data-timeChoose="false" style="position: relative;width: 80px;">
+                    <span>
+                        时间
+                    </span>
+                    <div class="triangleTopTime">
+                    </div>
+                    <div class="triangleButtomTime">
+                    </div>
+                </div>
+                <div id="chooseSellOBuy" data-buyAndSellChoose="true" style="position: relative;width: 80px;">
+                    <span class="addSellText">
+                        代售
+                    </span>
+                    <div class="triangleTop">
+                    </div>
+                    <div class="triangleButtom">
+                    </div>
+                </div>
+                <div style="position: relative;width: 80px;">
+                    <select id="chooseRecord" style="width:80px;border: none;background: transparent;margin-right: 5px;font-size: 13px;">
+                        <option selected="selected" value="BTC">BTC</option>
+                        <option value="ETH">ETH</option>
+                        <option value="LTC">LTC</option>
+                        <!-- <option value="BHPC">BHPC</option> -->
+                        <option value="BHP">BHP</option>
+                        <!-- <option class="showOptn" value="PAX" style="display: none;">PAX</option> -->
+                        <!-- <option class="showOptn" value="USDT" style="display: none;">USDT</option> -->
+                    </select>
+                    <div id="addchoose">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- bcny -->
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="sellBcnylist" style="background-color: #fff;position: relative;overflow: hidden;display:flex;display: -webkit-flex;box-sizing: border-box;flex-direction: column;border-bottom:1px solid #e5e5e5;display: none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;padding: 0 12px;border-bottom:1px solid #e5e5e5;">
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 1rem 0 0.24rem;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div style="background-color: transparent;color:#333333;font-size: 15px;font-weight: 400;width:100px;">
+                    兑换记录
+                </div>
+                <span style="display:inline-block;width:50px;height:15px;">
+                </span>
+            </div>
+            <div class="shooseBuyorSell">
+                <span data-choose="agentBuy">
+                    兑入
+                </span>
+                <span data-choose="agentSell">
+                    兑出
+                </span>
+            </div>
+        </header>
+        <!-- 红包记录 -->
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="showRed" style="background-color: #fff;overflow: hidden;display: none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;">
+
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 10px 0 12px;">
+                    <!-- <span class="aui-iconfont aui-icon-left font-bold" style='color: #333333;'></span> -->
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div id="showRedtext" style="background-color: transparent;color:#333333;font-size: 15px;font-weight: 400;">
+                    <span data-type="mySend">
+                        我发出的
+                    </span>
+                    <span data-type="myReceive">
+                        我收到的
+                    </span>
+                </div>
+                <!-- 纯文字按钮 -->
+                <a class="aui-pull-right aui-btn right-btn" id="" style="font-size: 13px;font-weight: 400; color:#333333;padding: 0;border-bottom: 3px solid #fff;margin-right: 10px;"></a>
+            </div>
+        </header>
+        <!-- 算力转让 -->
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="powerHeader" style="background-color: #fff;position: relative;overflow: hidden;display:flex;display: -webkit-flex;box-sizing: border-box;flex-direction: column;border-bottom:1px solid #e5e5e5;display: none;">
+            <div style="display: flex;display: -webkit-flex;justify-content:space-between;-webkit-justify-content:space-between;align-items: center;-webkit-align-items: center;padding: 0 12px;border-bottom:1px solid #e5e5e5;">
+                <span class="aui-pull-left aui-btn" data-type="win" style="color:#333333;padding:0 1rem 0 0.24rem;">
+                    <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: 19px;margin-left: 0px;">
+                </span>
+                <div style="background-color: transparent;color:#333333;font-size: 15px;font-weight: 400;width:100px;">
+                    算力转让
+                </div>
+                <span style="display:inline-block;width:50px;height:15px;">
+                </span>
+            </div>
+            <div class="powerBuyOrSell">
+                <span data-choose="myOverTaking">
+                    我承接的
+                </span>
+                <span data-choose="myUnderTaking">
+                    我转让的
+                </span>
+            </div>
+        </header>
+        <header class="aui-bar aui-bar-nav bg-color-blue" id="bhpRecordTab" style="display: none;">
+            <span class="selected">收益</span><span>转入</span><span>转出</span>
+        </header>
+    </div>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../res/web/script/browser.js"></script>
+    <script src="../../res/web/script/tip.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script>
+        apiready = function() {
+            var app = new APP();
+            app.log("headerwin", "公用头部窗口");
+            var oneLiWidth = parseFloat($('#showlist li').width());
+            var liLength = $("#showlist li").length;
+            var coinTypeNew = "BTC";
+            var WorkNewType = "ALL";
+            var workStatusNew = "ALL";
+            var buyAndSellChoose = "agentBuy";
+            var chooseRedHistory = "mySend";
+            $("#showlist").width(oneLiWidth * liLength + 'px');
+            if (app.isiPhone10 == true) {
+                $('.status-bar').height('30px')
+            }
+            app.log("headerwin_param", api.pageParam);
+            if (api.pageParam.isShow == "false") {
+                $("#showtype").show();
+                $("#showheader").hide();
+            }
+            if (api.pageParam.checkGoMyPage) {
+                $(".aui-pull-left").attr("data-chooseBack", api.pageParam.checkGoMyPage);
+            }
+            if (api.pageParam.powerHeader == "true") {
+                $("#powerHeader").show();
+                $("#showheader").hide();
+                $(".powerBuyOrSell span").on("click", function(params) {
+                    $(".powerBuyOrSell span").css("borderBottomColor", "#fff");
+                    $(this).css("borderBottomColor", "#ffd203");
+                    api.sendEvent({
+                        name: "powerChangeList",
+                        extra: {
+                            chooseList: $(this).attr("data-choose"),
+                        }
+                    });
+                })
+            }
+            var getNewErcoinType = "sellOut"; //委托回购的li选择；
+            if (api.pageParam.showBhpRecordTab == "true") {
+                $("#bhpRecordTab").show();
+                $("#bhpRecordTab>span").bind('tap click', function() {
+                    if (!$(this).hasClass('selected')) {
+                        var index = $(this).index();
+                        $("#bhpRecordTab>span").removeClass('selected');
+                        $(this).addClass('selected');
+                        app.trigger('choseBhpRecordType', {
+                            index: index
+                        })
+                    }
+                })
+            }
+            if (api.pageParam.isShowNew == "true") {
+                $("#showNewErst").show();
+                $("#showheader").hide();
+                $("#newEntrustpage li").on("click", function(params) {
+                    $("#newEntrustpage li").css({
+                        color: "#808080",
+                        borderBottomColor: "#fff"
+                    });
+                    getNewErcoinType = $(this).attr("data-coin");
+                    var getOption = $("#chooseEntrustCoin option:selected").val();
+                    if (getNewErcoinType == "buyIn") {
+                        $(this).css({
+                            color: "#e76851",
+                            borderBottomColor: "#e76851"
+                        })
+                    }
+                    if (getNewErcoinType == "sellOut") {
+                        $(this).css({
+                            color: "#7ed321",
+                            borderBottomColor: "#7ed321"
+                        })
+                    }
+                    if (getNewErcoinType == "nowEntrust" || getNewErcoinType == "historyEntrust") {
+                        $(this).css({
+                            color: "#333333",
+                            borderBottomColor: "#333333"
+                        })
+                    }
+                    api.sendEvent({
+                        name: "newEntrust",
+                        extra: {
+                            chooseNewErtype: getNewErcoinType,
+                            getOption: getOption
+                        }
+                    });
+                })
+                $("#chooseEntrustCoin").on("change", function() {
+                    var chooseEntrustCoin = $('#chooseEntrustCoin>option:selected').val();
+                    api.sendEvent({
+                        name: "newEntrust",
+                        extra: {
+                            chooseNewErtype: getNewErcoinType,
+                            getOption: chooseEntrustCoin
+                        }
+                    });
+                })
+            }
+            if (api.pageParam.showcalculate == "false") {
+                $("#calculatebox").show();
+                $("#showheader").hide();
+                $("#calculateTitle").text(api.pageParam.title)
+            }
+            if (api.pageParam.showRed == "true") {
+                $("#showRed").show();
+                $("#showheader").hide();
+            }
+            if (api.pageParam.showcoin == "false") {
+                $("#outcoinbox").show();
+                $("#showheader").hide();
+            }
+            if (api.pageParam.showBuyAndSell == "false") {
+                $("#sellAndBuy").show();
+                $("#showheader").hide();
+            }
+            if (api.pageParam.showBcny == "true") {
+                $("#sellBcnylist").show();
+                $("#showheader").hide();
+                $(".shooseBuyorSell span:first-of-type").click();
+                $(".shooseBuyorSell span").on("click", function(params) {
+                    $(".shooseBuyorSell span").css("borderBottomColor", "#fff");
+                    $(this).css("borderBottomColor", "#ffd203");
+                    api.sendEvent({
+                        name: "bcnyList",
+                        extra: {
+                            chooseList: $(this).attr("data-choose"),
+                        }
+                    });
+                })
+            }
+            if (api.pageParam.isHaveBuyBhp == 1) {
+                $("#agentCoinChoose").css({
+                    justifyContent: "flex-start",
+                })
+                $("#bhpChoosetype").css({
+                    borderBottomColor: "ffd203",
+                    margin: "auto"
+                })
+            } else {
+                $("#showAgentBuy").hide();
+                $("#showAgentSell").css({
+                    backgroundColor: "#ffd203",
+                    borderRadius: "5px",
+                    color: "#333"
+                })
+                $(".hideCoin").show();
+                buyAndSellChoose = "agentSell";
+            }
+            // if (api.pageParam.isforece == "true") {
+            //     $("#showheaderforce").show();
+            //     $("#showheader").hide();
+            //     $("#rightnewBtn").text(api.pageParam.title);
+            //     $("#titlenew").text(api.pageParam.forceNumber + " T*天");
+            //     $("#helpdetail").click(function (e) {
+            //         var param = {
+            //             dtype: "dialog20",
+            //             forceNumber: api.pageParam.forceNumber,
+            //         };
+            //         app.dialog(param);
+            //     });
+            // }
+            // var coinComputing;
+            if (api.pageParam.isBox == "true") {
+                // coinComputing = api.pageParam.coinNumber;
+                if (app.ST == "ios") {
+                    $("#chooseWorkstate,#chooseWorkType").css("paddingLeft", "18%")
+                }
+                $("#showheaderbox").show();
+                $("#showheader").hide();
+                $("#ulli li:first-of-type").on("click");
+            }
+            if (api.pageParam.sellAndBuyList == "true") {
+                // coinComputing = api.pageParam.coinNumber;
+                $("#sellAndBuyList").show();
+                $("#showheader").hide();
+                $("#ulli li:first-of-type").on("click");
+                $("#chooseTime").on("click", function() {
+                    var timeChooseVal = $(this).attr("data-timeChoose");
+                    if (timeChooseVal == "false") {
+                        console.log("hfdhhf")
+                        $(this).attr("data-timeChoose", true);
+                        $(".triangleButtomTime").css("borderTopColor", "#e8d7a9");
+                        $(".triangleTopTime").css("borderBottomColor", "#e0e0e0");
+                    } else {
+                        $(this).attr("data-timeChoose", false);
+                        $(".triangleButtomTime").css("borderTopColor", "#e0e0e0");
+                        $(".triangleTopTime").css("borderBottomColor", "#e8d7a9");
+                    }
+                    api.sendEvent({
+                        name: "tradingRecord",
+                        extra: {
+                            chooseTime: $(this).attr("data-timeChoose"),
+                            chooseType: $("#chooseSellOBuy").attr("data-buyAndSellChoose"),
+                            chooseRecordData: $('#chooseRecord option:selected').val()
+                        }
+                    });
+
+                })
+                $("#chooseSellOBuy").on("click", function() {
+                    var textChooseVal = $(this).attr("data-buyAndSellChoose");
+                    var showSelectChoose = $('#chooseRecord option:selected').val();
+                    if (textChooseVal == "true") {
+                        // $(".showOptn").show();
+                        $(this).attr("data-buyAndSellChoose", false);
+                        $(".addSellText").text("代购");
+                        $(".triangleButtom").css("borderTopColor", "#e8d7a9");
+                        $(".triangleTop").css("borderBottomColor", "#e0e0e0");
+                    } else {
+                        // $(".showOptn").hide();
+                        // if (showSelectChoose == "PAX" || showSelectChoose == "USDT") {
+                        //     $("#chooseRecord option:eq(1)").attr("selected", "selected");
+                        // }
+                        $(this).attr("data-buyAndSellChoose", true);
+                        $(".addSellText").text("代售")
+                        $(".triangleButtom").css("borderTopColor", "#e0e0e0");
+                        $(".triangleTop").css("borderBottomColor", "#e8d7a9");
+                    }
+                    api.sendEvent({
+                        name: "tradingRecord",
+                        extra: {
+                            chooseTime: $("#chooseTime").attr("data-timeChoose"),
+                            chooseType: $(this).attr("data-buyAndSellChoose"),
+                            chooseRecordData: $('#chooseRecord option:selected').val()
+                        }
+                    });
+                })
+                $("#chooseRecord").on("change", function() {
+                    api.sendEvent({
+                        name: "tradingRecord",
+                        extra: {
+                            chooseTime: $("#chooseTime").attr("data-timeChoose"),
+                            chooseType: $("#chooseSellOBuy").attr("data-buyAndSellChoose"),
+                            chooseRecordData: $('#chooseRecord option:selected').val()
+                        }
+                    });
+                })
+            }
+            $("#ulli li").on("click", function(params) {
+                $("#ulli li").css({
+                    borderBottomColor: "#fff"
+                });
+                $(this).css({
+                    borderBottomColor: "#ffd203"
+                });
+                coinTypeNew = $(this).text();
+                api.sendEvent({
+                    name: "coinType",
+                    extra: {
+                        coinType: coinTypeNew,
+                        WorkNewType: WorkNewType,
+                        workStatusNew: workStatusNew,
+                    }
+                });
+            })
+            $("#chooseWorkType").on("change", function(params) {
+                WorkNewType = $('#chooseWorkType>option:selected').val();;
+                api.sendEvent({
+                    name: "coinType",
+                    extra: {
+                        coinType: coinTypeNew,
+                        WorkNewType: WorkNewType,
+                        workStatusNew: workStatusNew,
+                    }
+                });
+            })
+            $("#chooseWorkstate").on("change", function(params) {
+                workStatusNew = $('#chooseWorkstate>option:selected').val();;
+                api.sendEvent({
+                    name: "coinType",
+                    extra: {
+                        coinType: coinTypeNew,
+                        WorkNewType: WorkNewType,
+                        workStatusNew: workStatusNew,
+                        // showAll: api.pageParam.showAll
+                    }
+                });
+            })
+            $("#calculateli li").on("click", function(params) {
+                $("#calculateli li").css({
+                    color: "#333333"
+                });
+                $(this).css({
+                    color: "#ffd203"
+                });
+                var coinType = $(this).attr("data-choose");
+                api.sendEvent({
+                    name: "calculate",
+                    extra: {
+                        calculateType: coinType,
+                    }
+                });
+            })
+            $("#goBuyaAndSellList").on("click", function(params) {
+                var continueRent = {
+                    page: "common/headerwin",
+                    name: "renew_headerwin",
+                    param: {
+                        subpage: "my/sellandbuylist",
+                        name: "sellandbuylist",
+                        sellAndBuyList: "true"
+                    }
+                };
+                var continueDataDay = JSON.stringify(continueRent);
+                app.goPushPage(continueDataDay);
+            })
+            $("#buyandselltext span").on("click", function(params) {
+                $("#buyandselltext span").css({
+                    backgroundColor: "#fff",
+                    color: "#808080"
+                });
+                $(this).css({
+                    backgroundColor: "#ffd203",
+                    color: "#333333"
+                });
+                buyAndSellChoose = $(this).attr("data-type");
+                if (buyAndSellChoose == "agentSell") {
+                    if (api.pageParam.isHaveBuyBhp == 1) {
+                        $("#bhpChoosetype").css({
+                            margin: "0"
+                        })
+                        $("#agentCoinChoose").css({
+                            justifyContent: "space-between"
+                        })
+                    }
+                    $(".hideCoin").show();
+                    $("#agentCoinChoose li:nth-of-type(2)").click();
+                } else {
+                    if (api.pageParam.isHaveBuyBhp == 1) {
+                        $("#agentCoinChoose").css({
+                            justifyContent: "flex-start",
+                        })
+                        $("#bhpChoosetype").css({
+                            borderBottomColor: "ffd203",
+                            margin: "auto"
+                        })
+                    }
+                    $(".hideCoin").hide();
+                    $("#agentCoinChoose li:last-of-type").click();
+                }
+            })
+            $("#agentCoinChoose li:not(:first-of-type)").on("click", function(params) {
+                var choose = $(this).attr("data-coin");
+                $("#agentCoinChoose li:not(:first-of-type)").css({
+                    color: "#808080",
+                    borderBottomColor: "#fff"
+                });
+                $(this).css({
+                    color: "#333333",
+                    borderBottomColor: "#fad203"
+
+                });
+                api.sendEvent({
+                    name: "buyAndSell",
+                    extra: {
+                        buyAndSellType: choose,
+                        showChoose: buyAndSellChoose
+                    }
+                });
+            });
+            $("#titletext").on("click", function(params) {
+                $("#righttext").css({
+                    borderBottom: "3px solid #fff"
+                });
+                $(this).css({
+                    borderBottom: "3px solid #ffd203"
+                });
+                $(".profits").show();
+                $(".profitslist").hide();
+                $("#showlist li:first-of-type").click();
+            });
+
+            $("#showRedtext span").on("click", function(params) {
+                $("#showRedtext span").css({
+                    backgroundColor: "#fff",
+                    color: "#808080"
+                });
+                $(this).css({
+                    backgroundColor: "#ffd203",
+                    color: "#333333"
+                });
+                chooseRedHistory = $(this).attr("data-type");
+                app.trigger("chooseHistory", chooseRedHistory)
+            })
+            $("#righttext").on("click", function(params) {
+                $("#titletext").css({
+                    borderBottom: "3px solid #fff"
+                });
+                $(this).css({
+                    borderBottom: "3px solid #ffd203"
+                });
+                $(".profits").hide();
+                $(".profitslist").show();
+                $("#showproptys li:first-of-type").click();
+            });
+            // $("#showlist li").on("click", function () {
+            //     $("#showlist li").css({
+            //         color: "#575757",
+            //     })
+            //     $(this).css({
+            //         color: "#ffd203",
+            //     })
+            // });
+            $("#showproptys li").on("click", function() {
+                $("#showproptys li").css({
+                    color: "#575757",
+                })
+                $(this).css({
+                    color: "#ffd203",
+                })
+            });
+            $(".choosetext li").on("click", function(e) {
+                $(".choosetext li").css({
+                    color: "rgba(18,18,18,0.68)",
+                    borderBottom: "5px solid #f7f7f7"
+                })
+
+                $(this).css({
+                    color: "#333333",
+                    borderBottom: "3px solid #ffd203",
+                    transition: "all .2s"
+                })
+                var chooseText = $(this).attr("data-type");
+                // console.log("chooseText" + chooseText)
+                // if (chooseText == "redBagrecord") {
+                //     $("#showAboutMe").css("display", "flex");
+                // } else {
+                //     $("#showAboutMe").hide();
+                // }
+                api.sendEvent({
+                    name: "chooseType",
+                    extra: {
+                        chooseType: chooseText,
+                    }
+                });
+            })
+            $("#outcointitletext li").on("click", function(params) {
+                $("#outcointitletext li").css({
+                    borderBottomColor: "#f7f7f7"
+                });
+                $(this).css({
+                    borderBottomColor: "#fad203"
+                });
+                var chooseRecord = $(this).attr("data-type");
+                api.sendEvent({
+                    name: "chooseRecord",
+                    extra: {
+                        chooseRecord: chooseRecord,
+                    }
+                });
+            })
+            var title = api.pageParam.title;
+            app.log("title", title);
+            $("#title").text(title);
+
+            // if(api.pageParam.subpage=="extrapage/Advertisement_Release_Submit"){
+            // $("#title").css("width","auto!important");
+            // }
+
+            if (api.pageParam.bgColor) {
+                $(".status-bar").css("backgroundColor", api.pageParam.bgColor);
+                $(".aui-bar").css("backgroundColor", api.pageParam.bgColor);
+            }
+
+            var subpage = api.pageParam.name;
+            var rightText = api.pageParam.right;
+            app.log("righttext", rightText);
+            // 是否有右边按钮
+            app.log("获取传入header参数++++++++++++++", api.pageParam);
+            if (api.pageParam.right) {
+                // console.log("testrifgt" + "131164")
+                $(".right-btn").show();
+                $(".right-btn").text(api.pageParam.right);
+                if (api.pageParam.rightColor) {
+                    $(".right-btn").css("color", api.pageParam.rightColor);
+                }
+                // 设置参数
+                if (api.pageParam.rightParam) {
+                    console.log("查看是否进入了-------------------------------" + JSON.stringify(api.pageParam
+                        .rightParam));
+                    $(".right-btn").addClass("go-page").data("param", app.jsonStr(api.pageParam.rightParam));
+                }
+                // 处理页面跳转
+                app.handlePage();
+
+                // 判断右按钮打开的页面类型
+                // if(api.pageParam.rightType=="cover"){
+                //     $(".right-btn").data("isshow",false);
+                // }
+                if (api.pageParam.listenevent) {
+                    $(".right-btn").click(function() {
+                        app.trigger(api.pageParam.listenevent);
+                    });
+                } else {
+                    // 图片点击，广播事件
+                    $(".right-btn").click(function() {
+                        if (api.pageParam.rightType == "cover") {
+                            app.trigger("operate_cover");
+                        } else {
+                            app.trigger("clicked_right");
+                        }
+                    });
+                }
+            }
+
+            // 是否有右图标
+            if (api.pageParam.rightIcon) {
+                $(".right-icon").show();
+                $(".right-icon img").attr("src", api.pageParam.rightIcon.icon);
+                // 设置参数
+                if (api.pageParam.rightParam) {
+                    $(".right-icon").addClass("go-page").data("param", app.jsonStr(api.pageParam.rightParam));
+                }
+                // 处理页面跳转
+                app.handlePage();
+            }
+
+            // 是否有右图片
+            if (api.pageParam.rightImg) {
+                app.log("rightImg", "有右图片");
+                $(".right-img").show();
+                $(".avatar").attr("src", api.pageParam.rightImg.avatar);
+                if (api.pageParam.rightImg.level) {
+                    $(".b-level").text(api.pageParam.rightImg.level);
+                }
+                // 图片点击，广播事件
+                // $(".right-img").click(function () {
+                //     app.trigger("clicked_right_img");
+                // });
+            }
+
+            // 是否有右图片
+            if (api.pageParam.rightShare) {
+                app.log("rightShare", "有右分享");
+                $(".right-icon").show();
+                $(".right-icon img").attr("src", "../../image/share.png");
+                // 设置参数
+                $(".right-icon img").click(function() {
+                    app.log("--------rightShare--------", "点击了右分享");
+                    app.trigger("share");
+                });
+            }
+            if (api.pageParam.eventTrigger) {
+                $("#imgIcon").click(function() {
+                    app.trigger(api.pageParam.eventTrigger)
+                })
+            }
+
+            // 创建子页面
+            var headerH = $("#otherHeader").height();
+            // 把header高度保存到本地
+            if (!app.getSyncStorage("OMHH")) {
+                app.setStorage("OMHH", headerH);
+            }
+
+            app.log("api.pageParam", api.pageParam);
+            // 判断是否是远程页面
+            if (api.pageParam.isremote) {
+                // 不现实未知
+                // $("#title").text();
+                $("#title").text(title);
+                // 如果是浏览器的头部，那么点击返回的时候要判断是否有浏览记录
+                $(".aui-pull-left").data("type", "");
+                $(".aui-pull-left").click(function() {
+                    app.log("headerwin", "点击了返回1");
+                    // app.trigger("check_history");
+
+                    // 判断还有没有返回的
+                    api.historyBack({
+                        frameName: 'browser'
+                    }, function(ret, err) {
+                        console.log("--------ret--------", ret);
+                        console.log("--------err--------", err);
+                        if (!ret.status) {
+                            api.closeWin();
+                        }
+                    });
+
+                    // 发送检测可否返回链接
+                    app.trigger("can_history_back");
+                });
+
+                // 如果是浏览器头部，那么监听title变化事件
+                app.listen("title_change", function(ret, err) {
+                    app.log("headerwin", "监听到了改变了title");
+                    $("#title").text(ret.value.title);
+                });
+            }
+
+            var pageUrl = app.hd + api.pageParam.subpage + ".html";
+            if (api.pageParam.type && api.pageParam.type == "remote") {
+                pageUrl = api.pageParam.subpage
+            }
+            app.openFrame({
+                name: subpage,
+                // url:app.hd+api.pageParam.subpage+".html",
+                url: pageUrl,
+                rect: {
+                    x: 0,
+                    y: headerH,
+                    w: app.W,
+                    /*h: app.H - headerH*/
+                    h: 'auto'
+                },
+                pageParam: api.pageParam,
+                allowEdit: api.pageParam.allowEdit ? true : false,
+                bgColor: "#eee"
+            });
+
+            // 浏览器头部特殊处理
+            if (api.pageParam.url) {
+                // 如果是浏览器的头部，那么点击返回的时候要判断是否有浏览记录
+                $(".aui-pull-left").data("type", "");
+                $(".aui-pull-left").click(function() {
+                    app.log("headerwin", "点击了返回");
+                    app.trigger("check_history");
+                });
+
+                // 如果是浏览器头部，那么监听title变化事件
+                app.listen("title_change", function(ret, err) {
+                    app.log("headerwin", "监听到了改变了title");
+                    $("#title").text(ret.value.title);
+                });
+            }
+
+            // 判断是否需要子页面来关闭窗口
+            if (api.pageParam.closeBySub) {
+                $(".aui-pull-left").data("type", "");
+                $(".aui-pull-left").click(function() {
+                    app.log("headerwin", "点击了返回");
+                    app.trigger("close_win");
+                });
+            }
+
+            // 监听android返回事件
+            app.back(function() {
+                var thisGopage = $(".aui-pull-left").attr("data-chooseBack");
+                if (thisGopage) {
+                    app.trigger("goMain");
+                    return false
+                }
+                app.setStorage("curWin", "");
+                app.closeW();
+            });
+
+            // 监听订单详情消息
+            app.listen("order_data_detail", function(ret, err) {
+                var value = ret.value;
+                if (value) {
+                    // 设置title
+                    $("#title").text(value.order_detail.creater.username + "发布的订单");
+                    $(".right-img").show();
+                    $(".avatar").attr("src", value.order_detail.creater.avatar);
+                    $(".b-level").text(value.order_detail.creater.level);
+
+                    // 图片点击，广播事件
+                    $(".right-img").unbind();
+                    $(".right-img").click(function() {
+                        app.trigger("clicked_right_img");
+                    });
+                }
+            });
+            if (api.pageParam.background_color) {
+                // $(".status-bar").css("background","-webkit-linear-gradient(left,#3AC7FC,#2E8EFF)")
+                // $(".status-bar").css("background","-o-linear-gradient(left,#3AC7FC,#2E8EFF)")
+                // $(".status-bar").css("background","-ms-linear-gradient(left,#3AC7FC,#2E8EFF)")
+                // $(".status-bar").css("background","-moz-linear-gradient(left,#3AC7FC,#2E8EFF)")
+
+                // $(".aui-bar").css("background","-webkit-linear-gradient(left,#3AC7FC,#2E8EFF)")
+                // $(".aui-bar").css("background","-o-linear-gradient(left,#3AC7FC,#2E8EFF)")
+                // $(".aui-bar").css("background","-ms-linear-gradient(left,#3AC7FC,#2E8EFF)")
+                // $(".aui-bar").css("background","-moz-linear-gradient(left,#3AC7FC,#2E8EFF)")
+            }
+            // 分享代理
+            app.listen("share_agent", function(ret, err) {
+                app.log("分享代理的参数是：" + JSON.stringify(ret));
+                var param = ret.value;
+                app.dialog(param);
+            });
+            var wxMd = api.require("wx");
+            app.listen("wxSharePerson", function(ret) {
+                app.log("查看广播数据", JSON.stringify(ret));
+                wxMd.isInstalled(function(r, e) {
+                    if (r.installed) {
+                        wxMd.shareWebpage({
+                            scene: "session",
+                            title: ret.value.recommendTitle,
+                            description: ret.value.recommendText,
+                            thumb: ret.value.recommendImg,
+                            contentUrl: ret.value.recommendUrl
+                        }, function(r, e) {
+                            if (r.status) {
+                                app.toast("分享成功");
+                            } else {
+                                app.toast("分享失败")
+                            }
+                        });
+                    } else {
+                        app.toast('当前设备未安装微信客户端');
+                    }
+                });
+            })
+            app.listen("wxShareFriends", function(ret) {
+                wxMd.isInstalled(function(r, e) {
+                    if (r.installed) {
+                        wxMd.shareWebpage({
+                            scene: "timeline",
+                            title: ret.value.recommendTitle,
+                            description: ret.value.recommendText,
+                            thumb: ret.value.recommendImg,
+                            contentUrl: ret.value.recommendUrl
+                        }, function(r, e) {
+                            if (r.status) {
+                                app.toast("分享成功");
+                            } else {
+                                app.toast("分享失败")
+                            }
+                        });
+                    } else {
+                        app.toast('当前设备未安装微信客户端');
+                    }
+                });
+            })
+        }
+    </script>
+</body>
+
+</html>

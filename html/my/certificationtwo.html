@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>中国用户校验</title>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/certification.css" />
+</head>
+
+<body>
+    <div class="checkmessage">
+        <div>
+            <input type="text" name="" id="userName" placeholder="请输入你的真实姓名" maxlength="30" />
+        </div>
+        <div>
+            <input type="text" name="" id="userNumber" placeholder="请输入你的身份证号" maxlength="30" />
+        </div>
+    </div>
+    <button class="nextbutton">校验</button>
+
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/app.js"></script>
+    <script>
+        apiready = function() {
+            var app = new APP();
+            var account = app.getAccount();
+            var goAddMoney;
+            if (api.pageParam.goAddMoney != undefined && api.pageParam.goAddMoney) {
+                goAddMoney = api.pageParam.goAddMoney;
+            }
+            app.ajax({
+                param: {
+                    method: "post",
+                    url: app.config.url + "member/getSumitRealnameVerifyStatus",
+                    data: {
+                        values: {
+                            uid: account.uid,
+                            token: account.token
+                        }
+                    },
+                    callback: function(ret, err) {
+                        app.log("auth", "获取认证状态返回：" + JSON.stringify(ret));
+                        if (ret.code == 1 && ret.user_info) {
+                            $("#userName").val(ret.user_info.real_name);
+                            $("#userNumber").val(ret.user_info.id_num);
+                        }
+                    }
+                },
+                extra: {
+                    isflower: true
+                }
+            });
+            $(".nextbutton").on("click", function() {
+                if ($("#userName").val() == "") {
+                    app.toast("姓名不能为空");
+                    return;
+                }
+                if ($("#userNumber").val() == "") {
+                    app.toast("身份证号不能为空");
+                    return;
+                }
+                app.ajax({
+                    param: {
+                        method: "post",
+                        url: app.config.url + "/member/checkIdcard",
+                        data: {
+                            values: {
+                                uid: account.uid,
+                                token: account.token,
+                                name: $("#userName").val(),
+                                id_num: $("#userNumber").val(),
+                            }
+                        },
+                        callback: function(ret, err) {
+                            if (ret.code == 1) {
+                                app.toast('提交成功');
+                                app.trigger('add_relnameSuccess');
+                                app.openWin({
+                                    name: "littlemoneyrecharge_headerwin",
+                                    url: app.hd + "common/headerwin.html",
+                                    pageParam: {
+                                        subpage: "extrapage/littlemoneyrecharge",
+                                        name: "littlemoneyrecharge",
+                                        title: "充值",
+                                        checkGoMyPage: "true"
+                                    }
+                                });
+                            } else {
+                                app.toast(ret.desc);
+                            }
+                        }
+                    }
+                });
+            });
+        };
+    </script>
+</body>
+
+</html>

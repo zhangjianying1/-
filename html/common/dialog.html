@@ -1,0 +1,1456 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no" />
+    <title>对话框和弹窗</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/dialog.css">
+    <style>
+        .scrollHide::-webkit-scrollbar {
+            display: none;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="position: relative;">
+
+</body>
+<script src="../../js/autosize.js"></script>
+<script src="../../script/fastclick.js"></script>
+<script src="../../script/jquery_three_two_one.js"></script>
+<script src="../../script/html2canvas.js"></script>
+<script src="../../script/jqueryqrcodemin.js"></script>
+<script src="../../script/app.js"></script>
+<script src="../../script/dotmin.js"></script>
+<script src="../../js/dialag.js"></script>
+<!-- 弹窗模板1 -->
+<script type="text/html" id="dialog1">
+    <div class="dialog1" style="display: none;">
+        <p class="text">{{?it.data.text}} {{=it.data.text}} {{?}}</p>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+
+<!-- 弹窗模板2 -->
+<script type="text/html" id="dialog2">
+    <div class="dialog2" style="display: none;">
+        <p class="title">{{?it.data.title}} {{=it.data.title}} {{?}}</p>
+        <p class="text">{{?it.data.text}} {{=it.data.text}} {{?}}</p>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}" style="{{?value.style}} {{=value.style}} {{?}}">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+
+<!-- 弹窗模板3 -->
+<script type="text/html" id="dialog3">
+    <div class="dialog3" style="display: none;">
+        <p class="title">{{?it.data.title}} {{=it.data.title}} {{?}}</p>
+        <p class="text">{{?it.data.text}} {{=it.data.text}} {{?}}</p>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}" style="{{?value.style}} {{=value.style}} {{?}}">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+<!-- 下载弹窗4 -->
+<script type="text/html" id="dialog4">
+    <div class="dialog4" style="display: none;">
+        <div class="progress-w">
+            <div id="progressBack">
+                <div id="progress"></div>
+            </div>
+        </div>
+        <p class="text">{{?it.data.text}} {{=it.data.text}} {{?}}</p>
+    </div>
+</script>
+
+<!-- 弹窗模板5 -->
+<script type="text/html" id="dialog5">
+    <div class="dialog5" style="display: none;">
+        <p class="title"><i><img src="../../image/iconnews/ios/pro/noticeas.png"></i>{{?it.data.title}} {{=it.data.title}}
+            {{?}}</p>
+        <p class="text">{{?it.data.text}} {{=it.data.text}} {{?}}</p>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}" style="{{?value.style}} {{=value.style}} {{?}}">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+<!-- 授权提示对话框模板 -->
+<script type="text/html" id="dialog6">
+    <div class="dialog6" style="display: block;">
+        <div class="d-title">
+            <img src="../../res/web/images/sell/light.png">
+            <label>授权提示</label>
+        </div>
+        <p>Bitown.vip申请获得您在<span style="color: #54ADF4;">[人人矿场]</span>的以下权限</p>
+        <div style="font-size: 0.24rem;color: #bbb;">获得您的公开信息（昵称、头像等）</div>
+        <div style="font-size: 0.24rem;color: #bbb;">同步您的资产信息（如余额、虚拟资产等）</div>
+        <div style="font-size: 0.24rem;color: #bbb;">同步您的个人账户信息（如实名认证、支付提现卡等）</div>
+        <div class="d-btns" style="margin-top: 0.4rem;">
+            <img data-event="{{=it.data.btns[0].event}}" src="../../res/web/images/sell/btn_forbid.png">
+            <img data-event="{{=it.data.btns[1].event}}" src="../../res/web/images/sell/btn_pass.png">
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog7">
+    <div class="dialog7" style="display: block;">
+        <div class="d-title">
+            <img src="../../res/web/images/sell/light.png">
+            <label>应用检测提示</label>
+        </div>
+        <p>bitown.vip(币糖网)是微矿科技深度合作的数字资产海外交易平台，旨在为人人矿场客户提供最安全、便捷的数字资产置换与买卖信息发布服务。</p>
+        <div class="d-btns">
+            <img data-event="{{=it.data.btns[0].event}}" src="../../res/web/images/sell/btn_cancel.png">
+            <img data-event="{{=it.data.btns[1].event}}" src="../../res/web/images/sell/btn_down.png">
+        </div>
+    </div>
+</script>
+<!-- 弹窗模板8 -->
+<script type="text/html" id="dialog8">
+    <div class="dialog8" style="display: none;">
+        <p class="title"><img src="../extrapage/image/picpaoi.png"></p>
+        <p class="text">{{?it.data.text}} {{=it.data.text}} {{?}}</p>
+        <p>
+            您的<span style="color: #FB2320;">余额不足，</span>请前去<span class="getMoney go-page" data-event="{{=it.data.btns[0].event}}" data-param='{"needLogin":"true","page":"common/headerwin","name":"recharge_deposit_headerwin","param":{"chongMoney":"{{=it.data.money}}","bgColor":"#1A191D","subpage":"mine/recharge_deposit","name":"recharge_deposit","title":"余额充值","rightParam":{"page":"common/headerwin","name":"deposit_detail_headerwin","param":{"subpage":"mine/deposit_detail","name":"deposit_detail","title":"余额记录"}}}}' style="color: #2F91FF;">充值{{=it.data.money}}元</span>
+        </p>
+        <p> 资格将为您<span style="color: #FB2320">保留5分钟</span>
+        </p>
+        <div class="btns">
+            <i data-event="{{=it.data.btns[1].event}}" style="display: block;margin: 0 auto">
+                <img src="./../extrapage/image/close_icon.png">
+            </i>
+        </div>
+    </div>
+</script>
+<!-- 邀请好友弹窗 -->
+<script type="text/html" id="dialog9">
+    <div class="dialog9">
+        <div class="showDialog9">
+            <ul>
+                <li data-event="{{=it.data.lis[0].event}}" data-index="{{=it.data.lis[0].index}}">
+                    <i><img src="../extrapage/image/wxicon.png"></i>
+                    <p>微信</p>
+                </li>
+                <li data-event="{{=it.data.lis[1].event}}" data-index="{{=it.data.lis[1].index}}">
+                    <i><img src="../extrapage/image/wxpyqicon.png"></i>
+                    <p>朋友圈</p>
+                </li>
+            </ul>
+            <div class="btns">
+                {{~it.data.btns:value:index}}
+                <p data-event="{{=value.event}}" class="cancal_tou">取消</p>
+                {{~}}
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 弹窗模板10 -->
+<script type="text/html" id="dialog10">
+    <div class="dialog10" style="display: none;">
+        <p class="title"><img style="width: 100%;" src="../extrapage/image/picpaoi.png"></p>
+        <p>恭喜您获得一个矿工运动包</p>
+        <p class="text">{{?it.data.text}} {{=it.data.text}} {{?}}</p>
+        <p>恭喜您成功参与运动会 </p>
+        <p>我们将会在24小时之后 颁发奖励</p>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <i class="reloads" data-event="{{=value.event}}" style="display: block;margin: 0 auto">
+                <img src="./../extrapage/image/close_icon.png">
+            </i>
+            {{~}}
+        </div>
+    </div>
+</script>
+<!-- 弹窗模板11 -->
+<script type="text/html" id="dialog11">
+    <div class="dialog11" style="display: none;">
+        <p class="title"><i><img src="../extrapage/image/tishi.png"></i>{{?it.data.title}} {{=it.data.title}} {{?}}</p>
+        <p class="text">{{?it.data.text}} {{=it.data.text}} {{?}}</p>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}" style="{{?value.style}} {{=value.style}} {{?}}">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+<!-- 有×的提示框 -->
+<script type="text/html" id="dialog12">
+    <div class="dialog12" style="display: block;">
+        <div class="d-del">
+            <div>X</div>
+        </div>
+        <p>支付升级提示：</p>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;矿友您好，人人矿场算力租用支付流程发生变更。即日起，租用算力<span style="color: red;">停止</span>租金租用。确定租用台数后，可直接使用支付宝、微信、usdt进行算力租金支付(微信支付限额单卡3000元/天，欲用微信支付的用户请选择支付宝或者提前充值到现金钱包支付)，请保证您的支付账户余额充足！为此带来的不便敬请谅解！
+        </p>
+    </div>
+</script>
+<!-- 弹窗模板13 -->
+<script type="text/html" id="dialog13">
+    <div class="dialog13" style="display: none;">
+        <div class="d-title">
+            <label>{{?it.data.title}} {{=it.data.title}} {{?}}</label>
+        </div>
+        <div class="html">
+            {{?it.data.html}} {{=it.data.html}} {{?}}
+        </div>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog16">
+    <div class="dialog16" style="display: none;">
+        <div class="select">
+            <div class="select-item">
+                <label for="first">不使用卡券</label>
+                <input type="checkbox" id="first" checked="checked" data-text="不使用卡券" data-subtype="no" data-value="0" data-id="0" data-couponid="">
+            </div>
+            {{~it.data.extra.tickets:value:index}}
+            <div class="select-item" data-subtype="{{=value.coupon_type}}">
+                <label for="sec">{{=value.amount}}{{?value.coupon_type=="discount"}}折{{??value.coupon_type=="deduction"}}元{{??value.coupon_type=="calculated"}}T{{?}}({{=value.coupon_name}})</label>
+                <input type="checkbox" id="sec" data-text='{{=value.amount}}{{?value.coupon_type=="discount"}}折{{??value.coupon_type=="deduction"}}元{{??value.coupon_type=="calculated"}}T{{?}}({{=value.coupon_name}})' data-subtype="{{=value.coupon_type}}" data-value="{{=value.amount}}" data-id="{{=index+1}}" data-couponid="{{=value.id}}">
+            </div>
+            {{~}}
+        </div>
+        <div class="btns2">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}" style="{{=value.style}};padding-top: 0.3rem">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog17">
+    <div class="dialog17" style="display:none;">
+        <div class="d-wrapper">
+            <img src="../../image/activities/close.png" class="close">
+            <div class="d-title">
+                <p>获得<span style="color: #f06261;">{{=it.data.extra.coin}}</span>红包</p>
+                <p>请在钱包中查看</p>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!-- 分享合成图片弹窗（暂时弃用） -->
+<script type="text/html" id="dialog18">
+    <div class="dialog18">
+        <div id="shareBottom18">
+            <p>此二维码包含“邀请奖励”等功能</p>
+            <ul>
+                <li data-event="{{=it.data.lis[0].event}}" data-index="{{=it.data.lis[0].index}}">
+                    <i><img src="../extrapage/image/wxicon.png"></i>
+                    <!-- <p>微信</p> -->
+                </li>
+                <li data-event="{{=it.data.lis[1].event}}" data-index="{{=it.data.lis[1].index}}">
+                    <i><img src="../extrapage/image/wxpyqicon.png"></i>
+                    <!-- <p>朋友圈</p> -->
+                </li>
+                <!-- <li data-event="{{=it.data.lis[2].event}}" data-index="{{=it.data.lis[2].index}}">
+                    <i><img src="../extrapage/image/qqicon.png"></i>
+                    <p>QQ</p>
+                </li>
+                <li data-event="{{=it.data.lis[3].event}}" data-index="{{=it.data.lis[3].index}}">
+                    <i><img src="../extrapage/image/weiboicon.png"></i>
+                    <p>微博</p>
+                </li> -->
+            </ul>
+            <div class="btns">
+                {{~it.data.btns:value:index}}
+                <p data-event="{{=value.event}}" class="cancal_tou">取消</p>
+                {{~}}
+            </div>
+        </div>
+    </div>
+</script>
+
+<!-- 分享合成图片弹窗2 -->
+<script type="text/html" id="dialog19">
+    <div class="dialog19" style="display: block;position: relative;">
+
+        <div class='scrollHide' style="width: 68%;left: 16%;position: fixed;top: 0px;overflow: scroll;-webkit-overflow-scrolling:touch;background-color: white;z-index: 1;" id="shareTotal">
+            <div style="width: 100%;min-height: 100%;position: relative;background-color: white;" id="shareW">
+                <img src="../../image/share_back_two.png" style="width: 100%;position: absolute;top: 0px;left: 0px;z-index: 2" id="shareBack">
+
+                <div class="share-main" style="padding: 0px 20px;position: relative;background-color: transparent;width: calc(100% - 40px);z-index: 9;padding-top: 140px;padding-bottom: 100px;">
+                    <div class="share-time">
+                        <img src="../../image/share_time_icon.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                        <label style="font-size: 13px;color: #fabf38;"><span>{{=it.data.extra.weekday}}</span><span style="margin-left: 4px;">{{=it.data.extra.shareDate}}</span></label>
+                    </div>
+                    <div class="share-body" style="color: #666;margin-top: 10px;{{?!it.data.extra.showBottom}}padding-bottom: 40px;{{?}}">
+                        <p style="text-align: left;width: 100%;font-weight:900;font-size:12px;">{{=it.data.extra.shareTitle}}</p>
+                        <p style="text-align: left;width: 100%;word-break: break-all;margin-top:10px;">
+                            {{=it.data.extra.shareTxt}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="share-info" style="color: #666;font-size: 14px;margin-top: 24px;bottom: 15px;position: absolute;width: calc(100% - 40px);padding: 0px 20px;z-index: 10;">
+                    <div src="" id="qrCode" style="display: inline-block;height: 60px;width: 60px;position:relative;top:10px;left:0"></div>
+                    <!--
+
+                    -->
+                    <div style="display: inline-block;position: relative;margin-left: 10px;top:10px;width: calc(100% - 70px)">
+                        <p style="line-height: 22px;margin-left:20px;text-align:left;font-size: 14px;">扫码领取</p>
+                        <p id="fuck" style="line-height: 16px;margin-left:20px;font-size: 14px;text-align:left;padding-bottom: 3px;padding-top:5px;">
+                            <span style="color: #fabf38;font-size: 12px;font-weight: bold;">1888</span>
+                            <span style="margin-left: 5px;font-size: 11px;">BHP糖果</span>
+                        </p>
+                        <p style="line-height: 16px;font-size: 14px;margin-left:20px;text-align:left;color: #c3c3c3;padding-top: 3px;">
+                            长按识别二维码</p>
+                        <!-- <img id="coinIcon" src="../../image/share_eth_icon.png" style="width: 16px;position: absolute;right: 15px;top: 15px;"> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{?!it.data.extra.showBottom}}
+        <p style="width: 100%;background-color: white;height: 40px;position: fixed;bottom: 0px;z-index: 100;border-top: 1px solid #eee;" id="cancelBtn">
+            <button data-event="cancel_show" style="line-height: 40px;width: 100%;">确定</button>
+        </p>
+        {{?}}
+
+        {{?it.data.extra.showBottom}}
+        <div style="width: 100%;position: fixed;bottom: 0;left:0;" id="shareBottom">
+            <p style="font-size: 14px;color: #666;width: 100%;text-align: center;background-color: white;padding: 10px 0px;position: relative;top: 1px;">
+                此二维码包含“邀请奖励”等功能</p>
+            <!--
+             -->
+            <ul style="padding-top: 1px;">
+                <li data-event="{{=it.data.lis[0].event}}" data-index="{{=it.data.lis[0].index}}">
+                    <i><img src="../extrapage/image/wxicon.png"></i>
+                    <!-- <p>微信</p> -->
+                </li>
+                <li data-event="{{=it.data.lis[1].event}}" data-index="{{=it.data.lis[1].index}}">
+                    <i><img src="../extrapage/image/wxpyqicon.png"></i>
+                    <!-- <p>朋友圈</p> -->
+                </li>
+                <!-- <li data-event="{{=it.data.lis[2].event}}" data-index="{{=it.data.lis[2].index}}">
+                    <i><img src="../extrapage/image/qqicon.png"></i>
+                    <p>QQ</p>
+                </li>
+                <li data-event="{{=it.data.lis[3].event}}" data-index="{{=it.data.lis[3].index}}">
+                    <i><img src="../extrapage/image/weiboicon.png"></i>
+                    <p>微博</p>
+                </li> -->
+            </ul>
+            <div class="btns">
+                {{~it.data.btns:value:index}}
+                <p data-event="{{=value.event}}" class="cancal_tou">取消</p>
+                {{~}}
+            </div>
+        </div>
+        {{?}}
+    </div>
+</script>
+<!-- 分享合成图片弹窗2 -->
+<script type="text/html" id="dialog191">
+    <div class="dialog191">
+        <div id="testUmg">
+            <div class="showAbout" id="showAboutNews">
+                <img src="../../image/zixunbgx.png" style="width:6.52rem;height:1.96rem;">
+                <div class="showMain">
+                    <div class="showTime">
+                        <span class="showWeek">
+                            {{=it.data.extra.weekday}}
+                        </span>
+                        <span>
+                            {{=it.data.extra.shareDate}}
+                        </span>
+                    </div>
+                    <h2>
+                        {{=it.data.extra.shareTitle}}
+                    </h2>
+                    <div class="showText" id="showText191">
+                        {{=it.data.extra.shareTxt}}
+                    </div>
+                    <div class="showIcon">
+                        <p>
+                            <span>
+                                <span style="color:#646464;font-weight: 550;">
+                                    已有100万人领取 立刻扫码领取
+                                </span>
+                                <span>
+                                    <span style="color: #ee9a51;">1888 BHP糖果</span> ≈ 18.88 BHP
+                                </span>
+                            </span>
+                        </p>
+                        <div id="newsImgText" style="width:1.2rem;height:1.2rem;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dialogBottom">
+            <p>此二维码包含“邀请奖励”等功能</p>
+            <ul>
+                <li data-event="{{=it.data.lis[0].event}}" data-index="{{=it.data.lis[0].index}}">
+                    <i><img src="../extrapage/image/wxicon.png"></i>
+                </li>
+                <li data-event="{{=it.data.lis[1].event}}" data-index="{{=it.data.lis[1].index}}">
+                    <i><img src="../extrapage/image/wxpyqicon.png"></i>
+                </li>
+            </ul>
+            <div class="btns">
+                <p class="cancal_tou">取消</p>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 算力合约页面弹窗 -->
+<script type="text/html" id="dialog20">
+    <div class="dialog20">
+        <div class="helplist">
+            <div class="listTitle">
+                <span style="color: rgba(24, 24, 24, 0.65);font-size: 0.24rem;">
+                    有效算龄
+                </span>
+                <span class="numPower">
+                    {{=it.forceNumber==0?("0.00"):it.forceNumber}} T*天
+                </span>
+            </div>
+            <div class="showImg" style="text-align: center;">
+                <div style=" font-weight:{{=Number(it.forceNumber)>=1000? '400':'600'}};color:{{=Number(it.forceNumber)>=1000?'#4c4c4c':'#363636'}};height:0.86rem;display:flex;align-items: flex-end;justify-content: center;">
+                    {{=Number(it.forceNumber)>=1000? "获得专享礼包":"双挖达标：1000T*天"}}
+                </div>
+                <img src="{{=Number(it.forceNumber)>=1000? '../../image/yidabiao.png':'../../image/weidabiao.png'}}" style="width:{{=Number(it.forceNumber)>=1000?'80%':'5.08rem'}};height:{{=Number(it.forceNumber)>=1000?'3.26rem':'3.1rem'}};margin-top:{{=Number(it.forceNumber)>=1000?'0':'0.2rem'}};">
+                <div class="calaTips">
+                    {{=Number(it.forceNumber)>=1000? "算龄已达标,获得双挖矿机体验资格 + 抢购双挖矿机资格":"当前算龄未达标,暂未获得双挖矿机资格"}}
+                </div>
+            </div>
+            <div class="showText">
+                人人矿场将在全球率先开创pow+pos的深度混合模式进行数字货币的“挖掘”,矿场会根据您当前的可信算力时长(T*天)进行人人矿场的算力额度授信,授信方式为等值的BHP,届时您可用此授信额度进行矿机的下单,下单的矿场算力在产出btc的同时还会附加产出一定比例的BHP,BHP可到交易市场进行流通！
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog201">
+    <div class="dialog201">
+        <div class="helplist">
+            <div class="listTitle">
+                <span style="color: rgba(24, 24, 24, 0.65);font-size: 0.28rem;">
+                    算力宝收益起投金额
+                </span>
+                <span class="numPower">
+                    3000元
+                </span>
+            </div>
+            <b style="font-size:.28rem;margin:.22rem 0;padding: 0 .28rem;">
+                算力宝理财说明
+            </b>
+            <div class="showImg">
+                算力宝是人人矿场推出的用户账户现金余额活期挖矿产品，产品通过对接BHP旗下各超级节点的巨大储备算力 ，进一步降低用户参与挖矿的起步门槛，其零手续费、随进随出，随取随用的特点将进一步加速各超级节点的社区用户发展。
+            </div>
+            <div class="showText">
+                <ul style="padding:0 0.3rem;box-sizing:border-box;">
+                    <li>
+                        算力宝起投金额为 3000元人民币，转入金额必须为整数，开挖收益时间为T+1
+                    </li>
+                    <li>
+                        算力宝获得收益以BTC形式发放，且自动发放到您的BTC资产账户。
+                    </li>
+                    <li>
+                        算力宝金额可随时转出到账户余额
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: .6rem;height: .6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog21">
+    <div class="dialog21">
+        <p style="margin-top:0.7rem;">{{?it.data.text}} {{=it.data.text}} {{?}}</p>
+        <p style="margin-top:0.16rem;margin-bottom:0.3rem;">{{?it.data.text2}} {{=it.data.text2}} {{?}}</p>
+        <p style="font-size:0.24rem;color:#adadad;margin-bottom:0.4rem;">{{?it.data.text1}} {{=it.data.text1}} {{?}}</p>
+        <div id="chenckRechcge">
+            {{~it.data.btns:value:index}}
+            <button class="{{=value.event}} {{=value.event=="sure_recharge"? "go-page":""}}" data-event="{{=value.event}}" style="width: 50%; outline: none;height:0.96rem;background-color: #fff;border: none;background-color: {{=value.event=="sure_recharge" || value.event=="sure_rechargeBcny"? "#ffd203":"#f1f1f1"}};border-radius: {{=value.event=="sure_recharge"||value.event=="sure_rechargeBcny"?"0 0 .1rem 0":"0 0 0 .1rem"}}" data-event="{{=value.event}}" data-param='{"page":"common/headerwin","name":"littlemoneyrecharge_headerwin","param":{"subpage":"extrapage/littlemoneyrecharge","name":"littlemoneyrecharge","title":"充值"}}'>{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog22">
+    <div class="dialog22">
+        <div class="helplist">
+            <div class="listTitle">
+                <span style="color: rgba(24, 24, 24, 0.65);font-size: .28rem;">
+                    新到手算力
+                </span>
+                <span class="numPower" style="color: #181818;font-size: 0.3rem;font-weight: 500;">
+                    {{=it.data.newAllPower}}
+                </span>
+            </div>
+            <div class="showText">
+                <ul>
+                    {{~it.data.powerList:value:index}}
+                    <li>
+                        <span style="color:#878787">{{=value.name}}</span>
+                        <span>{{=value.Power}}</span>
+                    </li>
+                    {{~}}
+                </ul>
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog220">
+    <div class="dialog220">
+        <div class="helplist">
+            <div class="listTitle">
+                <span style="color: rgba(24, 24, 24, 0.65);font-size: .28rem;">
+                    到手总算力
+                </span>
+                <span class="numPower" style="color: #181818;font-size: 0.3rem;font-weight: 500;">
+                    {{=it.data.newAllPower}}
+                </span>
+            </div>
+            <div class="showText">
+                <ul>
+                    {{~it.data.powerList:value:index}}
+                    <li>
+                        <span style="color:#878787">{{=value.name}}</span>
+                        <span>{{=value.Power}}</span>
+                    </li>
+                    {{~}}
+                </ul>
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog23">
+    <div class="dialog23">
+        <div class="helplist">
+            <div class="listTitle">
+                <span style="color: rgba(24, 24, 24, 0.65);font-size: 0.24rem;">
+                    差价
+                </span>
+                <span class="numPower" style="color: #181818;font-size: 0.24rem;font-weight: 500;">
+                    {{=it.data.spread}}
+                </span>
+            </div>
+            <div class="showImg">
+                <p>
+                    <span>
+                        原有合约金额
+                    </span>
+                    <span>
+                        {{=it.data.originalPrice}}
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        现有合约金额
+                    </span>
+                    <span>
+                        {{=it.data.nowPrice}}
+                    </span>
+                </p>
+            </div>
+            <div class="showText">
+                {{=it.data.isRelet==true?"转期":"续租"}}后奖励算力上浮提升至{{=it.data.nowPower}}，您需要补足相应差价以享受新的算力奖励，否则定期到期后您的算力将会下降
+            </div>
+        </div>
+        <div>
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog24">
+    <div class="dialog24">
+        <div class="enntueList">
+            <div class="entrudetail">
+                确认是否代购
+            </div>
+            <div class="button">
+                <p class="back" data-event="notBuyCoin">
+                    否
+                </p>
+                <p class="ensurEnstru" data-event="needBuyCoin">
+                    是
+                </p>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog25">
+    <div class="dialog25">
+        <div class="enntueList">
+            <div class="entrudetail">
+                确认是否提币
+                <span style="color: #adadad;font-size:0.24rem;">
+                    提币成功后0~60分钟到账
+                </span>
+            </div>
+            <div class="button">
+                <p class="back" data-event="notBuyCoin">
+                    否
+                </p>
+                <p class="ensurEnstru" data-event="needOutCoin">
+                    是
+                </p>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog26">
+    <div class="dialog26">
+        <div class="enntueList">
+            <div class="entrudetail">
+                <span>
+                    确认是否以代购价
+                    <span class="todayPrice">
+                        {{=it.data.todayPrice}} {{=it.data.coinType=="BCNY"?"CNY":"BCNY"}}
+                    </span>
+                </span>
+                <span style="margin:0.2rem 0;">
+                    代购
+                    <span class="entNum">
+                        {{=it.data.entNum}} {{=it.data.coinType}}
+                    </span>
+                </span>
+                <span>
+                    <span style="color:#adadad">
+                        需支付金额
+                    </span>
+                    <span class="fetureTotal" style="color: #ffd203;margin-left:0.05rem;">
+                        {{=it.data.fetureTotal}} {{=it.data.coinType=="BCNY"?"CNY":"BCNY"}}
+                    </span>
+                </span>
+                <span style="margin-top:0.2rem;color:#ff6678;font-size:0.22rem;display:inline-block;">
+                    {{?it.data.ischeck==1}}
+                    <span>当前代购价低于建议代购价95%</span>
+                    {{??it.data.ischeck==2}}
+                    <span>当前代购价高于建议代购价5%</span>
+                    {{?}}
+                </span>
+            </div>
+            <div class="button">
+                <p class="back" data-event="notWantEntrust">
+                    否
+                </p>
+                <p class="ensurEnstru" data-event="agentBuy">
+                    是
+                </p>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog261">
+    <div class="dialog261">
+        <div class="enntueList">
+            <div class="entrudetail">
+                <span>
+                    确认是否以代售价
+                    <span class="todayPrice">
+                        {{=it.data.todayPrice}} BCNY
+                    </span>
+                </span>
+                <span style="margin:0.2rem 0;">
+                    代售
+                    <span class="entNum">
+                        {{=it.data.entNum}} {{=it.data.coinType}}
+                    </span>
+                </span>
+                <span>
+                    <span style="color:#adadad">
+                        预计获得金额
+                    </span>
+                    <span class="fetureTotal" style="color: #ffd203;margin-left:0.05rem;">
+                        {{=it.data.fetureTotal}} {{=it.data.coinType=="BCNY"?"CNY":"BCNY"}}
+                    </span>
+                </span>
+                <span style="margin-top:0.2rem;color:#ff6678;font-size:0.22rem;display:inline-block;">
+                    {{?it.data.ischeckSell==1}}
+                    <span>当前代售价低于建议代售价95%</span>
+                    {{??it.data.ischeckSell==2}}
+                    <span>当前代售价高于于建议代售价5%</span>
+                    {{?}}
+                </span>
+            </div>
+            <div class="button">
+                <p class="back" data-event="notWantEntrust">
+                    否
+                </p>
+                <p class="ensurEnstru" data-event="agentSell">
+                    是
+                </p>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog27">
+    <div class="dialog27">
+        <div class="enntueList">
+            <p class="agreeTitle">
+                <strong>
+                    <span style="font-family: 黑体;line-height: 200%;font-size: 0.32rem">
+                        <span style="font-family:黑体">数字资产委托交易服务协议</span>
+                    </span>
+                </strong>
+            </p>
+            <div style="width: 100%;height:80%;line-height:26px;padding:0 10px; box-sizing:border-box;overflow:scroll">
+                {{=it.data.html}}
+            </div>
+            <div id="checkAgree">
+                <span class="back" data-event="notAgreeAgrement">
+                    不同意
+                </span>
+                <span class="ensurEnstru" data-event="agreeAgrement">
+                    同意协议并继续
+                </span>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog28">
+    <div class="dialog28">
+        <div class="helplist">
+            <div class="listTitle">
+                <span style="color: rgba(24, 24, 24, 0.65);font-size: 0.24rem;">
+                    司法存证
+                </span>
+                <span class="numPower">
+                    1.00 {{=it.data.ischeckBhpc==true? "BCNY":"CNY"}}
+                </span>
+            </div>
+            <b class="tispSifa">
+                注：司法存证费用为第三方机构收取，退租时将只退租用矿机租金,司法存证费用不会退款。
+            </b>
+            <div class="showText">
+                <ul>
+                    <li>
+                        每份租用的算力合约协议可以购买司法存证服务，每份存证服务费用1元人民币，余额中自动扣除，购买后自动存入第三方司法存证机构。
+                    </li>
+                    <li>
+                        司法存证费用由第三方机构收取，与人人矿场无关。
+                    </li>
+                </ul>
+            </div>
+            <div class="adressText">
+                此服务由中经天平司法电子证据云提供，保障用户价值交易数据的安全可靠。
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;margin-top:0.4rem;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog281">
+    <div class="dialog281">
+        <div class="cover">
+            <div class="reward">
+                <p>奖励算力</p>
+                <p class="rewardNum">{{=it.data.totalpower}}</p>
+            </div>
+            <div class="windowList" style="padding-bottom:0.2rem;">
+                <p><span>浮动算力</span> <span class="floatpower">{{=it.data.floatpower}}</span></p>
+                <p><span>达标算力</span> <span class="pepower">{{=it.data.pepower}}</span></p>
+                <p><span>期货算力</span> <span class="hopepower">{{=it.data.hopepower}}</span></p>
+                <p><span>定期算力</span> <span class="setdatepower">{{=it.data.setdatepower}}</span></p>
+                <!-- <p><span>成长奖励</span> <span class="setdatepower">{{=it.data.tdatepower}}</span></p> -->
+                <!-- <p><span>优惠券算力</span> <span class="couponpower">{{=it.data.couponpower}}</span></p> -->
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog29">
+    <div class="dialog29">
+        <div class="cover">
+            <div>
+                <img src="../../image/renzhengnox.png">
+                <p>
+                    {{=it.data.status==-2? "你尚未进行实名认证":"未通过审核,请重新验证"}}
+                </p>
+                <p style="font-size:0.24rem;color:#696969;">
+                    {{=it.data.tips!=""? it.data.tips:"您还未认证身份信息,为方便您使用与享受更多的特权服务，请前去认证身份，完善资料"}}
+                </p>
+            </div>
+            <p style="font-size:0.24rem;color:red;">
+                注:一个证件只能认证一个账号
+            </p>
+            <div class="goCertifiton">
+                <button data-event="{{=it.data.event}}">立即实名</button>
+                <button data-event="">下次再说</button>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog29copy">
+    <div class="dialog29 dialog29copy">
+        <div class="cover" style="padding-bottom: 0.2rem">
+            <div>
+                <img src="../../image/renzhengnox.png">
+                <p>你尚未进行实名校验</p>
+            </div>
+            <!--      <p style="font-size:0.24rem;color:red;">注:一个证件只能校验一个账号</p>-->
+            <div class="goCertifiton">
+                <button class="relname_sure" data-event="{{=it.data.event}}" style="width: 50%; height: 0.8rem;line-height: 0.8rem;background-color: #ffd203;border-radius: 0.1rem;font-size: 0.28rem;">
+                    立即校验
+                </button>
+                <button class="cancelRelname" data-event="" style="background: #fff;">下次再说</button>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog30">
+    <div class="dialog30">
+        <div class="helplist">
+            <div class="listTitle">
+                <span style="color: rgba(24, 24, 24, 0.65);font-size: 0.24rem;">
+                    累计已发放
+                </span>
+                <span class="numPower">
+                    {{=it.forceNumber==0?("0.00000000"):it.forceNumber}} BTC
+                </span>
+            </div>
+            <div class="showText">
+                【BHP持币分红说明】<br>
+                <br>
+                用户持有的算力币BHP，只要存放在人人矿场DAPP内，即可永久享有每日BTC分红收益。<br>
+                <br>
+                算力币BHP的“持币即挖矿” 分红模式：<br>
+                <br>
+                基于BHP底层信用资产与BTC严格对应原则，算力币BHP拥有主链BTC挖矿的分红收益。通过BHP公链智能合约永久实现，每日BTC总产量的2%~20%自动转入BHP公链分红总账户“BTC奖池”。当日BTC奖池的所有BTC，次日按人人矿场DAPP内用户持币比例等比自动分配转入个人账户。<br>
+                <br>
+                挖矿分红规则：<br>
+                <br>
+                1.BTC奖池总分红比例：2%~20%比例不等，当月比例由人人矿场运营团队根据业务最优原则按月调整并公告。
+                <br>
+                2.用户派发规则：按用户在人人矿场DAPP内持有的算力币BHP数量，等比自动分配。
+                <br>
+                3.派发时间：24小时以内发放。
+                <br>
+                【注意：锁仓算力币BHP不参与持币即挖矿的分红】
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;margin-top:0.4rem;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog31">
+    <div class="dialog31">
+        <div class="helplist">
+            <div class="listTitle">
+                <span class="numPower">
+                    {{=it.data.coinPax}}
+                </span>
+            </div>
+            <div class="showText">
+                {{=it.data.textTips}}
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;margin-top:0.4rem;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog32">
+    <div class="dialog32">
+        <div class="helplist">
+            <div class="listTitle">
+                <span class="numPower">
+                    <img src="{{=it.data.imgSrc}}">
+                </span>
+            </div>
+            <div class="showText">
+                提现申请发起成功,银行处理中!
+            </div>
+            <div style="width: 100%;display: flex;justify-content: center;margin: 0.66rem 0;">
+                <span id="closeCoverNew" data-avent="{{=it.data.button.eventText}}" style="margin: auto;background-color: #ffd203;display: inline-block;width: 5.49rem;height: 0.8rem;line-height: 0.8rem;color: #fff;border-radius: 0.1rem;text-align: center;">
+                    {{=it.data.button.text}}
+                </span>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog33">
+    <div class="dialog33">
+        <div class="d-title">
+            {{=it.data.title}}
+        </div>
+        <div style="margin-top:0.4rem;">
+            <p style="margin-bottom: 0px; text-align: left; text-indent: 0px; line-height: 300%;">
+                <span style="font-size: 16px; font-family: 黑体; color: rgb(0, 0, 0);">一、协议的签署</span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">1.1.【您】通过登陆【人人矿场】网站（以下简称：【人人矿场】）“人人矿场算力服务”页面，进入
+                    “【云算力】”的服务签约程序。</span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">1.2.【您】阅读并理解【人人矿场】“人人矿场算力服务”页面的《“【云算力】”在线服务协议》（以下简称：【本协议】）全部条款的内容。</span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">1.3.在【您】点击【人人矿场】“人人矿场算力服务”页面中‘我同意《“【云算力】”在线服务协议》’后，即视为【您】已不加修改地、无条件完全接受【本协议】所包含的全部条款内容及【本公司】通过【人人矿场】已经发布的或将来可能发布的各类规则（以下简称：【规则】）。该等已发布的或将来可能发布的【规则】为【本协议】不可分割的一部分，与【本协议】具有同等法律效力。【本协议】是经【人人矿场】自动匹配撮合【您】作为“【云算力】”购买方与【云算力】出售方----签订的，适用于【您】在【人人矿场】购买“【云算力】”的全部行为，<strong>【您】在【人人矿场】购买“【云算力】”由平台担保可以转让</strong>。如【您】不接受本协议的任一条款，请【您】立即不要点击【人人矿场】“人人矿场【云算力】购买”页面中‘我同意《“【云算力】”在线服务协议》’。</span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">1.4.根据【人人矿场】公司香港法律，如【您】通过点击【人人矿场】“人人矿场【云算力】服务”页面中‘我同意《“【云算力】”在线服务协议》’，即表示【您】同意并签署了【本协议】，自愿接受【本协议】。此后，【您】不得以未阅读【本协议】内容作任何形式的抗辩，也不得以未签署书面协议为由否认【本协议】的效力。</span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">1.5.在【您】点击【人人矿场】“人人矿场算力购买”页面中‘我同意“《【云算力】”在线服务协议》’后，【您】即刻与【云算力】出售方以及本公司之间建立《“【云算力】”在线服务协议》合同上的法律关系。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">二、【本协议】项目与定义</span></strong></span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">2.1.“【云算力】”购买：是指【您】在本公司所属的【人人矿场】购买【云算力】出售方有权出售的含电【云算力】及平台特许算力持有权，从而获得对应收益的权利。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">2.2.【您】所购买的“【云算力】”置于【云算力】出售方提供的分布在包括但不限于中国、美国、加拿大等地【人人矿场】机房网络中。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">2.3.【您】购买的“【云算力】”主机并非【您】单独购买，【您】购买的是【云算力】出售方有权出售“【云算力】”主机的剩余“算力”（该算力以【云算力】出售方在【人人矿场】在线发布出售的“算力”为准）。【云算力】出售方拥有的超出【您】购买的“【云算力】”的“算力”部份，可以另行出售给其他购买“【云算力】”的【会员】。</span>
+                <a style="text-decoration: none; font-size: 16px; ">
+                    <span style="font-size: 16px; color: rgb(0, 0, 0);">【您】购买的“【云算力】可以原价、溢价或折价转让给第三方，平台将引入第三方或者保险并提供担保【您】购买的“【云算力】可以原价被第三方承接受让。</span>
+                </a>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">2.4.在【您】购买的“【云算力】”运行过程中，【云算力】出售方及【您】均同意：</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">2.4.1.
+                    【您】购买的“【云算力】”是【云算力】出售方提供的含电【云算力】，【您】不需要承担【您】所购买“算力”运行所产生的电费。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">2.4.2.
+                    【您】通过【人人矿场】购买的“【云算力】”，【您】接受【人人矿场】的算力买卖撮合服务、【云算力】运营管理服务（包含不限于服务器的硬件基本配置和软件安装及服务器硬件故障的排除等运行维护服务），并同意将所持有【云算力】产出的50%作为【人人矿场】平台的服务佣金，并同意我司在【人人矿场】平台每日扣除佣金后将剩余产出分配到指定账户。<strong><br>
+                    </strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">三、【您】在购买
+                        “【云算力】”前，声明如下</span><strong>：</strong></span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">3.1.【您】已对购买【云算力】投资风险和收益有一定了解，自愿承担并购买本公司【人人矿场】“【云算力】”的购买费及购买“【云算力】”及后运行“【云算力】”所产生的佣金与服务费。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">3.2.【您】承诺不违反中国香港法律、法规的任何内容（信息），不传播侵害他人合法权益的信息和/或其他有损于社会秩序、社会治安、公共道德的信息或内容。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">3.3.【您】对购买
+                    “【云算力】”所引起的任何经济、政治、法律等责任负完全民事责任。【您】同意，如发生上述事件，与本公司没有任何关系，本公司也不应对此或对第三方承担任何责任或者义务。&nbsp;<strong><br>
+                    </strong>3.4.【您】自己将算力产出所得并存放在本公司“人人矿场”服务器上的数据的完整性和保密性负责；【您】应为自己存放在本公司【人人矿场】服务器上的关键性数据进行定期本地备份。本公司不对因【您】自身原因造成的账户泄密、数据丢失、损坏及预期收益的损失负责。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">3.5.因本公司或本公司委托的【运维公司】及【供电公司】的过失、过错、硬件损坏等原因导致【您】数据丢失或其他损失的，本公司最高赔偿限额不超过【您】已向本公司及【云算力】出售方支付的款项总额。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">3.6.【您】承认本公司向【您】提供的任何资料、软件、数据等的权利属于本公司，【您】无权复制、传播、转让、许可或提供他人购买这些资源，否则本公司可要求【您】停止复制、传播、转让、许可或提供他人购买这些资源，并可要求【您】应承担本公司相应损失的责任。<strong>&nbsp;</strong><strong><br>
+                    </strong>3.7.【您】应按时向【云算力】出售方及本公司缴纳【本协议】及本公司“人人矿场”发布的规则约定的费用。&nbsp;</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">四、“【云算力】”的取得</span><strong><br>
+                    </strong>4.1.【您】已点击【人人矿场】“人人矿场算力购买”页面中‘我同意《 “【云算力】”在线服务协议》’。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">4.2.【您】按【人人矿场】中“人人矿场算力购买”页面中【云算力】出售方在线发布的各类“【云算力】”金额，在线或线下向【云算力】出售方缴付相应的购买金额后，【您】即取得所缴付金额对应的“算力”30天、90天、180天不等期限的算力持有权，算力持有权届满后，【您】可以选择转让“【云算力】”或续期持有“【云算力】”。若继续持有“【云算力】”，则应按【人人矿场】公布的规则办理完成相应手续后取得对应“【云算力】”继续持有权。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">4.3.【您】在算力持有权届满后，如【您】不转让所持有的“【云算力】”或不终止《“【云算力】”在线服务协议》，按【人人矿场】公布的规则将默认【您】将续期持有的“【云算力】”，直至【您】主动转让所持有的“【云算力】”或终止《“【云算力】”在线服务协议》。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">五、本公司的权利和义务</span><strong>&nbsp;</strong></span>
+            </p>
+            <p style="text-align:left;line-height:200%;background:white">
+                <span style="font-size: 16px; line-height: 200%; font-family: 微软雅黑; color: rgb(0, 0, 0);">5.1.本公司保证【您】在本公司【人人矿场】服务器存放的数据和资料的安全，不得将这些数据和资料透露给任何第三人或自己利用或者许可他人购买；如【您】发现本公司透露数据和资料给第三人或自己利用或者许可他人购买，【您】可以追究本公司的法律责任，并由本公司承担因此给【您】造成的一切经济损失。</span>
+            </p>
+            <p style="text-align:left;line-height:200%;background:white">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><span style="color: rgb(0, 0, 0); font-size: 16px; line-height: 200%; font-family: 微软雅黑;">5.2.本公司负责</span><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 微软雅黑;">【</span><span style="color: rgb(0, 0, 0); font-size: 16px; line-height: 200%; font-family: 微软雅黑;">人人矿场</span><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 微软雅黑;">】</span><span style="color: rgb(0, 0, 0); font-size: 16px; line-height: 200%; font-family: 微软雅黑;">信息平台系统安全可靠的运行，并负责【您】购买
+                        “【云算力】”服务器的日常维护及技术支持等，网管中心每周七天，每天24小时监测服务器，进行数据备份，并采取必要措施使该服务器不受病毒侵袭、不受外来物理破坏，以保证【您】购买“【云算力】”服务器的正常运行。</span></span>
+            </p>
+            <p style="text-align:left;line-height:200%;background:white;font-weight:600;font-size:16px;color:ffd203;">
+                5.3
+                【您】若自愿转让“【云算力】”持有权，本公司【人人矿场】信息平台将撮合【您】与【人人矿场】会员之间发起“【云算力】”转/受让，并通过有效途径保证【您】“【云算力】”购买权转让的成功。
+            </p>
+            <p style="text-align:left;line-height:200%;background:white">
+                <span style="font-size: 16px; line-height: 200%; font-family: 微软雅黑; color: rgb(0, 0, 0);">5.4【您】若使本公司【人人矿场】信息平台转让“【云算力】”购买权的价格得到一定程度的保值，【您】可以向入驻本公司【人人矿场】的保险公司开设的险种投保（待开通）。若【您】向入驻本公司【人人矿场】的保险公司投保的【险种】及投保的保费，转让“【云算力】”购买权价格的保值条件及保值金额，以入驻本公司【人人矿场】的保险公司公布的规则为准。</span>
+            </p>
+            <p style="text-align:left;line-height:200%;background:white">
+                <span style="font-size: 16px; line-height: 200%; font-family: 微软雅黑; color: rgb(0, 0, 0);">5.5本公司有权根据本协议约定收取相关费用。</span>
+            </p>
+            <p style="text-align:left;line-height:200%;background:white">
+                <span style="font-size: 16px; line-height: 200%; font-family: 微软雅黑; color: rgb(0, 0, 0);">5.6本公司有权根据【人人矿场】的实际情况决定取消为【您】提供的一项或多项服务，但应提前通知【您】并退还【您】为该服务所交纳款项的剩余部分，除此之外本公司不承担任何责任。</span>
+            </p>
+            <p style="text-align:left;line-height:200%;background:white">
+                <span style="line-height: 200%; font-family: 微软雅黑; font-size: 16px; color: rgb(0, 0, 0);">&nbsp;</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-family: 黑体; font-size: 16px; color: rgb(0, 0, 0);">六、<strong>责任限制</strong></span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">6.1.【您】购买的“【云算力】”在进行服务器配置、维护时需要短时间中断服务，或者由于Internet上通路的阻塞造成服务器访问速度下降，以及服务器运行过程中产生的电力检修，【您】均认同是正常情况，不属于本公司违约。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">6.2.鉴于【您】购买的“【云算力】”具有计算机及互联网的特殊属性，因“黑客”、“病毒”及电信部门技术调整等引起的事件，【您】亦认同不属于【云算力】出售方和本公司违约。&nbsp;<br>
+                    6.3.在履行本协议时，本公司对因第三方的过错或者延误而给【您】或者其他第三方造成的损失不负责任。&nbsp;<strong><br>
+                    </strong>6.4.【人人矿场】对通过【您】间接接受【人人矿场】服务的第三方的损失不负责任。&nbsp;<br>
+                    6.5.由于【人人矿场】过错造成【您】遭受损失的，本公司最高赔偿限额不超过【您】已向【云算力】出售方及【人人矿场】支付的款项总额或算力所得总额。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">七、不可抗力</span></strong></span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">7.1.任何一方遇有不可抗力而全部或部分不能履行本协议或迟延履行本协议，应自不可抗力事件发生之日起五日内，将事件情况以书面形式通知其他方，并于事件发生之日起二十日内，向其他方提交导致其全部或部分不能履行或迟延履行的证明。&nbsp;<br>
+                    7.2.遭受不可抗力的一方应采取一切必要措施减少损失，并在事件消除后立即恢复本协议的履行，除非此等履行已不可能或者不必要。&nbsp;<br>
+                    7.3.本条所称“不可抗力”系指不能预见、不能避免或不能克服的客观事件，包括但不限于自然灾害如洪水、火灾、爆炸、雷电、地震和风暴等以及社会事件如战争、动乱、政府管制、国家政策的突然变动和罢工等。<strong><br>
+                    </strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">八、<strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">保密</span></strong>&nbsp;</span></span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">任何一方对在<span style="color: rgb(0, 0, 0); font-size: 16px; font-family: PMingLiU, serif;">【</span>本协议】履行过程中以任何方式获知的其他方商业秘密或其他技术及经营信息均负有保密义务，不得向任何其他第三方透露或泄露，但【本公司】属地香港法律另有规定或经其他方书面同意的除外。&nbsp;</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">九、【本协议】<strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">解除、终止及违约责任</span></strong>&nbsp;</span><strong><br>
+                    </strong>9.1.因不可抗力而解除<span style="color: rgb(0, 0, 0); font-size: 16px; font-family: PMingLiU, serif;">【</span>本协议】或者三方当事人协商一致解除<span style="color: rgb(0, 0, 0); font-size: 16px; font-family: PMingLiU, serif;">【</span>本协议】的。&nbsp;<br>
+                    9.2.依法律法规规定的情形而终止。&nbsp;</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">9.3.由于一方不履行<span style="color: rgb(0, 0, 0); font-size: 16px; font-family: PMingLiU, serif;">【本</span>协议<span style="color: rgb(0, 0, 0); font-size: 16px; font-family: PMingLiU, serif;">】</span>约定的义务，或严重违反<span style="color: rgb(0, 0, 0); font-size: 16px; font-family: PMingLiU, serif;">【</span>本协议】约定的义务，造成本协议无法履行或履行不必要时，视作违约方片面终止<span style="color: rgb(0, 0, 0); font-size: 16px; font-family: PMingLiU, serif;">【</span>本协议】，守约方除有权向违约方索赔外，并有权终止<span style="color: rgb(0, 0, 0); font-size: 16px; font-family: PMingLiU, serif;">【</span>本协议】。&nbsp;<strong>&nbsp;</strong></span>
+            </p>
+            <p style="margin-bottom: 0px; text-align: left; line-height: 200%; background: white;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">十、</span><strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">争议解决</span></strong></span>
+            </p>
+            <p style="margin-bottom: 0px; text-align: left; text-indent: 48px; line-height: 200%; background: white;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">各方在履行【本协议】过程中发生的纠纷由各方友好协商，协商不成由<span style="color: rgb(0, 0, 0); font-size: 16px; font-family: PMingLiU, serif;">【</span>本公司】属地香港的法院管辖。</span>
+            </p>
+            <p style="margin-bottom: 0px; text-align: left; line-height: 200%; background: white;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">十一、</span></strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">【本协议】<strong><span style="color: rgb(0, 0, 0); font-size: 16px; font-family: 黑体;">的解释、法律适用、生效条件及其他</span></strong></span></span>
+            </p>
+            <p style="margin-bottom: 0px; text-align: left; line-height: 200%; background: white;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">11.1.【本协议】的解除、终止或者【本协议】有关条款的无效均不影响【本协议】关于协议的解释、违约责任、知识产权、法律适用、责任限制、补偿及争议解决的有关约定的效力。&nbsp;<br>
+                    11.2.【本协议】的订立、效力、解释、履行和争议的解决均适用【本公司】香港的法律规定。&nbsp;<br>
+                    11.3.如果【本协议】任何条款根据【本公司】香港适用的现行法律被确定为无效或无法实施，【本协议】的其他所有条款将继续有效。此种情况下，各方将以有效的约定替换该无效或无法实施约定，且该有效约定应尽可能接近原约定和【本协议】相应的精神和宗旨。&nbsp;</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">11.4.订立【本协议】所依据的【本公司】香港法律发生变化，【本协议】应变更相关内容；订立【本协议】所依据的客观情况发生重大变化，致使【本协议】无法履行的，经各方协商同意，可以变更【本协议】相关内容或者终止协议的履行。</span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);">&nbsp;</span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><strong><span style="font-size: 16px; line-height: 200%; font-family: 微软雅黑; color: rgb(102, 102, 102);">签约主体：</span></strong></span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><strong><span style="font-size: 16px; line-height: 200%; font-family: 微软雅黑; color: rgb(102, 102, 102);">【人人矿场】平台主体：SuperB Grace Limited</span></strong></span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><strong><span style="font-size: 16px; line-height: 200%; font-family: 微软雅黑; color: rgb(102, 102, 102);">算力销售方：海南安麦云科技有限公司</span></strong></span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><strong><span style="font-size: 16px; line-height: 200%; font-family: 微软雅黑; color: rgb(102, 102, 102);">算力购买方：{{=it.data.userIdName}}</span></strong></span>
+            </p>
+            <p style="line-height: 200%; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><strong><span style="font-size: 16px; line-height: 200%; font-family: 微软雅黑; color: rgb(102, 102, 102);">算力单元（T）：{{=it.data.baseDataPower}}</span></strong></span>
+            </p>
+            <p style="margin-bottom: 0px; line-height: 200%; background: white; text-align: left;">
+                <span style="font-size: 16px; color: rgb(0, 0, 0);"><strong><span style="font-size: 16px; color: rgb(102, 102, 102);">合约生效日期：确认即时生效</span></strong></span>
+            </p>
+
+        </div>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}" style="color:#ffd203;">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog34">
+    <div class="dialag34">
+        <p>请确定:</p>
+        <div id="id1" class="details"><span>转让算力</span> <span>{{=it.data.tansferPower}}</span><span style="color:#ffd203;">√</span></div>
+        <div id="id2" class="details"><span>转让单价</span><span>{{=it.data.transferPrice}}</span><span style="color:#ffd203;">√</span> </div>
+        <div id="id3" class="details"><span>转让总额</span><span>{{=it.data.transferTotal}}</span><span style="color:#ffd203;">√</span></div>
+        <div id="id4" class="details"><span>转让手续费1%</span><span>{{=it.data.transferDrokerage}}</span><span style="color:#ffd203;">√</span></div>
+        <div id="id5" class="details"><span>预计可得</span><span style="color:#ffd203;">{{=it.data.getMoney}}</span><span style="color:#ffd203;">√</span></div>
+        <b>
+            <span>
+                取消
+            </span>
+            <span id="transEvent" data-event="YesGoTransfer" data-flag="false">
+                确定
+            </span>
+        </b>
+    </div>
+</script>
+<script type="text/html" id="dialog341">
+    <div class="dialag341">
+        <p>请确定:</p>
+        <div id="id1" class="details"><span>转让算力</span> <span>{{=it.data.tansferPower}}</span><span style="color:#ffd203;">√</span></div>
+        <div id="id2" class="details"><span>转让单价</span><span>{{=it.data.transferPrice}}</span><span style="color:#ffd203;">√</span> </div>
+        <div id="id3" class="details"><span>转让总额</span><span>{{=it.data.transferTotal}}</span><span style="color:#ffd203;">√</span></div>
+        <div id="id4" class="details"><span>预计可得</span><span style="color:#ffd203;">{{=it.data.getMoney}}</span><span style="color:#ffd203;">√</span></div>
+        <b>
+            <span>
+                取消
+            </span>
+            <span id="transEventNew" data-event="YesGoTransfer" data-flag="false">
+                确定
+            </span>
+        </b>
+    </div>
+</script>
+<script type="text/html" id="dialog35">
+    <div class="dialag35">
+        <p class="dialagTitle">
+            <span>
+                人人矿场下单说明
+            </span>
+        </p>
+        <div class="showtable">
+            <p>
+                为保证人人矿场每位用户正常下单算力，防止恶意刷单，故实施限额策略，规则如下：
+            </p>
+            <table order='1' cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            30天锁定
+                        </td>
+                        <td>
+                            90天锁定
+                        </td>
+                        <td>
+                            180天锁定
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            单日(T)
+                        </td>
+                        <td>
+                            {{=it.data.macData.day}}
+                        </td>
+
+                        <td>
+                            {{=it.data.macData.regular_day_three}}
+                        </td>
+                        <td>
+                            {{=it.data.macData.regular_day_six}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            30日(T)
+                        </td>
+                        <td>
+                            {{=it.data.macData.thirtyDay}}
+                        </td>
+
+                        <td>
+                            {{=it.data.macData.regular_six}}
+                        </td>
+                        <td>
+                            {{=it.data.macData.regular_three}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            单次(T)
+                        </td>
+                        <td>
+                            {{=it.data.macData.hq_once_limit==0?"--":it.data.macData.hq_once_limit}}
+                        </td>
+
+                        <td>
+                            {{=it.data.macData.dqT_once_limit==0?"--":it.data.macData.dqT_once_limit}}
+                        </td>
+                        <td>
+                            {{=it.data.macData.dqS_once_limit==0?"--":it.data.macData.dqS_once_limit}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <b>
+                人人矿场在法律允许范围内拥有最终解释权
+            </b>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog36">
+    <div class="dialag36">
+        <div style="background-color:#fff;display: flex;display: -webkit-flex;flex-direction: column;align-items: center;padding-bottom:0.5rem;border-radius: 0.2rem;">
+            <p class="dialagTitle">
+                <span>
+                    BHP糖果解冻规则
+                </span>
+            </p>
+            <div class="showtable">
+                <p>
+                    可解冻糖果数量受算龄影响，算龄越高，可解冻糖果数量越多，当算龄达到900T/天，可全部解冻，具体规则如下:
+                </p>
+                <ul>
+                    <li>
+                        <span>
+                            算龄(T/天)
+                        </span>
+                        <span>
+                            解冻个数
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            100
+                        </span>
+                        <span>
+                            188
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            200
+                        </span>
+                        <span>
+                            200
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            300
+                        </span>
+                        <span>
+                            200
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            400
+                        </span>
+                        <span>
+                            200
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            500
+                        </span>
+                        <span>
+                            200
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            600
+                        </span>
+                        <span>
+                            200
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            700
+                        </span>
+                        <span>
+                            200
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            800
+                        </span>
+                        <span>
+                            200
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            900
+                        </span>
+                        <span>
+                            300
+                        </span>
+                    </li>
+                </ul>
+                <b>
+                    人人矿场在法律允许范围内拥有最终解释权
+                </b>
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;margin-top:0.4rem;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog37">
+    <div class="dialag37">
+        <div style="background-color:#fff;display: flex;display: -webkit-flex;flex-direction: column;align-items: center;padding-bottom:0.5rem;border-radius: 0.2rem;">
+            <p class="dialagTitle">
+                <span>
+                    承接算力合约包说明
+                </span>
+            </p>
+            <div class="showtable">
+                <div class="underTexttips" style="font-size: 0.24rem;width:100%;margin: auto;height: auto;padding:0 0.6rem 0 0.56rem;box-sizing: border-box;">
+                    <p>
+                        <span>
+                            1. 开挖时间
+                        </span>
+                        <span>
+                            承接次日开挖
+                        </span>
+                    </p>
+                    <p>
+                        <span>
+                            2. 转让之后，再次转让时有哪些限制？
+                        </span>
+                        <span>
+                            合约期30天内不可转让
+                        </span>
+                    </p>
+                    <p>
+                        <span>
+                            3. 转让期算龄怎么计算？
+                        </span>
+                        <span>
+                            转让期算龄继续计算，转让成功后，则转让人减去算龄
+                        </span>
+                    </p>
+                </div>
+                <b>
+                    人人矿场在法律允许范围内拥有最终解释权
+                </b>
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;margin-top:0.4rem;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog38">
+    <div class="dialag38">
+        <div style="background-color:#fff;display: flex;display: -webkit-flex;flex-direction: column;align-items: center;padding-bottom:0.5rem;border-radius: 0.2rem;">
+            <p class="dialagTitle">
+                <span>
+                    转让说明
+                </span>
+            </p>
+            <div class="showtable">
+                <div class="underTexttips" style="font-size: 0.24rem;width:100%;margin: auto;height: auto;padding:0 0.6rem 0 0.56rem;box-sizing: border-box;">
+                    <p>
+                        <span>
+                            1. 转让期算龄怎么计算？
+                        </span>
+                        <span>
+                            转让期算龄继续计算，转让成功后，则转让人减去算龄
+                        </span>
+                    </p>
+                    <p>
+                        <span>
+                            2. 转让期有收益吗？
+                        </span>
+                        <span>
+                            转让期算力冻结,没有收益
+                        </span>
+                    </p>
+                    <p>
+                        <span>
+                            3. 申请转让后,可以取消吗？
+                        </span>
+                        <span>
+                            a.撤销:转让申请提交成功后,10分钟内不允许撤销,10分钟后可取消转让<br>
+                            <br>
+                            b.转让成功：转让申请24小时内，转让人转让成功后，则这笔转让成功
+                        </span>
+                    </p>
+                </div>
+                <b>
+                    人人矿场在法律允许范围内拥有最终解释权
+                </b>
+            </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;margin-top:0.4rem;">
+            <span class="closeCover" style="margin: auto;">
+                <img src="../../image/forcedetailindow.png" style="width: 0.6rem;height: 0.6rem;">
+            </span>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog39">
+    <div class="dialog39">
+        <div class="d-title" style="font-size:0.24rem;font-weight:400;display:flex;display:-webkit-flex;justify-content:flex-start;">
+            合同编号: {{=it.data.oriderID}}
+        </div>
+        <div class="d-title">
+            {{=it.data.title}}
+        </div>
+        <div style="margin-top:0.4rem;">
+            {{=it.data.orderText}}
+        </div>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}" style="color:#ffd203;">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+<script type="text/html" id="dialog391">
+    <div class="dialog391">
+        <div class="d-title">
+            {{=it.data.title}}
+        </div>
+        <div style="margin-top:0.4rem;">
+            {{=it.data.orderText}}
+        </div>
+        <div class="btns">
+            {{~it.data.btns:value:index}}
+            <button data-event="{{=value.event}}" style="color:#ffd203;">{{=value.name}}</button>
+            {{~}}
+        </div>
+    </div>
+</script>
+
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我承接详情</title>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/contractdetail.css">
+    <style>
+        .details {
+            display: none;
+        }
+
+        .contractText {
+            position: absolute;
+            right: 0;
+            width: 1.6rem;
+            height: 0.51rem;
+            background: rgba(250, 250, 250, 1);
+            border: 1px solid rgba(170, 170, 170, 1);
+            opacity: 0.63;
+            border-radius: 0.26rem;
+            font-size: 0.21rem;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: center;
+            color: #262626;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="switchbutton">
+        <div class="data-detail">
+            <div class="machine-detail">
+                <div class="machine-detail-up">
+                    <div class="machine-name">
+                        <span class="name-th">算力合约包(限租60T) </span>
+                        <!-- <div class="machine-type">
+							双挖 #dee3ff
+							<span>活期</span>
+							<span>期货上浮</span> <span>达标上浮</span>
+						</div> -->
+                    </div>
+                    <div class="machine-preice">
+                        <span style="height: 0.76rem;">
+                            <span style="font-size: 0.26rem;padding-right: 0.15rem;color: #999999;">承接金额</span>
+                            <span class="deposit">300</span>
+                            <span class="unit" style="font-size: 0.26rem;padding-right: 0.15rem">CNY</span>
+                        </span>
+                        <!-- 待承接 color：#80d699;background-color:#edfff2; 转让成功:color:#ffbb03; bcgkcolor:(#fff1d5;-->
+                        <p class="orderStaus" style="width: 1.3rem;height: 0.54rem; display:flex;align-items: center;justify-content: center;color: #ff6678;background-color: #ffe3e6;border-radius: 0.1rem;">
+                            待挖
+                        </p>
+                    </div>
+                    <div class="machine-detail-down">
+                        <p class="stopRentPower"><span>合约算力</span><span class="transsPower">0</span></p>
+                        <p class="daylimit"><span>合约锁定期限</span><span class="daylimitDay">30天起</span></p>
+                        <p class="numadd"><span>承接时间</span> <span class="tranferTime">0000-00-00</span></p>
+                        <p class="numadd"><span>转让人&nbsp;&nbsp;<span class="disnum">XX</span></p>
+                        <p class="priceText"><span>合约价格</span><span class="coinDeposit">0000</span></p>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <li style="position: relative;height: 0.6rem;display: flex;display: -webkit-flex;align-items: center;margin-top:0.15rem;">
+                    <span>
+                        订单号
+                    </span>
+                    <span style="margin-left: 0.72rem;" class="orderNumber"></span>
+                    <button class="contractText">
+                        查看合同
+                    </button>
+                </li>
+                <li style="margin-top:0.15rem;display: flex;display:-webkit-flex;align-items: center;">
+                    <span>
+                        历史产出
+                    </span>
+                    <span style="margin-left: 0.52rem;display: flex;display: -webkit-flex;flex-direction: column;align-items: flex-start;">
+                        <span class="historyPro">
+                        </span>
+                        <span class="historyProBhp" style="display: none;">
+                        </span>
+                    </span>
+                </li>
+                <li>
+                    发币方式
+                    <span style="margin-left: 0.72rem;" class="getStyle">日结，次日发放至账户</span>
+                </li>
+                <li>
+                    开挖时间
+                    <span style="margin-left: 0.72rem;" class="BeginrunningDate">承接次日开挖</span>
+                </li>
+                <li id="showEndTime" style="display: none;">
+                    到期时间 <span style="margin-left: 0.72rem;" class="endDate"></span>
+                </li>
+                <li>
+                    算力来源
+                    <span style="margin-left: 0.72rem;" class="calculateSource"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="bottomForce">
+            <p style="width: 100%;display:flex;display:-webkit-flex;justify-content: space-between;"><span>基础算力</span>
+                <span>1T/份</span></p>
+            <p class="showWindow" style="display: flex;display:-webkit-flex;justify-content: space-between;">
+                <span>奖励总算力</span>
+                <span>
+                    <span class="otherPower">1T</span>
+                    <img src="../../image/right_jintoux.png" style="width: 0.12rem;height: 0.22rem;" />
+                </span>
+            </p>
+        </div>
+    </div>
+    <div class="stopRent" id="reButton">
+        <button id="relet" class="go-page">续单</button>
+    </div>
+    <button id="sellandbuy" style="background-color:#dbdbdb;color: #999999;border: none;outline: none;width: 6.9rem;height: 1rem;background-color: #ffd203;margin-top: 0.3rem;border-radius: .1rem;margin-left: calc((100% - 6.9rem) / 2);color:#333;font-size:0.35rem;">
+        转让
+    </button>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/app.js"></script>
+    <script>
+        apiready = function() {
+            var app = new APP();
+            var account = app.getAccount();
+            var cointype = "BTC";
+            var orderId = api.pageParam.orderID; //订单ID
+            var machineId = api.pageParam.machineId; //机器ID
+            var machineState = api.pageParam.machineState; //机器状态
+            var thisMatchine; //机器信息
+            var refour = /([0-9]+\.[0-9]{4})[0-9]*/;
+            var retwo = /([0-9]+\.[0-9]{2})[0-9]*/;
+            app.handlePage();
+            //我的转让详情
+            function getMachineDetail(account, orderId, machineId) {
+                app.ajaxNew("transfer/underDetail", {
+                        uid: account.uid,
+                        token: account.token,
+                        order_id: orderId
+                    }, true,
+                    function(ret) {
+                        if (ret.code == 1) {
+                            $(".disnum").text(ret.data.from_username.length > 10 ? (ret.data.from_username
+                                .slice(0, 6) + "…") : ret.data.from_username);
+                            $(".tranferTime").text(ret.data.time_creat.split(" ")[0]);
+                            var totalpower = app.accMul(ret.data.num, ret.data.base_power);
+                            $(".transsPower").text(totalpower + "T");
+                            $(".name-th").text(ret.data.name);
+                            if (ret.data.num == 0) {
+                                $(".priceText").hide();
+                            }
+                            if (ret.data.pay_currency == "USDT") {
+                                $(".coinDeposit").text(String(app.accDiv(ret.data.continue_total_deposit,
+                                        totalpower)).replace(refour, "$1") + " " + ret.data.pay_currency +
+                                    "/T");
+                                $(".deposit").text(String(ret.data.continue_total_deposit).replace(refour,
+                                    "$1"));
+                            } else {
+                                $(".coinDeposit").text(String(app.accDiv(ret.data.continue_total_deposit,
+                                        totalpower)).replace(retwo, "$1") + " " + ret.data.pay_currency +
+                                    "/T");
+                                $(".deposit").text(String(ret.data.continue_total_deposit).replace(retwo,
+                                    "$1"));
+                            }
+
+                            $(".unit").text(ret.data.pay_currency);
+                        } else {
+                            app.toast(ret.desc)
+                        }
+                    }
+                )
+                app.ajax({
+                    param: {
+                        method: "post",
+                        url: app.config.url + "machine/rentedDetail",
+                        data: {
+                            values: {
+                                uid: account.uid,
+                                token: account.token,
+                                currency_name: "BTC",
+                                id: machineId
+                            }
+                        },
+                        callback: function(ret, err) {
+                            if (ret.code == 1) {
+                                thisMatchine = ret.data;
+                                var goods_price = ret.data.goods_price;
+                                $(".historyPro").text(
+                                    (ret.data.returns == null ? 0 + "个" : ret.data.returns + "个") +
+                                    "/" +
+                                    "BTC"
+                                );
+                                if (machineState == 1) {
+                                    $(".orderStaus").text("挖矿中").css({
+                                        color: "#42aa79",
+                                        backgroundColor: "rgba(66,170,121,0.1)"
+                                    })
+                                } else if (machineState == 0) {
+                                    $(".orderStaus").text("待挖").css({
+                                        color: "#f3933a",
+                                        backgroundColor: "#ffe3e6"
+                                    })
+                                } else {
+                                    $(".orderStaus").text("已退单").css({
+                                        color: "#B8B8B6",
+                                        backgroundColor: "#f7f7f7"
+                                    })
+                                }
+                                $(".calculateSource").text(ret.node_name);
+                                if (ret.data.is_bhp_pos == 1) {
+                                    var btcGetNum = (ret.data.returns == null ? 0 + "个" : ret.data.returns + "个") + "/" + cointype;
+                                    var bhpGetNum = (ret.data.returns_bhp == null ? '0.0000个' : String(ret.data.returns_bhp).replace(/([0-9]+\.[0-9]{4})[0-9]*/, "$1") + "个") + "/" + "BHP";
+                                    $(".historyProBhp").text(bhpGetNum);
+                                    $(".historyProBhp").show();
+                                    $(".historyPro").text(btcGetNum);
+                                } else {
+                                    $(".historyPro").text((ret.data.returns == null ? 0 + "个" : ret.data.returns + "个") + "/" + cointype);
+                                }
+                                $(".daylimitDay").text(
+                                    ret.data.is_regular == 0 ?
+                                    "30天" :
+                                    ret.data.regular_date_num + "天"
+                                );
+                                var bandData = {
+                                    page: "common/headerwin",
+                                    name: "relet_headerwin",
+                                    param: {
+                                        subpage: "rent/relet",
+                                        name: "relet",
+                                        title: "转期",
+                                        renewal: ret.renewal_info,
+                                        coinCurrentValue: ret.total_deposit_coin_current_value,
+                                        machineData: ret.data,
+                                        bhpcisshow: ret.data.pay_currency,
+                                        coinType: "BTC",
+                                        machineID: machineId
+                                    }
+                                };
+                                var bandDataDay = JSON.stringify(bandData);
+                                var continueRent = {
+                                    page: "common/headerwin",
+                                    name: "renew_headerwin",
+                                    param: {
+                                        subpage: "rent/renew",
+                                        name: "renew",
+                                        title: "续单",
+                                        renewal: ret.renewal_info,
+                                        coinCurrentValue: ret.total_deposit_coin_current_value,
+                                        machineData: ret.data,
+                                        bhpcisshow: ret.data.pay_currency,
+                                        coinType: "BTC",
+                                        machineID: machineId
+                                    }
+                                };
+                                var continueDataDay = JSON.stringify(continueRent);
+                                $(".orderNumber").text(ret.data.order_id);
+                                if (ret.data.work_state == 0) {
+                                    if (ret.data.is_bhp_pos != 1) {
+                                        $("#relet").attr("data-param", continueDataDay);
+                                    } else {
+                                        $("#relet").hide();
+                                    }
+                                }
+                                if (ret.data.work_state != 0) {
+                                    $("#sellandbuy").hide();
+                                    $("#relet").hide();
+                                }
+                                if (ret.data.is_regular == 0) {
+                                    $("#relet").text("转期");
+                                    $("#relet").attr("data-param", bandDataDay);
+                                    var thisArrTime = ret.data.time_income;
+                                    // var machineEndTime = (app.toSecond(thisArrTime)) * 1000 + 86400000;
+                                    // var thistime = new Date().getTime();
+                                    $("#sellandbuy").on("click", function(params) {
+                                        var thisYear = new Date().getFullYear();
+                                        var thisMonth = new Date().getMonth() + 1;
+                                        var thisDate = new Date().getDate();
+                                        var thisTimeYYR = thisYear + '-' + thisMonth + '-' + thisDate + " 00:00:00";
+                                        var machineCanReturn = (app.toSecond(thisArrTime) + 86400 * 30) > app.toSecond(thisTimeYYR) ? false : true;
+                                        if (machineCanReturn == false) {
+                                            var param = {
+                                                dtype: "dialog1",
+                                                data: {
+                                                    text: "矿机合约锁定期限最低30天，未达期限的不能转让！",
+                                                    btns: [{
+                                                        name: "确定",
+                                                        event: ""
+                                                    }]
+                                                }
+                                            };
+                                            app.dialog(param);
+                                        } else {
+                                            if (Number(goods_price) < 3000) {
+                                                app.toast("活动/赠送矿机不能转让");
+                                                return
+                                            }
+                                            var cointypecontract = {
+                                                page: "common/headerwin",
+                                                name: "send_power_headerwin",
+                                                param: {
+                                                    subpage: "fisrt/send_power",
+                                                    name: "send_power",
+                                                    title: "转让",
+                                                    Matchine: thisMatchine,
+                                                    machineId: orderId,
+                                                    usdtPrice: ret.price,
+                                                    rightIcon: {
+                                                        icon: "../../image/zhuanranx.png"
+                                                    },
+                                                    eventTrigger: "transferDialog"
+                                                }
+                                            };
+                                            var recoinNumber = JSON.stringify(cointypecontract);
+                                            app.goPushPage(recoinNumber);
+                                        }
+                                    })
+                                }
+                                var addRewardPower = app.moreAccAdd(
+                                    ret.data.td_power,
+                                    ret.data.futures_power,
+                                    ret.data.regular_power,
+                                    ret.data.coupon_power,
+                                    ret.data.float_power,
+                                    ret.data.pe_power
+                                )
+                                $(".otherPower").text(addRewardPower + "T");
+                                $(".showWindow").click(function() {
+                                    var param = {
+                                        dtype: "dialog281",
+                                        data: {
+                                            floatpower: ret.data.float_power + "T",
+                                            pepower: ret.data.pe_power + "T",
+                                            hopepower: ret.data.futures_power + "T",
+                                            setdatepower: ret.data.regular_power + "T",
+                                            couponpower: ret.data.coupon_power + "T",
+                                            totalpower: addRewardPower + "T",
+                                            tdatepower: ret.data.td_power + "T"
+                                        }
+                                    };
+                                    app.dialog(param);
+                                });
+                            }
+                            if (ret.data.is_regular == 1) {
+                                $("#sellandbuy").hide();
+                            }
+
+                            $(".contractText").click(function() {
+                                app.ajaxNew("machine/contract", {
+                                        uid: account.uid,
+                                        token: account.token,
+                                        order_id: orderId
+                                    }, true,
+                                    function(ret) {
+                                        if (ret.code == 1) {
+                                            var param = {
+                                                dtype: "dialog39",
+                                                data: {
+                                                    oriderID: orderId,
+                                                    title: "《云算力在线服务协议》",
+                                                    orderText: ret.content,
+                                                    btns: [{
+                                                        name: "关闭",
+                                                        event: "colsethis"
+                                                    }],
+                                                    extra: {}
+                                                }
+                                            };
+                                            app.dialog(param);
+                                        } else {
+                                            app.toast(ret.desc)
+                                        }
+                                    })
+                            })
+                        }
+                    }
+                });
+            }
+            getMachineDetail(account, orderId, machineId);
+            var event = ["renew_success", "relet_success", "transferSe"];
+            app.listen(event, function() {
+                getMachineDetail(account, orderId, machineId);
+            });
+        };
+    </script>
+</body>
+
+</html>

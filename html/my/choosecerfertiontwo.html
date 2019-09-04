@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>选择校验方式</title>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/choosecerfertion.css" />
+</head>
+
+<body>
+    <form action="" method="get" class="choose-item" id="choose-item">
+        <span>
+            <input name="checkType" type="radio" value="idCard" id="chooseIdcard" checked />
+            <label class="radios" for="chooseIdcard">
+                中国大陆用户
+            </label>
+        </span>
+        <span>
+            <input name="checkType" type="radio" value="passPort" id="choosePassPort" />
+            <label class="radios" for='choosePassPort'>
+                非中国大陆用户
+            </label>
+        </span>
+
+    </form>
+
+    <button class="nextbutton">下一步</button>
+
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/jquery_three_one.min.js"></script>
+    <script src="../../res/web/script/api.js"></script>
+    <script src="../../script/app.js"></script>
+    <script>
+        apiready = function () {
+            var app = new APP();
+            app.handlePage();
+            if (api.pageParam.goAddMoney != undefined && api.pageParam.goAddMoney) {
+                var goAddMoney = api.pageParam.goAddMoney;
+            }
+            var cointypecontract = {};
+            $(".nextbutton").click(function () {
+                var chooseType = $('.choose-item input[name="checkType"]:checked ').val();
+                if (chooseType == "passPort") {
+                    cointypecontract = {
+                        page: "common/headerwin",
+                        name: "passport__headerwin",
+                        param: {
+                            subpage: "my/passporttwo",
+                            name: "passporttwo",
+                            title: "实名校验",
+                            goAddMoney: goAddMoney,
+                        }
+                    };
+
+                } else {
+                    cointypecontract = {
+                        page: "common/headerwin",
+                        name: "certification_headerwin",
+                        param: {
+                            subpage: "my/certificationtwo",
+                            name: "certificationtwo",
+                            title: "实名校验",
+                            goAddMoney: goAddMoney,
+                        }
+                    }
+                }
+                var recoinNumber = JSON.stringify(cointypecontract);
+                app.goPushPage(recoinNumber);
+                $("#chooseIdcard").attr("checked");
+            });
+
+        };
+    </script>
+</body>
+
+</html>

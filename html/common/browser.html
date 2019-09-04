@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>浏览器子页面</title>
+    <link rel="stylesheet" type="text/css" href="../../res/web/css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../res/web/css/aui_two_zero.css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css" />
+    <style>
+        body {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script src="../../script/fastclick.js"></script>
+<script src="../../script/jquery_three_two_one.js"></script>
+<script src="../../script/app.js"></script>
+<script>
+    apiready = function () {
+        var app = new APP();
+        app.log("browser", "浏览器页面");
+        var url = api.pageParam.url;
+        var isThreePay = api.pageParam.isThreePay;
+        app.browse(url, function (ret, err) {
+            // console.log("browser-----------------------------------------"+ret);
+            if (ret.state == 3) {
+                app.trigger("title_change", {
+                    title: ret.title
+                });
+            }
+        });
+        app.listen("check_history", function (ret, err) {
+            app.log("browser", "监听到了检测浏览记录事件1");
+            app.browser.historyBack(function (ret, err) {
+                console.log("监听到了检测浏览器返回事件" + JSON.stringify(ret));
+                if (!ret.status) {
+                    app.closeW();
+                }
+            });
+        });
+    }
+</script>
+
+</html>

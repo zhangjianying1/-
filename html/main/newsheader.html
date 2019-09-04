@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>挖矿详情</title>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <style>
+        body {
+            width: 100%;
+            background-color: #f5f5f5;
+            font-family: Helvetica;
+            color: #262626;
+            font-size: 0.28rem;
+        }
+
+        .head {
+            height: 0.92rem;
+            width: 100%;
+            z-index: 1;
+            margin-top: 0;
+            background: #fff;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .head ul {
+            width: 100%;
+            height: 0.88rem;
+            padding: 0 1.8rem;
+            box-sizing: border-box;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-around;
+            -webkit-justify-content: space-around;
+            align-items: center;
+            -webkit-align-items: center;
+            background-color: #fff;
+        }
+
+        .head li {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            height: 0.88rem;
+            position: relative;
+        }
+
+        .head li p {
+            width: 0.88rem;
+            height: 0.88rem;
+            line-height: 0.88rem;
+            font-size: 0.28rem;
+            color: #333333;
+            box-sizing: content-box;
+        }
+
+        .head li b {
+            position: absolute;
+            width: 50%;
+            height: 94%;
+            top: 0;
+            left: 25%;
+            border-bottom: 2px solid #fff;
+        }
+
+        .head li:first-of-type p {
+            font-size: 0.31rem;
+            font-weight:bold;
+        }
+
+        .head li:first-of-type b {
+            border-bottom-color: #ffc103;
+        }
+    </style>
+
+</head>
+
+<body id="test">
+    <div class="head">
+        <ul id="chooseitem">
+            <li data-listname="showNews" class="isChosed">
+                <p>快讯</p>
+                <b></b>
+            </li>
+            <li data-listname="deepnews">
+                <p>深度</p>
+                <b></b>
+            </li>
+            <!-- <li data-listname="dynamicNews">
+                <p>动态</p>
+                <b></b>
+            </li> -->
+        </ul>
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../js/newsheader.js"></script>
+</body>
+
+</html>

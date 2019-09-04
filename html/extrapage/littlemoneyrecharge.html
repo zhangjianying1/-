@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <title>充值</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/littmoneyrecharge.css">
+    <style>
+        .ishide {
+            display: none;
+        }
+
+        .needShow {
+            display: block;
+        }
+
+        .checkSt {
+            float: right !important;
+        }
+
+        .ios-select-widget-box.olay {
+            top: 2.2rem;
+        }
+
+        .ios-select-widget-box.olay>div {
+            top: 2.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul class="payWays">
+            <li class="isSelected moneyLi" data-type="blanceMoneyPay">
+                余额充值
+            </li>
+            <li data-type="addressThreePay" class="showOtcChoose sanfangLi" style="display:none;">
+                第三方充值
+            </li>
+            <li data-type="addressBtc" class="btcLi">
+                BTC充值
+            </li>
+            <li data-type="addressUsdt" class="usdtLi">
+                USDT充值
+            </li>
+        </ul>
+    </header>
+    <div class="bigBox">
+        <div class="outBox">
+            <div id="recharge" class="pageClass">
+                <div class="recharge">
+                    <div class="balance">
+                        <div>
+                            <p id="testID"
+                                style="width: calc(100% - 0.24rem);height: 1rem;display:flex;display:-webkit-flex;justify-content: space-between;align-items: center;padding-right: 0.2rem;box-sizing: border-box;border-bottom: 1px solid #e2e2e2;">
+                                <span style="display: flex;display: -webkit-flex;justify-content: flex-start;">
+                                    选择币种
+                                </span>
+                                <span class="chooseReType"
+                                    style="position:relative;display: flex;display: -webkit-flex;flex: 1;">
+                                    <input type="hidden" name="bank_id" id="bankId" value="">
+                                    <span id="showBank"
+                                        style="width: 100%;height: 0.7rem;display: flex;display: -webkit-flex;justify-content: flex-end;align-items: center;">CNY</span>
+                                </span>
+                            </p>
+                        </div>
+                        <!-- <b id="showTextOpen"
+                            style="width: 100%;background: #f7f7f7;height: 0.8rem;color:#b5b5b5;text-align:right;line-height: 0.8rem;font-size: 0.26rem;padding-right: 0.24rem;box-sizing: border-box;display: none;">
+                            开通海外货币请通过APP"专属客服"联系开通
+                        </b> -->
+                        <div style="padding-right: 0.24rem;">
+                            <p>
+                                <span>
+                                    可用余额
+                                </span>
+                                <span>
+                                    <span class="myproty">￥0.00 </span>
+                                </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p style="padding-right:0.24rem;">
+                                <span> 充值金额</span>
+                                <input type="number" min="1" class="addMoneyInput" placeholder="请输入你的充值金额,限整数"
+                                    onkeyup="this.value=this.value=parseInt(Number(this.value))"
+                                    onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"
+                                    id="inputReNumber">
+                                <span class="moneyUnit">
+                                    元
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="choosePayMethod">
+                    <p class="w_t">
+                        支付方式
+                    </p>
+                    <ul class="showchoose">
+                        <li class="wxPayMethod needShow">
+                            <label for="wx_pay" data-method="WX_APP">
+                                <img src="../../res/web/images/weixin.png" alt="" class="labelTImg">
+                                <span class="payTitle">微信支付 (1-3000)</span>
+                                <input id="wx_pay" class="chat-button-location-radio-input" value="WX_APP" type="radio"
+                                    name="payWay" checked />
+                                <span class="checkSt"></span>
+                            </label>
+                        </li>
+                        <li class="publicPayMethod needShow">
+                            <label for="public_pay" data-method="BANK_TRANSFER">
+                                <img src="../../res/web/images/duigonga.png" alt="" class="labelTImg">
+                                <span class="payTitle">对公转账(单笔2万以上大额)</span>
+                                <input id="public_pay" class="chat-button-location-radio-input" value="BANK_TRANSFER"
+                                    type="radio" name="payWay" />
+                                <span class="checkSt" style='float:right'></span>
+                            </label>
+                        </li>
+                        <li class="cardPayMethod needShow">
+                            <label for="card_pay" data-method="YSF_APP">
+                                <img src="../../res/web/images/yinlian.png" alt="" class="labelTImg">
+                                <span class="payTitle">银联支付(单笔限2万，单日限5万)</span>
+                                <input id="card_pay" class="chat-button-location-radio-input" value="YSF_APP"
+                                    type="radio" name="payWay" />
+                                <span class="checkSt"></span>
+                            </label>
+                        </li>
+                        <li class="moblieMethod needShow">
+                            <label for="moblie_pay" data-method="MB_WAP">
+                                <img src="../../res/web/images/mobaox.png" alt="" class="labelTImg">
+                                <span class="payTitle">Mo宝支付 (1-49999)</span>
+                                <input id="moblie_pay" class="chat-button-location-radio-input" value="MB_WAP"
+                                    type="radio" name="payWay" />
+                                <span class="checkSt"></span>
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="otherPay">
+                        <!-- <p>
+                            <span>
+                                <img src="../../image/kefux.png">
+                                联系客服充值
+                            </span>
+                            <img src="../../image/right_jintou.png">
+                        </p> -->
+                        <p class="go-page"
+                            data-param='{"page":"common/headerwin","name":"focusorin_win","param":{"subpage":"extrapage/focusorin","name":"focusorin","title":"关注微信号充值"}}'>
+                            <span>
+                                <img src="../../image/codex.png">
+                                关注"微矿科技"直接付款下单 (1-40000)
+                            </span>
+                            <img src="../../image/right_jintou.png">
+                        </p>
+                    </div>
+                </div>
+                <p class="payTextTips" style="padding:0.24rem 0.24rem 0 0.24rem;font-size: 0.24rem;color:#8a8a8a">
+                    提示：1.只支持储蓄卡充值，现金钱包可用于直接支付
+                </p>
+                <button class="submit" id="rechargeMoney">立即充值</button>
+            </div>
+            <div class="pageClass" id="otcRecharge" style="border-top:0.22rem solid#f7f7f7;display: none">
+                <div class="sec1">
+                    <p>
+                        <span>充值金额：</span>
+                        <span>
+                            <input type="number" class="addUsdtInput" placeholder="请输入你的充值金额,限整数" id="transferred"
+                                onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}">
+                        </span>
+                    </p>
+                </div>
+                <div class="sec1">
+                    <p>
+                        <span>卡主姓名：</span>
+                        <span>
+                            <input type="text" class="addUsdtInput" placeholder="请输入转账卡主/支付宝认证姓名" id="cardUserName">
+                        </span>
+                    </p>
+                </div>
+                <p
+                    style="font-size: 0.25rem;padding-left: 0.24rem;height: 1.03rem;line-height: 1.03rem;background: #f7f7f7;">
+                    预计可充BCNY：<span class="aboutCanAdd">0.00</span>
+                </p>
+
+                <div class="sec3">
+                    <div class="choosePayMethod">
+                        <p class="w_t">
+                            支付方式
+                        </p>
+                        <ul>
+                            <li>
+                                <label for="usdt_pay" data-method="usdt_APP">
+                                    <img src="../../image/otc_icon.png" alt="" class="labelTImg" srcset=""
+                                        style="float: left;margin-top: 0.185rem">
+                                    <span class="payTitle" style="float: left">第三方OTC支付</span>
+                                    <input id="usdt_pay" class="chat-button-location-radio-input" value="0" type="radio"
+                                        name="usdt" checked>
+                                    <span class="checkSt"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="padding:0.24rem 0.24rem 0 0.24rem;font-size: 0.24rem;color:#8a8a8a">
+                    提示：1.第三方OTC充值将自动为您购买BCNY，购买后的数量将放入您的BCNY资产余额中<br>
+                    2.请您务必准确填写卡主姓名（转账卡主/支付宝认证姓名），以确保充值成功。
+                </p>
+                <button class="submit" id="addUsdt">立即充值</button>
+                <button class="submit go-page"
+                    data-param='{"page":"common/headerwin","name":"thirdpartylist_headerwin","param":{"subpage":"extrapage/thirdpartylist","name":"thirdpartylist","title":"第三方充值记录"}}'
+                    id="rechargeOtc">充值记录</button>
+            </div>
+            <div class="pageClass" id="btcRecharge" style="border-top: 0.2rem solid #f7f7f7;display: none;">
+                <p style="height: 0.86rem;line-height: 0.86rem;color: #616161;font-size: 0.23rem;padding-left: 0.3rem;">
+                    兑换汇率: <span style="color:#ffd203;">1 BTC ≈ <span class="btcPrice">0.00</span> BCNY</span>
+                </p>
+                <div
+                    style="width: 6.9rem;margin: 0 auto;box-shadow: 0 0 0.1rem #eeeeee;min-height: 3.5rem;text-align: center">
+                    <p style="color: #181818;font-size: 0.37rem;padding-top: 1.1rem;font-weight: 500;">BTC</p>
+                    <p class="btcAddress"
+                        style="font-size: 0.26rem; color: #181818; font-weight: 500; margin-top: 0.5rem;"
+                        id="btcAddress"></p>
+                    <button class="submit sss" data-clipboard-text="" id="copyAddress"
+                        style="margin-top: 0.8rem; margin-bottom: 1.7rem;margin-left: 0">复制充币地址</button>
+                </div>
+                <div style="width: 6.9rem;margin-left:calc((100% - 6.9rem)/2);margin-top: 0.5rem;">
+                    <p class="BTCtext" style="line-height: 0.45rem;color:#9e9e9e;">
+                        温馨提示<br>
+                        1. 请勿向上述地址充值任何非BTC资产，否则资产将不可找回。<br>
+                        2. 您充值至上述地址后，需要整个网络节点的确认，3次网络确认后可上账。<br>
+                        3. 最小充值金额：0.001BTC，小于最小金额的充值将不会上账且无法退回。<br>
+                        4. 您的充值地址不会经常改变，可以重复充值；如有更改，我们会尽量通过网站公告或邮件通知您。<br>
+                        5. 请务必确认电脑及浏览器安全，防止信息被篡改或泄露。
+                    </p>
+                </div>
+            </div>
+            <div class="pageClass" id="usdtRecharge" style="border-top: 0.2rem solid #f7f7f7;display: none;">
+                <p style="height: 0.86rem;line-height: 0.86rem;color: #616161;font-size: 0.23rem;padding-left: 0.3rem;">
+                    兑换汇率: <span style="color:#ffd203;">1 USDT = <span class="usdtPrice">0.00</span> BCNY</span>
+                </p>
+                <div
+                    style="width: 6.9rem;margin: 0 auto;box-shadow: 0 0 0.1rem #eeeeee;min-height: 3.5rem;text-align: center">
+                    <p style="color: #181818;font-size: 0.37rem;padding-top: 1.1rem;font-weight: 500;">USDT</p>
+                    <p class="btcAddress"
+                        style="font-size: 0.26rem; color: #181818; font-weight: 500; margin-top: 0.5rem;"
+                        id="usdtAddress"></p>
+                    <button class="submit sss" data-clipboard-text="" id="copyAddressUsdt"
+                        style="margin-top: 0.8rem; margin-bottom: 1.7rem;margin-left: 0">复制充币地址</button>
+                </div>
+                <div style="width: 6.9rem;margin-left:calc((100% - 6.9rem)/2);margin-top: 0.5rem;">
+                    <p class="USDTtext" style="line-height: 0.45rem;color:#9e9e9e;">
+                        温馨提示<br>
+                        1. 请勿向上述地址充值任何非USDT资产，否则资产将不可找回。<br>
+                        2. USDT充币仅支持simple send的方法，使用其他方法（send all）的充币暂时无法上账，请您谅解。<br>
+                        3. 您充值至上述地址后，需要整个网络节点的确认，3 次网络确认后可上账。<br>
+                        4. 网络为BTC网络<br>
+                        5. 最小充值金额：100 USDT ，小于最小金额的充值将不会上账且无法退回。<br>
+                        6. 您的充值地址不会经常改变，可以重复充值；如有更改，我们会尽量通过网站公告或邮件通知您。<br>
+                        7. 请务必确认电脑及浏览器安全，防止信息被篡改或泄露。<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../res/web/script/api.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../script/iosselect.js"></script>
+    <script src="../../js/littemoney.js"></script>
+</body>
+
+</html>

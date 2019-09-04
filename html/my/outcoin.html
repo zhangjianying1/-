@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>提币</title>
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/outcoin.css" />
+</head>
+
+<body>
+    <div class="typeCoinImg">
+        <span class="coinName"></span>
+        <span class="showmoney">
+            <span style="display:flex;display:-webkit-flex;align-items: center;-webkit-align-items: center;font-size: 0.26rem;">
+                可用: <span id="coinNum" style="font-size:0.28rem;">0.00000000</span>
+            </span>
+            <span class="changeR">
+                ≈
+                <span id="coinNumToal" style="font-size:0.24rem;color:rgba(18, 18, 18,0.68)">0.00</span>
+            </span>
+        </span>
+    </div>
+    <div class="coin-type">
+        <ul>
+            <li>
+                <input class="checkTest" type="text" name="" id="otherAdress" placeholder="请输入您的收币地址" />
+            </li>
+            <li>
+                <div class="outnum" style="border-bottom:1px solid #e5e5e5;">
+                    <input class="checkTest" type="text" onkeyup="this.value=this.value.replace(/[^\d\.]/g, '')" name="" id="addnum" placeholder="请输入提取数量" />
+                </div>
+                <div class="shouRang">
+                    <span class="showN"> 0 </span>
+                    <span class="rangeBackground" style="display: block;">
+                        <input class="rangeInput" type="range" id="inputRang" value="0" defaultValue="0" min="0.0000" step="0.00000001" />
+                        <span style="height: 5px;"></span>
+                    </span>
+                    <span class="showNa"> 100% </span>
+                </div>
+            </li>
+            <li class="setBcnypass" style="display:none;">
+                <div class="go-page" data-param='{"page":"common/headerwin","name":"deal_password_headerwin","param":{"subpage":"mine/deal_password","name":"deal_password","title":"设置交易密码"}}' style="width:100%;display:flex;display:-webkit-flex;justify-content: space-between;align-items: center;box-sizing: border-box;">
+                    <span style="color: #ff9c9c;">
+                        未设置交易密码
+                    </span>
+                    <span style="display: flex;display:-webkit-flex;align-items: center;">
+                        <span style="color: #d9d9d9;margin-right:0.1rem;">
+                            去设置
+                        </span>
+                        <img src="../../image/rightjt.png" style="height: 0.18rem;width:0.1rem;">
+                    </span>
+                </div>
+            </li>
+            <li id="addBcnyPwd" style="display: none;">
+                <input class="checkTest" type="password" id="setPassword" placeholder="请输入交易密码" onkeyup="this.value=this.value.replace(/\D/g, '')" maxlength="6" />
+            </li>
+            <li style="border-bottom: 1px solid #e5e5e5;border-top:1xp solid #e5e5e5;">
+                <div class="seft-num">
+                    <input class="checkTest" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" id="code" value="" maxlength="6" placeholder="请输入验证码" />
+                    <span class="saft-code"> 获取验证码 </span>
+                </div>
+            </li>
+            <li id="forgetBcnyPass" style="border:none;height: 0.88rem;padding-top: 0.2rem;display: none;">
+                <div class="forgetBcnyPass" style="width: 100%;text-align: right;box-sizing: border-box;color: #ffd203;margin:0.3rem 0 0.3rem 0;">
+                    忘记交易密码 申请找回
+                </div>
+            </li>
+            <li style="display: flex;display:-webkit-flex;align-items:center; ">手续费&nbsp;<span class="commission">0.0015BTC</span>
+            </li>
+        </ul>
+    </div>
+    <div class="sure">发起提币</div>
+    <div class="tips">
+        <span>提示: </span>
+        1.提币手续费为矿工费，人人矿场不会收取您的费用<br />2.提币请务必保证提币地址的准确性，否则资产将无法找回
+        <br />
+        3.提币后24小时内审核，通过审核后0-60分钟到账，因网络原因有可能延迟
+        <br />4.如长时间未到账，请联系客服核查
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../js/outcoin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,482 @@
+body {
+  width: 100%;
+  background-color: #f5f5f5;
+  font-family: Helvetica;
+  color: #333333;
+  padding-top: 0.4rem;
+  font-size: 0.28rem;
+  position: relative;
+}
+
+.head {
+  width: 100%;
+  height: 0.43rem;
+  background-color: #ffffff;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items: center;
+  -webkit-align-items: center;
+  box-sizing: border-box;
+  border-bottom: 0.01rem solid #e5e5e5;
+  position: fixed;
+  left: 0rem;
+  top: 0;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.head ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.head ul li {
+  width: 0.3rem;
+  height: 0.43rem;
+  line-height: 0.43rem;
+  font-size: 0.13rem;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.head ul li:first-of-type {
+  color: #fabf38;
+  border-bottom: 0rem solid #fabf38;
+}
+
+.head li {
+  position: relative;
+}
+
+.choseThis {
+  color: #fabf38 !important;
+}
+
+.choseThis::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 0.02rem;
+  background: #fabf38;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.mill-list {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.list-li {
+  padding: 0 0.3rem;
+  position: relative;
+}
+
+.mill-list-item {
+  padding: 0.1rem 0.2rem;
+  margin-top: 0.34rem;
+  border-radius: 0.1rem;
+  box-sizing: border-box;
+  background: #fff;
+  position: relative;
+}
+
+#goodslist {
+  margin-top: 0.3rem;
+}
+
+.overflowHidden {
+  display: flex;
+  display: -webkit-flex;
+  /* height: 0.88rem; */
+  align-items: center;
+  padding-bottom: 0.1rem;
+}
+
+.mill-list-item>div {
+  border-bottom: 0.02rem solid#eeeeee;
+  padding-top: 0.15rem;
+  padding-bottom: 0.2rem;
+  position: relative;
+}
+
+.sellOut:after {
+  width: 0.8rem;
+  height: 0.8rem;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  background: url("../image/my/orinhassellout.png") center center no-repeat;
+  background-size: 100% 100%;
+  display: block;
+  content: "";
+}
+
+
+.waitOpen:after {
+  width: 0.8rem;
+  height: 0.8rem;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  background: url("../image/my/orinnotopen.png") center center no-repeat;
+  background-size: 100% 100%;
+  display: block;
+  content: "";
+}
+
+/* .sellOut {
+  display: none;
+} */
+
+.statusStyle {
+  color: #181818;
+  /* display: inline-block; */
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 0.05rem;
+  border: 0.02rem solid #ffd203;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.waitOpen .statusStyle,
+.sellOut .statusStyle {
+  border: 0.02rem solid #ffd203;
+}
+
+.waitOpen .statusStyle>p:last-child,
+.sellOut .statusStyle>p:last-child {
+  background: #e2e2e2;
+}
+
+.statusStyle>p {
+  font-size: 0.2rem;
+  width: 100%;
+  height: 0.3rem;
+  box-sizing: border-box;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemCanRent .statusStyle .statusText {
+  background: #ffd203;
+}
+
+.relCoinName {
+  font-size: 0.24rem;
+  color: #181818;
+  padding-left: 0.16rem;
+}
+
+.flexStyle {
+  height: 0.6rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.detailInfo>div>p:first-child {
+  font-size: 0.2rem;
+  color: #b8b8b6;
+}
+
+.detailInfo>div>p:last-child {
+  padding-top: 0.04rem;
+  font-size: 0.28rem;
+}
+
+.detailInfo {
+  height: 0.8rem;
+}
+
+.rentPrice {
+  color: #ffd203;
+}
+
+.number {
+  color: #181818;
+}
+
+.oneOrinNumber {
+  color: #181818;
+}
+
+.mill-list-item>.timeBox {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border-bottom: 0;
+  padding-bottom: 0.15rem;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.timeBox>p:first-of-type {
+  width: 100%;
+  color: #b8b8b6;
+  font-size: 0.24rem;
+  padding-top: 0.1rem;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.leastTimeInterval {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0.2rem;
+}
+
+.leastTimeInterval>span {
+  top: 0;
+  margin-top: 0;
+  font-size: 0.26rem;
+}
+
+.openDate {
+  padding: 0 0.14rem;
+  background: url("../image/my/lowBlue.png") center center no-repeat;
+  background-size: 100% 100%;
+  color: #181818;
+  font-size: 0.2rem;
+  border-radius: 0.04rem;
+  height: 0.4rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+}
+
+.intervalHour {
+  padding-left: 0.2rem;
+  padding-right: 0.14rem;
+  background: url("../image/my/lowyellow.png") center center no-repeat;
+  background-size: 100% 100%;
+  color: #181818;
+  font-size: 0.2rem;
+  border-radius: 0.04rem;
+  height: 0.4rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+}
+
+.intervalHour>.span {
+  padding-left: 0.02rem;
+  text-align: center;
+}
+
+.intervalHour>.setBg {
+  background: #ffd203;
+  padding: 0.02rem;
+  border-radius: 0.04rem;
+  width: auto;
+  height: 0.3rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemCanRent .leastTimeInterval,
+.sellOut .leastTimeInterval {
+  display: none !important;
+}
+
+.waitOpen .leastTimeInterval {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.leastTimeInterval .intervalHour {
+  font-size: 0.26rem;
+}
+
+.leastTimeInterval>.next {
+  font-size: 0.26rem;
+}
+
+#listState {
+  width: 100%;
+  font-size: 0.25rem;
+  text-align: center;
+  color: #999999;
+  padding: 10px 0;
+  margin-top: 0.4rem;
+}
+
+.listState {
+  width: 100%;
+  font-size: 0.25rem;
+  text-align: center;
+  color: #999999;
+  padding: 10px 0;
+  margin-top: 0.2rem;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+/* 转让算力 */
+#showmakeOverPower {
+  width: 100%;
+  height: auto;
+  margin-top: 1.6rem;
+}
+
+#showmakeOverPower ul {
+  width: 100%;
+  height: auto;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.3rem;
+  box-sizing: border-box;
+  justify-content: center;
+  padding-top: 0.4rem;
+}
+
+#showmakeOverPower ul li {
+  width: 100%;
+  height: 3.2rem;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.1rem 0.3rem;
+  box-sizing: border-box;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 0.1rem;
+  margin-bottom: 0.3rem;
+}
+
+#showmakeOverPower ul li>div {
+  width: 100%;
+}
+
+#showmakeOverPower ul li>p {
+  width: 100%;
+  height: 0.86rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#showmakeOverPower ul li>p img {
+  width: 0.66rem;
+  height: 0.66rem;
+  border-radius: 100%;
+  margin-right: 0.1rem;
+}
+
+#showmakeOverPower ul li>p span {
+  color: #fff;
+  padding: 0.08rem 0.1rem;
+  font-size: 0.2rem;
+  border-radius: 0.1rem;
+  margin-left: 0.12rem;
+}
+
+#showmakeOverPower ul li>p span:first-of-type {
+  background-color: #ffd203;
+  margin-left: 0.3rem;
+}
+
+#showmakeOverPower ul li>p span:nth-of-type(2) {
+  background-color: #ffb9a1;
+}
+
+#showmakeOverPower ul li>p span:last-of-type {
+  background-color: #a5d780;
+}
+
+.showPrice {
+  height: auto;
+  display: flex;
+  display: -webkit-flex;
+  margin-top: 0.1rem;
+}
+
+.showPrice div:first-of-type {
+  flex: 1;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.showPrice div:first-of-type>p {
+  width: 100%;
+  height: 0.56rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.showPrice div:first-of-type>p span:first-of-type {
+  color: #cacac8;
+  margin-right: 0.34rem;
+}
+
+
+.showPrice div:last-of-type {
+  width: 1.6rem;
+  height: 1.8rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showPrice div:last-of-type b {
+  height: 0.64rem;
+  width: 1.5rem;
+  border-radius: 0.1rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffd203;
+  font-weight: normal;
+}

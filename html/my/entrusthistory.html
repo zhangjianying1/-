@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>委托回购记录</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/entrushistory.css">
+</head>
+
+<body>
+    <div class="testFix">
+        <div style="height: 0.4rem;background-color: #fff;">
+
+        </div>
+        <div class="head">
+            <img src="../../image/left_jiantouax.png" alt="" style="width: 0.2rem;height: 0.38rem;" id="goback">
+            <span class="head_title">
+                委托记录
+            </span>
+            <span>
+            </span>
+        </div>
+    </div>
+    <div class="list">
+        <ul>
+        </ul>
+    </div>
+    <div id="listState" style='color:#999999;padding-top: 20px;margin: auto;text-align: center;width: 100%;background: #f5f5f5;'></div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/dotmin.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../js/entrusthistory.js"></script>
+    <script id="list" type="text/html">
+    {{~it:value:index}}
+    <li>
+        <div class="list-detail">
+            <p class="times">{{=value.create_time}}</p>
+            <div class="list-img">
+                <img src={{=value.listImg}} alt="">
+                <div class="deal-detail">
+                    <p>
+                        <span>{{=value.currency_name}}委托数额:
+                            <span class="text-color">{{=value.num}}</span>
+                        </span>
+                        <span>委托价格:
+                            <span class="text-color">{{=value.unit_price}}</span>元
+                        </span>
+                    </p>
+                    <p>金额:
+                        <span class="text-color">{{=value.total_amount}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </li>
+    {{~}}
+    </script>
+</body>
+
+</html>

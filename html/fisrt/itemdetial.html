@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>项目详情</title>
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/itemdetail.css" />
+</head>
+
+<body>
+<div class="testFix">
+  <div style="height: 24px;background-color: #fff;" class="phoneToast"></div>
+  <div class="head" style="position: relative">
+      <span id="goback"
+            style="position: absolute;z-index: 1;left: 0;padding: 0 0.3rem; padding-right: 0.5rem;top: 0;height: 100%; box-sizing: border-box;line-height: 47px;">
+        <img src="../../image/left_jiantouax.png" alt="" style="width: 10px;height: auto" />
+      </span>
+    <span class="head_title" style="display: block;width: 100%;text-align: center">
+        详情
+      </span>
+    <span style="display: inline-block;width: 0.21rem;height: 0.36rem;">
+      </span>
+  </div>
+</div>
+<div class="switchbutton" id="box" style="margin-top:1.2rem;">
+  <div class="data-detail">
+    <div class="machine-detail">
+      <div class="machine-detail-up">
+        <div class="machine-name">
+          <span class="name-th">算力合约包 </span>
+          <div class="machine-type">
+            <span style="font-size:.20rem;"></span>
+          </div>
+        </div>
+        <div class="machine-preice">
+            <span>
+              <span class="deposit"></span>
+              <span class="moneyType" style="font-size: 0.26rem;padding-right: 0.15rem">CNY/T</span>
+            </span>
+        </div>
+      </div>
+      <div class="machine-detail-down">
+        <p class="daylimit">合约锁定期限 <span></span></p>
+        <p>剩余算力 <span class="disnum"></span></p>
+        <p class="numadd">最大下单限额 <span></span></p>
+      </div>
+    </div>
+    <ul>
+      <li class="bhpcshow" style="display: none;">
+          <span>
+            下单资格
+            <span style="margin-left: 0.72rem;">有效算龄大于等于1000T*天</span>
+          </span>
+        <span class="showlistnew" style="color: #ffd203;margin-left: 0.1rem;display: inline-block;height: auto;">
+            <img src="../../image/mynumber.png" alt="" style="width: 0.43rem;height: 0.43rem;margin-right: 0.1rem;" />
+          </span>
+      </li>
+      <li>
+        发币方式
+        <span style="margin-left: 0.72rem;">每日结算，次日发放至账户</span>
+      </li>
+      <li>
+        开挖日期 <span style="margin-left: 0.72rem;" class="digtime"></span>
+      </li>
+      <li>
+        算力来源
+        <span style="margin-left: 0.72rem;" class="calculateSource"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="suanli">
+    <ul>
+      <li>基础算力 <span class="base">0T</span></li>
+    </ul>
+  </div>
+  <div class="intrduction">
+    <ul>
+      <li>
+        <p>算力介绍</p>
+        <div></div>
+      </li>
+      <li>
+        <p>合约说明</p>
+        <div></div>
+      </li>
+      <li>
+        <p>风险介绍</p>
+        <div></div>
+      </li>
+      <li>
+        <p>免责申明</p>
+        <div>
+          平台不对用户获得的数字资产进行精准承诺，收益数量根据挖矿产出按照算力贡献分发，挖矿收益受市场行情波动影响非恒定，平台历史同期各种数据仅供参考，用户应自己独立判断后做出决策，自愿下单共享算力进行数字资产投资的用户，其行为产生的投资风险由用户自行承担。
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="fixBtn">
+  <div class="next inputNull" data-status="">立即下单</div>
+</div>
+<div class="cover">
+  <div class="suanli-list">
+    <div class="list-up">
+      <p>奖励算力</p>
+      <p class="numAll">0T</p>
+    </div>
+    <div class="list-down">
+      <ul>
+        <li>浮动算力 <span class="float"> 0T </span></li>
+        <li>期货算力 <span class="qihuo"> 0T </span></li>
+        <li>定期算力 <span class="stand"> 0T </span></li>
+        <li>达标算力 <span class="pepower"> 0T </span></li>
+        <li>成长奖励 <span class="calculatePower">0T</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="off-cover" style="margin: auto;">
+    <img src="../../image/forcedetailindow.png" style="width: 0.61rem;height: 0.61rem;" />
+  </div>
+</div>
+<div class="cover-full" style="display: none;">
+  <div class="enntueList">
+    <div class="entrudetail">
+      我的有效算龄
+      <span class="todaynum" style="color: #181818;font-weight: 500;font-size: 0.35rem;margin-top: 0.45rem;">
+          0.00T*天
+        </span>
+    </div>
+    <div class="showText"
+         style="font-size: 0.24rem;width:100%;margin: auto;height: auto;padding: 0.48rem 0.2rem 0.73rem 0.2rem;border-top: 1px solid #e2e2e2;box-sizing: border-box;">
+      人人矿场将在全球率先开创pow+pos的深度混合模式进行数字货币的“挖掘”,矿场会根据您当前的可信算力时长(T*天)进行人人矿场的算力额度授信,授信方式为等值的BHP,届时您可用此授信额度进行矿机的下单,下单的矿场算力在产出btc的同时还会附加产出一定比例的BHP,BHP可到交易市场进行流通！
+    </div>
+    <div class="off-covernew" style="margin: auto;">
+      <img src="../../image/forcedetailindow.png" style="width: 0.61rem;height: 0.61rem;" />
+    </div>
+  </div>
+</div>
+<script src="../../js/autosize.js"></script>
+<script src="../../script/jquery_three_two_one.js"></script>
+<script src="../../script/fastclick.js"></script>
+<script src="../../script/app.js"></script>
+<script src="../../js/itemdetial.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>代售和代购</title>
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/buyandsellbcny.css">
+    <style>
+        .bigBox {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slidebox {
+            position: relative;
+            width: 200%;
+            left: 0;
+        }
+
+        .slidebox>div {
+            width: 50%;
+            float: left;
+        }
+
+        .ishide {
+            display: none;
+        }
+
+        .needShow {
+            display: block;
+        }
+
+        .checkSt {
+            float: right !important;
+        }
+
+        .ios-select-widget-box.olay {
+            top: 0.9rem;
+        }
+
+        .ios-select-widget-box.olay>div {
+            top: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="shooseBuyorSell">
+        <span data-choose="agentBuy">
+            兑入
+        </span>
+        <span data-choose="agentSell">
+            兑出
+        </span>
+    </div> -->
+    <div style="width:100%;height: 0.2rem;background-color: #f5f5f5;">
+
+    </div>
+    <div class="bigBox">
+        <div class="slidebox">
+            <div class="buyBox">
+                <div>
+                    <p id="getHight" style="width: 100%;height: 1rem;display:flex;display:-webkit-flex;justify-content: space-between;align-items: center;padding-right: 0.3rem;box-sizing: border-box;border-bottom: 1px solid #e2e2e2;">
+                        <span style="display: flex;display: -webkit-flex;justify-content: flex-start;">
+                            选择币种
+                        </span>
+                        <span class="chooseReType" style="position:relative;display: flex;display: -webkit-flex;flex: 1;">
+                            <input type="hidden" name="bank_id" id="bankId" value="">
+                            <span id="showBank" style="width: 100%;height: 0.7rem;line-height: 0.7rem;text-align: right;">CNY</span>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="showText">
+                            货币余额
+                        </span>
+                        <span class="myCoin">
+                            0.00 CNY
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <p style="width:100%;display:flex;justify-content: space-between;">
+                        <span class="addSellPri">
+                            实时汇率:
+                        </span>
+                        <span style="flex:1;color:#fad203;margin-left: 0.1rem;display: flex;display: -webkit-flex;justify-content: space-between;">
+                            <span class="showChangeoOtherbuy">
+                                1.00 CNY = 1.00 BCNY
+                            </span>
+                            <!-- <span class="sellChange" style="display:none;">
+                                1.00 CNY = 1.00 BCNY
+                            </span> -->
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <span>
+                            兑换数量
+                        </span>
+                        <span>
+                            <input type="text" name="" id="getBuyNumber" placeholder="请输入数量" onkeyup="this.value=this.value.replace(/[^\d\.]/g, '')">
+                            <span class="chooseType" style="color:#b9b9b9">
+                                BCNY
+                            </span>
+                        </span>
+                    </p>
+                </div>
+                <p style="padding:0 0.24rem;margin:0.2rem 0 0.5rem 0;display: flex;display:-webkit-flex;align-items: center;justify-content: space-between;">
+                    <span>
+                        需支付金额:
+                        <span class="needMoney" style="color:#fad203;margin-left:0.15rem;">
+                            0.00 CNY
+                        </span>
+                    </span>
+                    <span style="flex:1;text-align: center;color: #ff6678;font-size: 0.2rem;text-align: right;display: none;" class="balanceNum">
+                        货币余额不足,请充值
+                    </span>
+                </p>
+                <button id="goBuyCoin">
+                    立即兑换
+                </button>
+            </div>
+            <!-- <div class="sellBox">
+                <div>
+                    <p
+                        style="width: 100%;height: 1rem;display:flex;display:-webkit-flex;justify-content: space-between;align-items: center;padding-right: 0.3rem;box-sizing: border-box;border-bottom: 1px solid #e2e2e2;">
+                        <span style="display: flex;display: -webkit-flex;justify-content: flex-start;">
+                            选择币种
+                        </span>
+                        <span class="chooseReType"
+                            style="position:relative;display: flex;display: -webkit-flex;flex: 1;">
+                            <input type="hidden" name="bank_id" id="bankIdNew" value="">
+                            <span id="chooseReTypeOut"
+                                style="width: 100%;height: 0.7rem;line-height: 0.7rem;text-align: right;">CNY</span>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="priceMyBlance">
+                            可用资产
+                        </span>
+                        <span class="myCoinSell">
+                            0.00 BCNY
+                        </span>
+                    </p>
+                </div>
+                <div>
+                    <p style="width:100%;display:flex;justify-content: space-between;">
+                        <span class="addSellPri">
+                            实时汇率:
+                        </span>
+                        <span
+                            style="flex:1;color:#fad203;margin-left: 0.1rem;display: flex;display: -webkit-flex;justify-content: space-between;">
+                            <span class="showChangeoOther">
+                                1.00 CNY = 1.00 BCNY
+                            </span>
+                            <span class="sellChange" style="display:none;">
+                                1.00 CNY = 1.00 BCNY
+                            </span>
+                        </span>
+                    </p>
+                </div>
+                <div
+                    style="height:0.8rem;display: flex;display: -webkit-flex;justify-content: space-between;align-items: center;">
+                    <span>
+                        卖出数量：
+                    </span>
+                    <span
+                        style="flex:1;display:flex;justify-content: space-between;align-items: center;padding-right: 0.2rem;">
+                        <input type="text" name="" id="getSellNumber" placeholder="请输入数量"
+                            onkeyup="this.value=this.value.replace(/[^\d\.]/g, '')"
+                            style="padding-left:0;flex:1;height: 80%; text-align: right;">
+                        <span class="chooseType" style="color:#b9b9b9">
+                            BCNY
+                        </span>
+                    </span>
+                </div>
+                <p
+                    style="padding-left:0.24rem;margin:0.2rem 0 0.5rem 0;display: flex;display:-webkit-flex;align-items: center;">
+                    <span>
+                        卖出总计:
+                        <span class="getBack" style="color:#fad203;margin-left:0.15rem;padding-top: 0.05rem;">
+                            0.00 CNY
+                        </span>
+                    </span>
+                    <span
+                        style="flex:1;text-align: center;color: #ff6678;font-size: 0.2rem;text-align: right;padding-right: 0.24rem;box-sizing:border-box;display:none;"
+                        class="bcnyNum go-page"
+                        data-param='{"page":"common/headerwin","name":"agentsellandbuy_headerwin","param":{"subpage":"my/agentsellandbuy","name":"agentsellandbuy","showBuyAndSell":"false"}}'>
+                        BCNY不足,请兑换
+                    </span>
+                </p>
+                <button id="goSellCoin">
+                    立即卖出
+                </button>
+            </div> -->
+        </div>
+    </div>
+    <div class="buyText" style="width:100%;height:auto;font-size: 0.22rem;padding: 0.2rem 0.24rem;color: rgba(18, 18, 18, 0.52);display: flex;align-items: center;box-sizing: border-box;">
+        温馨提示： 1.BCNY与CNY的兑换恒定比例为1:1,与其他币种的兑换按实时汇率兑换<br>
+        2.成功兑入的BCNY将自动入账到您的“数字资产-BCNY账户”余额<br>
+        3.您兑换成功后的BCNY可购买人人矿场的双挖算力合约包<br>
+        4.BCNY的具体兑换规则、使用等最终解释权人人矿场所有<br>
+    </div>
+    <!-- <div class="sellText"
+        style="width:100%;height:auto;font-size: 0.22rem;padding: 0.2rem 0.24rem;color: rgba(18, 18, 18, 0.52);display: flex;align-items: center;box-sizing: border-box;display: none;">
+        温馨提示： 1.BCNY与CNY的兑换恒定比例为1:1,与其他币种的兑换按实时汇率兑换<br>
+        2.成功卖出BCNY后的币种资产将自动入账到您的可用余额<br>
+        3.您兑入成功后的BCNY可购买人人矿场的双挖算力合约包<br>
+        4.BCNY的具体兑换规则、使用等最终解释权人人矿场所有<br>
+    </div> -->
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/dotmin.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../script/iosselect.js"></script>
+    <script src="../../js/buyandsellbcny.js"></script>
+</body>
+
+</html>

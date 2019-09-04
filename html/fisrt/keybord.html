@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            font-size: 0.28rem;
+            height: auto;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            font-family: PingFangSC-Regular, sans-serif;
+            color: #333333;
+            position: relative;
+        }
+
+        .pay_container {
+            width: 7.5rem;
+            height: 8rem;
+            background-color: #fbf9fb;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+            overflow: hidden;
+            /* display: none; */
+        }
+
+        /* .pay_container-show{transform: translate3d(0, -8.9rem, 0);transition: 0.5s ease;transform: translate3d(0, 0, 0); transition: 0.5s ease;} */
+
+        .pay_title {
+            height: 0.96rem;
+            line-height: 0.96rem;
+            border-bottom: 1px solid#b3afaf;
+            text-align: center;
+            color: #070707;
+            position: relative;
+            font-size: 0.36rem;
+        }
+
+        .pay_title .pay_title_remove {
+            width: 0.6rem;
+            height: 0.6rem;
+            position: absolute;
+            top: 0.3rem;
+            left: 0.33rem;
+            line-height: 0.28rem;
+            font-size: 0.45rem;
+        }
+
+        .pay_body {
+            padding-top: 0.56rem;
+            position: relative;
+            height: 7rem;
+            box-sizing: border-box;
+        }
+
+        .pay_body .input_container {
+            width: 90%;
+            height: 0.93rem;
+            border: 1px solid #ebe8eb;
+            overflow: hidden;
+            border-radius: 5px;
+            background-color: #fff;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pay_body .input_container .input_item {
+            width: 16.5%;
+            height: 0.92rem;
+            display: inline-block;
+            margin: 0;
+            text-align: center;
+            line-height: 0.92rem;
+            border-radius: 0;
+        }
+
+        .pay_body .forgetPwd_container {
+            width: 6.74rem;
+            margin: 0.22rem auto 0;
+            text-align: center;
+        }
+
+        .pay_body .forgetPwd_container .forgetPwd {
+            color: #52bfff;
+            font-size: 0.24rem;
+        }
+
+        .pay_body .key_container {
+            width: 100%;
+            height: 4.56rem;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .pay_body .key_container .key_item {
+            width: 2.47rem;
+            height: 1.12rem;
+            line-height: 1.12rem;
+            text-align: center;
+            border-right: 2px solid #f3f3f3;
+            border-top: 2px solid #f3f3f3;
+            font-size: 0.66rem;
+            color: #1e1d1f;
+            background-color: #fff;
+        }
+
+        .pay_body .key_container .key_item:nth-child(3),
+
+        .pay_body .key_container .key_item:nth-child(6),
+
+        .pay_body .key_container .key_item:nth-child(9),
+
+        .pay_body .key_container .key_item:nth-child(12) {
+            border-right: 0;
+        }
+
+        .pay_body .key_container .key_item.remove,
+        .pay_body .key_container .key_item.empty {
+            font-size: 0.24rem;
+            background-color: #e6e9f1;
+        }
+
+        .pay_body .key_container .key_item.remove {
+            background: url('../../image/close_icnx.png') center no-repeat#e6e9f1;
+            background-size: .52rem.32rem;
+        }
+
+        .pay_body .key_container .selected {
+            background-color: #e4e8f4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pay_container">
+        <div class="pay_title">
+
+            <span class="pay_title_remove"><img src="../../image/left_jiantouax.png" style="width:0.19rem;height:0.38rem;"></span>
+            请输入交易密码
+        </div>
+        <div class="pay_body">
+
+            <div class="input_container" id="input_container">
+
+                <input class="input_item" type="password" readonly>
+
+                <input class="input_item" type="password" readonly>
+
+                <input class="input_item" type="password" readonly>
+
+                <input class="input_item" type="password" readonly>
+
+                <input class="input_item" type="password" readonly>
+
+                <input class="input_item" type="password" readonly>
+
+            </div>
+
+            <div class="forgetPwd_container">
+                <a href="" class="setPassword" style="color: #52bfff;display: none;">设置密码</a>
+                <a class="forgetPwd" href="">忘记密码？</a>
+            </div>
+
+            <div class="key_container" id="">
+
+                <div class="key_item">1</div>
+
+                <div class="key_item">2</div>
+
+                <div class="key_item">3</div>
+
+                <div class="key_item">4</div>
+
+                <div class="key_item">5</div>
+
+                <div class="key_item">6</div>
+
+                <div class="key_item">7</div>
+
+                <div class="key_item">8</div>
+
+                <div class="key_item">9</div>
+
+                <div class="key_item empty"></div>
+
+                <div class="key_item">0</div>
+
+                <div class="key_item remove"></div>
+
+            </div>
+        </div>
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/app.js"></script>
+    <script>
+        apiready = function() {
+            var app = new APP();
+            var account = app.getAccount();
+            var arr = [];
+            var num = 0;
+            var getUserPwd = ""; //获取用户设置密码状态
+            var userTransferData = api.pageParam.userTransferData //机器详情
+            function getSetPass(account) {
+                app.ajaxNew("member/getSumitRealnameVerifyStatus", {
+                    uid: account.uid,
+                    token: account.token
+                }, true, function(ret) {
+                    if (ret.code == 1) {
+                        getUserPwd = ret.is_trade_pwd;
+                    }
+                });
+            }
+            getSetPass(account);
+            //响应键盘事件
+            $('.key_item').on('touchstart', function() {
+                $(this).addClass('selected')
+            })
+            $('.key_item').on('touchend', function() {
+                $(this).removeClass('selected')
+            });
+            $(".pay_title_remove").click(function() {
+                app.closeF("keybord");
+            })
+            $(".forgetPwd").click(function() {
+                if (getUserPwd == 2) {
+                    app.toast("审核中");
+                    return
+                }
+                var cointypecontract = {
+                    page: "common/headerwin",
+                    name: "forget_password_headerwin",
+                    param: {
+                        subpage: "mine/forget_password",
+                        name: "get_cash",
+                        title: "忘记交易密码"
+                    }
+                };
+                var recoinNumber = JSON.stringify(cointypecontract);
+                app.goPushPage(recoinNumber);
+            })
+            $('.key_item').on('click', function() {
+                var value = $(this).text();
+                var inputItem = $('.input_container .input_item');
+                if (!$(this).hasClass('remove')) {
+                    if (num < 6) {
+                        $(inputItem[num]).val(value);
+                        if (num == 5) {
+                            var arr = [];
+                            var arrLength = 0;
+                            for (var i = 0; i < inputItem.length; i++) {
+                                arr.push(String(inputItem[i].value));
+                            }
+                            arrLength = arr.length;
+                            arr = arr.join('');
+                            if (arr.length == 6 && getUserPwd == 0) {
+                                num = 0;
+                                arr = [];
+                                arrLength = 0;
+                                $(".input_item").val("");
+                                app.toast("请先设置交易密码");
+                                return
+                            }
+                            if (arrLength == 6 && getUserPwd == 2) {
+                                num = 0;
+                                arr = [];
+                                arrLength = 0;
+                                $(".input_item").val("");
+                                app.toast("交易密码审核中");
+                                return
+                            }
+                            if (arrLength == 6) {
+                                userTransferData.trade_password = arr;
+                                app.ajax({
+                                    param: {
+                                        method: "post",
+                                        url: app.config.url + "transfer/transfer",
+                                        data: {
+                                            values: userTransferData
+                                        },
+                                        callback: function(ret, err) {
+                                            console.log("----------------------" + JSON.stringify(ret));
+                                            app.closeF("flower");
+                                            if (ret.code == 1) {
+                                                app.toast(ret.desc);
+                                                app.trigger("transferSe");
+                                                app.closeF("keybord");
+                                            } else {
+                                                num = 0;
+                                                arr = [];
+                                                arrLength = 0;
+                                                api.toast({
+                                                    msg: ret.desc,
+                                                    location: "middle",
+                                                    duration: 4000,
+                                                    global: true
+                                                });
+                                                $(".input_item").val("");
+                                            }
+                                        }
+                                    },
+                                    extra: {
+                                        container: "#goodslist > ul",
+                                        isflower: true
+                                    }
+                                })
+                            }
+                            num++;
+                            return false;
+                        }
+                        num++;
+                    }
+                } else {
+                    if (num > 0) {
+                        num--;
+                        $(inputItem[num]).val('');
+                        $("#input_container input:last-of-type").val('');
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

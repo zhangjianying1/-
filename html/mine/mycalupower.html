@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/mycalupower.css">
+    <title>我的算力</title>
+</head>
+
+<body>
+    <div class="showRentDetail">
+        <div class="nowNumber" style="position: relative;">
+            <span>
+                <span>
+                    <span style="font-size: 0.24rem;"> 我的有效算龄: </span>
+                    <span class="numPower">
+                        --
+                    </span>
+                </span>
+                <span style="font-size: 0.24rem;">
+                    <span style="display: inline-block;width: 1.56rem;"> 我的总算力: </span>
+                    <span class="totalPower">
+                        --
+                    </span>
+                </span>
+            </span>
+            <span style="width: 1.4rem;height:auto;position: absolute;top:0.28rem;right: 0.1rem;">
+                <img src="../../image/iconnuex.png" style="width:0.33rem;height: 0.34rem;" id="helpdetail" />
+            </span>
+        </div>
+        <div class="showCoinDetail">
+            <ul class="showCoinKind" style="padding: 0 0.3rem;box-sizing:border-box;">
+                <li data-value="BTC">
+                    BTC
+                </li>
+                <li data-value="ETH">
+                    ETH
+                </li>
+                <li data-value="LTC">
+                    LTC
+                </li>
+            </ul>
+            <ul class="showtotalPower">
+                <li>
+                    <span>
+                        基础总算力
+                    </span>
+                    <span class="basePowerAll">
+                        0.00T
+                    </span>
+                </li>
+                <li id="showSendPower">
+                    <span style="display: flex;display:-webkit-flex;align-items: center;font-size: 0.23rem;">
+                        奖励总算力<img src="../../image/iconnewx.png" style="width:0.33rem;height: 0.34rem;margin-left: 0.1rem;">
+                    </span>
+                    <span class="sendPowerAll">
+                        0.00T
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        邀请总算力
+                    </span>
+                    <span class="invitationPower">
+                        0.00T
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        累计总收益
+                    </span>
+                    <span class="incomeNum">
+                        0.00T
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="machineListChoose">
+        <span id="showBank" style="width: 25%;height: 0.7rem;line-height: 0.7rem;text-align: center;box-sizing: border-box;border-right: 1px solid #e2e2e2;position: relative;">矿机类型</span>
+        <span id="chooseReTypeOut" style="width: 25%;height: 0.7rem;line-height: 0.7rem;text-align: center;box-sizing: border-box;border-right: 1px solid #e2e2e2;position: relative;">合约状态</span>
+        <span id="durationDays" style="width: 25%;height: 0.7rem;line-height: 0.7rem;text-align: center;box-sizing: border-box;border-right: 1px solid #e2e2e2;position: relative;">锁定期限</span>
+        <span id="orderTypes" style="width: 25%;height: 0.7rem;line-height: 0.7rem;text-align: center;box-sizing: border-box;position: relative;">订单类型</span>
+    </div>
+    <div class="showList">
+        <ul id="outcoinlist" style="padding-top: 0.2rem;">
+        </ul>
+        <div id="listState" style="padding: 0.2rem 0;width:100%;text-align: center;">
+            加载中……
+        </div>
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/dotmin.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../js/mycalupower.js"></script>
+    <script type="text/html" id="ul_list">
+    {{~it:item:index}}
+    <li data-checkVoucher="{{=item.id}}" data-machineid="{{=item.id}}" data-showtext="{{=item.showText}}" data-machinestatus="{{=item.dragStatus}}" data-show="{{=item.showEnd}}" data-orderId="{{=item.order_id}}" data-dragStatus="{{=item.dragStatus}}" data-textColor="{{=item.textColor}}">
+        <p class="testNew">
+            <span style="position: relative;">
+                <span>
+                    {{=item.name}}
+                    <span class="showTransferNum" style="display:{{=Number(item.freeze_num)>0?'inline-block':'none'}};">
+                        {{=item.freeze_num}}份转让中
+                    </span>
+                </span>
+            </span>
+
+            <!-- 待挖：#f3933a  退租：#434343-->
+            <span class="showWorkStu" style="display:inline-block;width:1.5rem;text-align:right;color:{{=item.textColor}};font-size: 0.25rem;display:{{=(item.freeze_num==item.num && item.num !=0)?'none':'inline-block'}};">
+                {{=item.workText}}
+            </span>
+        </p>
+        <b style="width:100%;height: 0.6rem;display:flex;display:-webkit-flex;align-items:center;justify-content: flex-start;background-color: #fff;border-bottom: 1px solid #e2e2e2;">
+            <span>
+                <span style="border: 1px solid #dee3ff;border-color:{{=item.is_bhp_pos==1? '#dee3ff':'#ffd203'}};display:flex;display:-webkit-flex;align-items:center;background-color:{{=item.is_bhp_pos==1 ? '#dee3ff':'#ffd203'}};border-radius:0.05rem;padding:0 0.1rem;font-size:0.2rem;">
+                    {{=item.is_bhp_pos==1 ? (item.currency_name+"+"+"BHP"):item.currency_name }}
+                </span>
+            </span>
+            <span class="expireDay" style="display:{{=item.showEnd == true? 'inline-block' : 'none'}}">
+                即将到期
+            </span>
+            <span class="expireDay" style="background-color: #FFF0E3;color:#ED7718;display:{{=Number(item.freeze_num)>0?'inline-block':'none'}}">
+                转让中
+            </span>
+            {{?item.label ==0}}
+
+            {{??item.label ==1}}
+            <span class="expireDay" style="background-color: rgba(66,170,121,0.1);color:#42AA79;">
+                可转让
+            </span>
+            {{??item.label==2}}
+            <span class="expireDay" style="background-color: #FFF4D8;color:#F08800;">
+                30天
+            </span>
+            {{??item.label==3}}
+            <span class="expireDay" style="background-color: #FFF4D8;color:#F08800;">
+                90天
+            </span>
+            {{??item.label==4}}
+            <span class="expireDay" style="background-color: #FFF4D8;color:#F08800;">
+                180天
+            </span>
+            {{??}}
+            {{?}}
+        </b>
+        <div class="rentItemDetail">
+            <div>
+                <p>
+                    <span>
+                        总金额:
+                        <span>
+                            {{=item.total_deposit}}
+                            {{?item.pay_currency=="BHPC"||item.pay_currency=="CNY"}}CNY{{?}}
+                            {{?item.pay_currency=="BCNY"}}BCNY{{?}}
+                            {{?item.pay_currency=="USDT"}}USDT{{?}}
+                            <!--{{=(item.pay_currency=="BCNY"||item.pay_currency=="BHPC")?(item.total_deposit+"BCNY"):(item.total_deposit+"CNY")}}-->
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        开挖时间:
+                        <span>
+                            {{=item.time_income}}
+                        </span>
+                    </span>
+                </p>
+                <p style="display:{{=item.is_regular==1? 'inline-block' : 'none'}}">
+                    <span>
+                        到期时间:
+                        <span>
+                            {{=item.regular_end_date==null? "":item.regular_end_date}}
+                        </span>
+                    </span>
+                </p>
+                {{?item.dragStatus ==0}}
+
+                {{??item.dragStatus ==1}}
+
+                {{??}}
+                <p>
+                    <span>
+                        退单时间:
+                        <span>
+                            {{=item.time_end}}
+                        </span>
+                    </span>
+                </p>
+                {{?}}
+            </div>
+            <div>
+                <p>
+                    <span>
+                        总算力:
+                        <span>
+                            {{=item.total_power}}{{=item.rentpowerUnit}}
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        基础算力:
+                        <span>
+                            {{=item.total_base_power}}{{=item.rentpowerUnit}}
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        奖励算力:
+                        <span>
+                            {{=item.total_regular_power}}{{=item.rentpowerUnit}}
+                        </span>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <b>
+            <span>
+                <img src="../../image/dindanhao.png" style="width: 0.31rem;height: 0.31rem;">
+                <span style="font-size: 0.24rem;margin-left: 0.16rem;">
+                    订单号:{{=item.order_id}}
+                </span>
+            </span>
+            <button class="contractText" data-orderId={{=item.order_id}}>
+                查看合同
+            </button>
+        </b>
+    </li>
+    {{~}}
+    </script>
+</body>
+
+</html>

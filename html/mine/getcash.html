@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/getcash.css">
+    <title>提现</title>
+    <style>
+        .ios-select-widget-box.olay {
+            top: 2.2rem;
+        }
+
+        .ios-select-widget-box.olay>div {
+            top: 2.2rem;
+        }
+
+        input[type="radio"]+label::before {
+            content: " ";
+            display: inline-block;
+            vertical-align: .2rem;
+            width: .4rem;
+            height: .4rem;
+            margin-right: .2rem;
+            border-radius: 100%;
+            background-color: #fff;
+            border: 1px solid #b5b5b5;
+            text-indent: .15rem;
+            line-height: .65;
+        }
+
+        input[type="radio"]:checked+label::before {
+            content: " ";
+            background: url("../../image/doux.png") no-repeat center;
+            background-size: 100% 100%;
+            font-size: 0.28rem;
+        }
+
+        input[type="radio"] {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+
+        }
+
+        .showeItem {
+            width: 100%;
+            height: 1rem;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0.3rem;
+            box-sizing: border-box;
+        }
+
+        .showeItemText {
+            width: 100%;
+            height: 1rem;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0.5rem 0 0.3rem;
+            box-sizing: border-box;
+            /* display: none; */
+        }
+
+        .showeItemTextBcny {
+            width: 100%;
+            height: 1rem;
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0.5rem 0 0.3rem;
+            box-sizing: border-box;
+            /* display: none; */
+        }
+    </style>
+    <style>
+        .over {
+            height: calc(100% - 2.2rem) !important;
+            overflow: hidden !important;
+        }
+    </style>
+</head>
+
+<body style="box-sizing: border-box">
+    <div class="fixedDiv">
+        <header>
+            <p>
+                <span data-choose="balance" data-index='0'>
+                    余额提现
+                </span>
+            </p>
+            <p>
+                <span data-choose="bcnyBalance" data-index='1'>
+                    BCNY提现
+                </span>
+            </p>
+        </header>
+        <div style="border-top: 0.2rem solid #f7f7f7;margin-top: 0.88rem;">
+            <div class="showMoneyBox">
+                <p id="testID" style="padding-right: 1rem;">
+                    <span style="display: flex;display: -webkit-flex;justify-content: flex-start;">
+                        选择币种
+                    </span>
+                    <span class="chooseReType" style="position:relative;display: flex;display: -webkit-flex;flex: 1;">
+                        <input type="hidden" name="bank_id" id="bankId" value="">
+                        <span id="showBank" style="width: 100%;height: 0.7rem;line-height: 0.7rem;text-align: right;"></span>
+                    </span>
+                </p>
+                <p style="background-color: #f7f7f7;">
+                    <span>
+                        货币余额
+                    </span>
+                    <span class="myMoneyNum">
+                        --
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        提现金额
+                    </span>
+                    <input type="text" id="inputNum" placeholder="请输入提现金额" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" />
+                </p>
+                <p style="color: #919191;background-color: #f7f7f7;height: 0.68rem;font-size: 0.26rem;">
+                    <span>
+                        提现账号
+                    </span>
+                </p>
+                <div class="addShowItem" id="addShowItem">
+                    <!-- <div class="showeItem">
+                    <div id="check">
+                        <input type="checkbox" id="awesome" />
+                        <label for="awesome"
+                            style="display:flex;display:-webkit-flex;align-items:center;">Awesome!</label>
+                    </div>
+                    <span style="flex:1;height: 0.88rem;text-align: right;">
+                        <img src="../../image/rightjt.png" style="height: 0.18rem;width:0.1rem;">
+                    </span>
+                </div> -->
+                </div>
+                <div class="showeItemText">
+                    <span class="addTextTips">
+
+                    </span>
+                    <img src="../../image/rightjt.png" style="height: 0.18rem;width:0.1rem;">
+
+                </div>
+                <div class="setCnypass go-page" data-param='{"page":"common/headerwin","name":"deal_password_headerwin","param":{"subpage":"mine/deal_password","name":"deal_password","title":"设置交易密码"}}' style="height:1.1rem;width:100%;display:flex;display:-webkit-flex;justify-content: space-between;align-items: center;padding: 0 0.5rem 0 0.3rem;box-sizing: border-box;border-top: 0.2rem solid #f7f7f7;display: none;">
+                    <span style="color: #ff9c9c;">
+                        未设置交易密码
+                    </span>
+                    <span style="display: flex;display:-webkit-flex;align-items: center;">
+                        <span style="color: #d9d9d9;margin-right:0.1rem;">
+                            去设置
+                        </span>
+                        <img src="../../image/rightjt.png" style="height: 0.18rem;width:0.1rem;">
+                    </span>
+                </div>
+                <p id="showAddPwd" style="border-top: 0.2rem solid #f7f7f7;height: 1.3rem;display: none;">
+                    <span class="getCashPhoneNum">
+                        <span>
+                            交易密码
+                        </span>
+                        <input type="password" id="dealPassword" maxlength="6" style="font-size: 0.26rem;flex:1;text-align: right;" placeholder="请输入交易密码" onkeyup="this.value=this.value.replace(/\D/g, '')">
+                    </span>
+                </p>
+                <p style="height: 1.3rem;">
+                    <span class="getCashPhoneNum">
+                        <span>
+                            手机验证码
+                        </span>
+                        <input type="text" id="code" maxlength="6" style="font-size: 0.26rem;" placeholder="请输入验证码" onkeyup="this.value=this.value.replace(/\D/g, '')">
+                        <button id="getcode" style="font-weight: 400">
+                            获取验证码
+                        </button>
+                    </span>
+                </p>
+                <div id="forgetPass" style="text-align: right;padding-right: 0.5rem;box-sizing: border-box;color: #ffd203;margin:0.3rem 0 0.4rem 0;display: none;">
+                    忘记交易密码 申请找回
+                </div>
+                <div style="margin: 0 0 0.4rem 0;">
+                    <button id="getCashButton" style="font-size: 0.28rem;">
+                        立即提现
+                    </button>
+                </div>
+                <div style="color: #616161;padding: 0 0.3rem;">
+                    温馨提示：最小提现金额 <span class="mingetCash">100CNY</span>起,<span class="hideUsdt">单日限额199999CNY</span> ,提现申请提交后将在1-3个工作日
+                    转入个人提现指定银行卡。单笔提现手续费0%，实际到账100%
+                </div>
+            </div>
+            <div class="showBcnyBox" style="display: none;">
+                <p style="padding-right:0;">
+                    <span class="bindBank">
+                        <span>
+                            资产余额
+                        </span>
+                        <span class="bhpcMoneyBlance">
+                            --
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        提现金额
+                    </span>
+                    <input type="text" id="inputBcnyNum" style="font-size: 0.26rem;" placeholder="请输入提现金额" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" />
+                </p>
+                <p style="height: 0.7rem;background-color: #f7f7f7;font-size: 0.26rem;color: #919191;">
+                    <span>
+                        提现到
+                    </span>
+                </p>
+                <!-- <p> -->
+                <!-- 银行卡 -->
+                <!-- <select name="chooseBcny" id="chooseBcnyMethod">
+                    <option value="bankCard" selected>银行卡</option>
+                    <option value="zhifubao">支付宝</option>
+                </select> -->
+                <!-- </p> -->
+                <!-- <p style="height: 0.7rem;background-color: #f7f7f7;font-size: 0.26rem;color: #919191;">
+                <span>
+                    提现到
+                </span>
+                <span>
+                    单笔限额20万
+                </span>
+            </p> -->
+                <div class="addShowItemBcny" id="addShowItemBcny">
+                    <!-- <div class="showeItem">
+                        <div id="check">
+                            <input type="checkbox" id="awesome" />
+                            <label for="awesome"
+                                style="display:flex;display:-webkit-flex;align-items:center;">Awesome!</label>
+                        </div>
+                        <span style="flex:1;height: 0.88rem;text-align: right;">
+                            <img src="../../image/rightjt.png" style="height: 0.18rem;width:0.1rem;">
+                        </span>
+                    </div> -->
+                </div>
+                <div class="showeItemTextBcny">
+                    <span class="addTextTipsbcny">
+                    </span>
+                    <img src="../../image/rightjt.png" style="height: 0.18rem;width:0.1rem;">
+                </div>
+                <div class="setBcnypass  go-page" data-param='{"page":"common/headerwin","name":"deal_password_headerwin","param":{"subpage":"mine/deal_password","name":"deal_password","title":"设置交易密码"}}' style="height:1.1rem;width:100%;display:flex;display:-webkit-flex;justify-content: space-between;align-items: center;padding: 0 0.5rem 0 0.3rem;box-sizing: border-box;border-top: 0.2rem solid #f7f7f7;display: none;">
+                    <span style="color: #ff9c9c;">
+                        未设置交易密码
+                    </span>
+                    <span style="display: flex;display:-webkit-flex;align-items: center;">
+                        <span style="color: #d9d9d9;margin-right:0.1rem;">
+                            去设置
+                        </span>
+                        <img src="../../image/rightjt.png" style="height: 0.18rem;width:0.1rem;">
+                    </span>
+                </div>
+                <p id="addBcnyPwd" style="border-top: 0.2rem solid #f7f7f7;height: 1.3rem;display: none;">
+                    <span class="getCashPhoneNum">
+                        <span>
+                            交易密码
+                        </span>
+                        <input type="password" id="dealBcnyPassword" maxlength="6" style="font-size: 0.26rem;flex:1;text-align: right;" placeholder="请输入交易密码" onkeyup="this.value=this.value.replace(/\D/g, '')">
+                    </span>
+                </p>
+                <p style="height: 1.1rem;">
+                    <span class="getCashPhoneNum">
+                        <span>
+                            手机验证码
+                        </span>
+                        <input type="text" id="codeBcny" maxlength="6" style="font-size: 0.26rem;" placeholder="请输入验证码" onkeyup="this.value=this.value.replace(/\D/g, '')">
+                        <button id="getBcnycode" style="font-weight: 400;">
+                            获取验证码
+                        </button>
+                    </span>
+                </p>
+                <div id="forgetBcnyPass" style="text-align: right;padding-right: 0.5rem;box-sizing: border-box;color: #ffd203;margin:0.3rem 0 0.4rem 0;display: none;">
+                    忘记交易密码 申请找回
+                </div>
+                <div style="margin: 0 0 0.4rem 0;">
+                    <button id="getCashBcnyButton" style="font-size: .26rem;">
+                        立即提现
+                    </button>
+                </div>
+                <div style="color: #616161;padding: 0 0.3rem;">
+                    温馨提示：最小提现金额100BCNY起,单日限额199999BCNY,提现申请提交后将在1-3个工作日
+                    转入个人提现指定银行卡。
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/autosize.js"></script>
+    <script src="../../script/fastclick.js"></script>
+    <script src="../../script/jquery_three_two_one.js"></script>
+    <script src="../../script/dotmin.js"></script>
+    <script src="../../script/app.js"></script>
+    <script src="../../script/iosselect.js"></script>
+    <script src="../../js/getcash.js"></script>
+    <script id="listT" type="text/html">
+    {{~it:value:index}}
+    <div class="showeItem">
+        <div class="check">
+            <input type="radio" value="{{=value.id}}" id="{{=value.id+'bank'}}" data-bankID="{{=value.id}}" name="radioBlance" />
+            <label for="{{=value.id+'bank'}}" style="display:flex;display:-webkit-flex;align-items:center;">{{=value.bank_name?value.bank_name:value.name}}({{=value.hideBankNum}})</label>
+        </div>
+        <span style="flex:1;height: 0.88rem;text-align: right;line-height:0.88rem;padding-right:0.2rem;" data-type="{{=value.currency_code}}" data-bank="{{=value.bank_name}}" data-bankard="{{=value.bank_card_num}}" data-khh="{{=value.card_name}}" data-bankID="{{=value.bank_id}}" data-swifiCode="{{=value.swift_code}}" data-userbankID="{{=value.id}}">
+            <img src="../../image/rightjt.png" style="height: 0.18rem;width:0.1rem;">
+        </span>
+    </div>
+    {{~}}
+    </script>
+    <script id="listBcny" type="text/html">
+    {{~it:value:index}}
+    <div class="showeItem">
+        <div class="check">
+            <input type="radio" value="{{=value.id}}" id="{{=value.id}}" data-bankID="{{=value.id}}" name="radioBcny" />
+            <label for="{{=value.id}}" style="display:flex;display:-webkit-flex;align-items:center;">{{=value.bank_name?value.bank_name:value.name}}({{=value.hideBankNum}})</label>
+        </div>
+        <span style="flex:1;height: 0.88rem;text-align: right;line-height:0.88rem;padding-right:0.2rem;" data-type="{{=value.currency_code}}" data-bank="{{=value.bank_name}}" data-bankard="{{=value.bank_card_num}}" data-khh="{{=value.card_name}}" data-bankID="{{=value.bank_id}}" data-swifiCode="{{=value.swift_code}}" data-userbankID="{{=value.id}}">
+            <img src="../../image/rightjt.png" style="height: 0.18rem;width:0.1rem;">
+        </span>
+    </div>
+    {{~}}
+    </script>
+</body>
+
+</html>
